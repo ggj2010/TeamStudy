@@ -20,7 +20,7 @@ import org.xml.sax.SAXException;
 @Slf4j
 public class DomXmlTest {
 	public static void main(String[] args) {
-		String path = "resources/testxml/dom.xml";
+		String path = "src/main/resources/testxml/dom.xml";
 		test1(path);
 	}
 	
