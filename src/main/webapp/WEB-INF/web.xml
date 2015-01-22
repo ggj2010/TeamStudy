@@ -13,5 +13,27 @@
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
+  
+  
+ <servlet>
+    <servlet-name>QueryServlet</servlet-name>
+    <servlet-class>com.team.gaoguangjin.help.QueryServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>QueryServlet</servlet-name>
+    <url-pattern>/ggj/QueryServlet</url-pattern>
+  </servlet-mapping>
+
+  
+  
+  <filter>
+        <description>微信消息接入接口</description>
+        <filter-name>WeixinUrlFilter</filter-name>
+        <filter-class>com.team.gaoguangjin.weixin.WeixinUrlFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>WeixinUrlFilter</filter-name>
+        <url-pattern>/gaoguangjin/weixin</url-pattern>
+    </filter-mapping>
 </web-app>
 
