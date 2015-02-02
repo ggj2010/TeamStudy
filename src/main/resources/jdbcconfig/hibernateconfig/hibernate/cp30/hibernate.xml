@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "E:/workspace/crud1/DTD/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+    <session-factory>
+
+        <!-- 数据连接Database connection settings -->
+        <property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+        <property name="connection.url">jdbc:oracle:thin:@localhost:1521:ZSORA10G</property>
+        <property name="connection.username">gao</property>
+        <property name="connection.password">admin</property>
+        <!-- 连接池容量上限数目JDBC connection pool (use the built-in) 
+        <property name="connection.pool_size">1</property>
+		-->
+		
+		<property name="c3p0.min_size">5</property>
+        <property name="c3p0.max_size">20</property>
+        <!-- 如果3分钟没人用，就关掉连接 -->
+        <property name="c3p0.timeout">180</property>
+        <!-- 可以同时执行50条sql -->
+        <property name="c3p0.max_statements">50</property>
+        
+        <!-- 方言，不同的数据库语法有差异，选择正常的数据库方言，便于hibernate生成对应的SQL dialect -->
+ 	<property name="dialect">org.hibernate.dialect.OracleDialect</property>
+
+        <!-- Enable Hibernate's automatic session context management -->
+        <property name="current_session_context_class">thread</property>
+
+        <!-- 输出所有sql到控制台Echo all executed SQL to stdout -->
+        <property name="show_sql">true</property>
+        <!-- 在日记或控制台中打出有格式的sql，方便查看 -->
+		<property name="format_sql">true</property>
+
+		<!-- 在SessionFactory创建时，自动检查数据库结构，如果没有表就创建，取值validate/update/create/create-drop.
+			  如果取值create-drop,则在显式关闭SeesionFactory时，将drop掉数据库的表。	-->
+		<property name="hbm2ddl.auto">create</property>
+	
+		
+		<!-- 映射实体路径 -->
+			<mapping resource="jdbcconfig/hibernateconfig/hibernate/bean/xml/classroom.hbm.xml" />
+        <mapping resource="jdbcconfig/hibernateconfig/hibernate/bean/xml/student.hbm.xml" />
+
+
+    </session-factory>
+
+</hibernate-configuration>

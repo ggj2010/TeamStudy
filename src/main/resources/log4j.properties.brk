@@ -1,0 +1,51 @@
+####################
+#LEVEL  : OFF?FATAL?ERROR?WARN?INFO?DEBUG?ALL
+#OUTPUT : STDOUT?LOGFILE?ROLLING_FILE
+####################
+log4j.rootLogger=DEBUG, STDOUT, ROLLING_FILE
+#~~~~~~~~~~~~~~~~~~~
+# 声明输出对象 不要修改
+#~~~~~~~~~~~~~~~~~~~
+log4j.appender.STDOUT=org.apache.log4j.ConsoleAppender
+log4j.appender.LOGFILE=org.apache.log4j.FileAppender
+log4j.appender.ROLLING_FILE=org.apache.log4j.RollingFileAppender
+
+####################
+
+####################
+log4j.appender.STDOUT.Threshold=debug
+
+####################
+# 以下不要修改
+####################
+
+####################
+# Spring & Apache Log Level
+####################
+log4j.category.org.springframework=ERROR
+log4j.category.org.quartz=ERROR
+log4j.category.org.apache=ERROR
+
+####################
+# Console Appender
+####################
+log4j.appender.STDOUT.layout=org.apache.log4j.PatternLayout
+log4j.appender.STDOUT.layout.ConversionPattern=%d %-5p - %m [%F.%L] %n
+
+####################
+# File Appender
+####################
+log4j.appender.LOGFILE.File=src/main/webapp/WEB-INF/logs/mylog.log
+log4j.appender.LOGFILE.Append=true
+log4j.appender.LOGFILE.layout=org.apache.log4j.PatternLayout
+log4j.appender.LOGFILE.layout.ConversionPattern=[ggjStudy] %d -%-4r [%t] %c %x%n %-5p - %m [%l] %n
+
+####################
+# Rolling File Appender
+####################
+log4j.appender.ROLLING_FILE.File=src/main/webapp/WEB-INF/logs/mylog.log
+log4j.appender.ROLLING_FILE.Append=true
+log4j.appender.ROLLING_FILE.MaxFileSize=512KB
+log4j.appender.ROLLING_FILE.MaxBackupIndex=20
+log4j.appender.ROLLING_FILE.layout=org.apache.log4j.PatternLayout
+log4j.appender.ROLLING_FILE.layout.ConversionPattern=[teamStudy] %d -%-4r [%t] %c %x%n %-5p - %m [%l] %n

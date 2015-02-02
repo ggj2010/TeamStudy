@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+    http://www.springframework.org/schema/context      
+    http://www.springframework.org/schema/context/spring-context-2.5.xsd     
+    http://www.springframework.org/schema/aop     
+    http://www.springframework.org/schema/aop/spring-aop-2.5.xsd     
+    http://www.springframework.org/schema/tx     
+    http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+	<context:property-placeholder location="classpath:jdbc.properties" />
+
+	<context:component-scan base-package=""></context:component-scan>
+
+	<!-- destroy-method="close" 当数据库连接不使用的时候,就把该连接重新放到数据池中 -->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" >
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+	<!--如果用junittest的时候，注解用@resource
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" >
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:ZSORA10G" />
+		<property name="username" value="gao" />
+		<property name="password" value="admin" />
+	</bean>
+	-->
+	
+
+	<!-- 纯普通的jdbc,用到的是DriverManagerDataSource，没意思啊 -->
+	<bean id="normal" class="org.springframework.jdbc.datasource.DriverManagerDataSource" >
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate"
+		p:dataSource-ref="dataSource"/>
+
+	<!--studentBean和studentBean2都是注解Student类  -->
+	<bean id="studentBean" class="com.team.gaoguangjin.jdbc.springJdbc.testBeanXml.Student"
+		p:teacher-ref="teacherBean" p:studentName="张静月" p:studentSex="女"/>
+		
+	<bean id="studentBean2" class="com.team.gaoguangjin.jdbc.springJdbc.testBeanXml.Student"
+		p:teacher-ref="teacherBean" p:studentName="张静月2" p:studentSex="女"/>
+
+	<bean id="teacherBean" class="com.team.gaoguangjin.jdbc.springJdbc.testBeanXml.Teacher"
+		p:teacherName="高广金" p:teacherAge="24"/>
+</beans>
+
+
+

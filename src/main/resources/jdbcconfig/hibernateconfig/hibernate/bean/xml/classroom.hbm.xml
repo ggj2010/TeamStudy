@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.team.gaoguangjin.jdbc.hibernate.bean">
+	<class name="ClassRoom" table="gao.tc_classroom">
+		<id name="id">
+		<generator class="uuid.hex"></generator>
+		</id>
+			<property  name="roomName" not-null="true" column="room_name"></property>
+			<property  name="roomSize" not-null="true" column="room_size"></property>
+	</class>
+</hibernate-mapping>

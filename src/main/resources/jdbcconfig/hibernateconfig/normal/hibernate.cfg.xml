@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+          "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+<session-factory>
+	<!-- 自动创建表,如果表没有，在初始化，获取sessionFatcory的时候 就会新增表 -->
+	<property name="hbm2ddl.auto">update</property> 
+	   <property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+        <property name="connection.url">jdbc:oracle:thin:@localhost:1521:ZSORA10G</property>
+        <property name="connection.username">gao</property>
+        <property name="connection.password">admin</property>
+	<property name="show_sql">true</property>
+	<!-- <property name="dialect">org.hibernate.dialect.SQLServerDialect</property> 
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property> -->
+	<property name="dialect">org.hibernate.dialect.OracleDialect</property>
+	<!--  -->
+		<mapping resource="jdbcconfig/hibernateconfig/hibernate/bean/xml/classroom.hbm.xml" />
+	<mapping resource="jdbcconfig/hibernateconfig/hibernate/bean/xml/student.hbm.xml" />
+
+	
+	
+	
+</session-factory>
+
+
+</hibernate-configuration>

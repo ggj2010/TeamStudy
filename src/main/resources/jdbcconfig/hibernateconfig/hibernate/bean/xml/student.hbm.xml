@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.team.gaoguangjin.jdbc.hibernate.bean">
+	<class name="Student" table="gao.tcstudent" >
+		<id name="id">
+		<generator class="uuid"></generator>
+		</id>
+			<property  name="studentName"  column="student_name" ></property>
+			<property name="studentSex"   column="student_sex"></property>
+	<many-to-one name="room" column="room_id"  lazy="false"></many-to-one>
+	</class>
+</hibernate-mapping>

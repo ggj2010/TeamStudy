@@ -1,0 +1,16 @@
+1、logback
+
+需要用到架包：  <!-- 如果用了logback，那么下面两个都要注释掉 
+		 <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.0.13</version>
+            <scope>runtime</scope>
+        </dependency>
+        -->
+需要用到文件 logback.xml  这个是目前比较流行的日志框架，轻量级。        
+
+2、log4j
+
+resources目录下面有两个日志properties文件。目前用的是学习用的，打印的日志比较详细。
+正式开放的时候可以用。备份.brk那个

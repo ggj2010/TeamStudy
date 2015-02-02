@@ -1,11 +1,17 @@
 package com.team.gaoguangjin.weixin.bean;
 
+import java.util.List;
+
 import lombok.Getter;
 import lombok.Setter;
 
 @Setter
 @Getter
 public class InputMessage {
+	// 用户关注时候事件
+	public static final String EVENT_SUBSCRIBE = "subscribe";
+	// 用户取消关注时候事件
+	public static final String EVENT_UNSUBSCRIBE = "unsubscribe";
 	private String ToUserName;
 	private String FromUserName;
 	private Long CreateTime;
@@ -16,8 +22,8 @@ public class InputMessage {
 	// 图片消息
 	private String PicUrl;
 	// 位置消息
-	private String LocationX;
-	private String LocationY;
+	private String Location_X;
+	private String Location_Y;
 	private Long Scale;
 	private String Label;
 	// 链接消息
@@ -32,4 +38,12 @@ public class InputMessage {
 	private String Event;
 	private String EventKey;
 	private String Ticket;
+	
+	// 回复图文
+	public String ArticleCount;
+	public List<Item> Articles;
+	
+	// 回复歌曲
+	public Music Music;
+	
 }
