@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+	PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+	
+
+<configuration>
+  <!-- 实体类,alias为实体类别名  -->
+  <typeAliases>
+  	<typeAlias type="com.team.gaoguangjin.jdbc.mybatis.bean.ClassRoom" alias="ClassRoom"/>
+  	<typeAlias type="com.team.gaoguangjin.jdbc.mybatis.bean.Student" alias="Student"/>
+  </typeAliases>
+ 
+  <!--  
+   <properties resource="jdbcconfig/jdbc.properties"></properties>  
+  -->
+  <environments default="development">
+  	<environment id="development">
+  	<!-- transactionManager:type=”[JDBC|MANAGED]”
+  	     JDBC – 这个配置直接简单使用了 JDBC 的提交和回滚设置。 它依赖于从数据源得 到的连接来管理事务范围。
+	     MANAGED – 这个配置几乎没做什么。它从来不提交或回滚一个连接。而它会让 容器来管理事务的整个生命周期(比如 Spring 或 JEE 应用服务器的上下文) 默认 情况下它会关闭连接。 然而一些容器并不希望这样, 因此如果你需要从连接中停止 它,将 closeConnection 属性设置为 false。 -->
+  		<transactionManager type="JDBC"></transactionManager>
+  		<!-- 三种内建的数据源类型 UNPOOLED POOLED  JNDI-->
+  		<dataSource type="POOLED">
+  			<property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
+            <property name="url" value="jdbc:oracle:thin:@localhost:1521:ZSORA10G" />
+            <property name="username" value="gao"/>
+            <property name="password" value="admin"/>
+  		</dataSource>
+  	</environment>
+  </environments>
+  
+  <!-- 映射xml文件 -->
+  <mappers>
+  	<mapper resource="jdbcconfig/mybatisconfig/mybatismapper/studentMapper.xml"/>
+  </mappers>
+  
+</configuration>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.team.gaoguangjin.jdbc.mybatis.mapper.StudentMapper">
+
+	<!-- resultType="com.team.gaoguangjin.jdbc.mybatis.bean.ClassRoom" 或者 resultMap="ClassRoom" -->
+	<resultMap id="classRoomMap" type="com.team.gaoguangjin.jdbc.mybatis.bean.ClassRoom">
+		<id property="id" column="id"/>
+		<result property="roomName" column="room_name"/>
+		<result property="roomSize" column="room_size"/>
+	</resultMap>
+
+	<resultMap id="studentMap" type="com.team.gaoguangjin.jdbc.mybatis.bean.Student">
+		<id property="id" column="id" />
+		<result property="studentName" column="student_name" />
+		<result property="studentSex" column="student_sex" />
+		<!-- 级联查询 -->
+		<association property="room" column="room_id" resultMap="classRoomMap"></association>
+	</resultMap>
+	
+	
+	
+	<resultMap id="subjectMap" type="com.team.gaoguangjin.jdbc.mybatis.bean.Subject">
+		<id property="id" column="subject_id"/>
+		<result property="subjectName" column="subject_name" />
+		<result property="subjectTeacherName" column="subject_teacher_name" />
+		<!-- 级联查询 -->
+		<collection property="studentList"  resultMap="com.team.gaoguangjin.jdbc.mybatis.mapper.StudentMapper.studentMap"/>
+	</resultMap>
+	
+	
+	
+	
+	
+	
+	
+	<!--多对一查询 --> 
+	<select id="selectStudentById" resultMap="studentMap" parameterType="String">
+		     select * from gao.tcstudent t1,gao.tc_classroom t2   where t1.room_id=t2.id and t1.id=#{id}
+	</select>
+	
+	<!--classRoomMap对应的是上面声明的 resultMap的值 -->
+	<select id="selectClassRoomById" resultMap="classRoomMap" parameterType="String">
+		select * from gao.tc_classroom t1 where t1.id=#{id}
+	</select>
+	
+	<!--使用resultType是对应在configuration里面配置的 typeAlias,必须要保证实体类和数据里面字段值一样 不然查不到值  -->
+	<!-- 
+	<select id="selectClassRoomById" resultType="ClassRoom" parameterType="String">
+		select id,room_size as roomSize,room_name as roomName from gao.tc_classroom t1 where t1.id=#{id}
+	</select>
+	 -->
+	 
+	 
+	 <!-- 一对多查询 -->
+	 <select id="selectSubjectById" resultMap="subjectMap" parameterType="String">
+			    select a.id as subject_id,a.subject_name,a.subject_teacher_name,student_name,student_sex,room_id,b.id as id,d.room_name
+       from gao.tcsubject        a,
+            gao.tcstudent        b,
+            gao.tcstudentsubject c,
+            gao.tc_classroom d
+      where a.id = c.subject_id
+        and b.id = c.student_id
+        and b.room_id=d.id
+        and a.id =#{id} 
+	</select>
+	 
+	 
+</mapper>
