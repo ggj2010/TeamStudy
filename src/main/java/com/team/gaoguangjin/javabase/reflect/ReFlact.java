@@ -23,7 +23,7 @@ import java.lang.reflect.Method;
 public class ReFlact {
 	public static void main(String[] args) throws ClassNotFoundException {
 		Class<?> reFlactClass = Class.forName("com.team.gaoguangjin.javabase.reflect.FanShe");
-		getClassNameWithParam(reFlactClass);
+		// getClassNameWithParam(reFlactClass);
 		// getClassWithoutParam(reFlactClass);
 		
 		// getDefaultConst();
@@ -93,6 +93,10 @@ public class ReFlact {
 			// 得到成员变量
 			Field fieldID = reFlactClass.getDeclaredField("id");
 			Field fieldName = reFlactClass.getDeclaredField("name");
+			// Class com.team.gaoguangjin.javabase.reflect.ReFlact can not access a member of class
+			// com.team.gaoguangjin.javabase.reflect.FanShe with modifiers "private"
+			fieldName.setAccessible(true);// 将私有变量变成共有的，才能赋值操作
+			
 			// 对成员变量进行赋值
 			fieldID.set(object, "编号85757");
 			fieldName.set(object, "高广金");

@@ -25,10 +25,13 @@ public class AnnoationMainTest {
 				JdkAnnoation annotation = method.getAnnotation(JdkAnnoation.class);
 				if (null != annotation) {
 					if (annotation.value()) {
-						System.out.println(method.getName() + "注解的值为" + annotation.value() + "\t" + "需要测试的噢"
+						
+						method.invoke(clzz.newInstance(), null);
+						
+						System.out.println(method.getName() + " 注解的值为" + annotation.value() + "\t" + "需要测试的噢"
 								+ annotation.url() + "\r\n");
 					} else {
-						System.out.println(method.getName() + "注解的值为" + annotation.value() + "\t" + "不需要测试的噢"
+						System.out.println(method.getName() + " 注解的值为" + annotation.value() + "\t" + "不需要测试的噢"
 								+ annotation.url());
 					}
 				}

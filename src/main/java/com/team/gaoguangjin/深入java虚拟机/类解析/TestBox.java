@@ -1,5 +1,6 @@
 package com.team.gaoguangjin.深入java虚拟机.类解析;
 
+
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -22,6 +23,9 @@ public class TestBox {
 		
 		Long g = 3l;
 		
+		
+		System.out.println(h.toString());
+		
 		System.out.println(c == d);
 		// 优先使用整形池。对于包装类的Integer.valueOf( )方法，如果在－128和127之间，优先调用的是整形池里面的。
 		System.out.println(e == f);
@@ -33,4 +37,16 @@ public class TestBox {
 		System.out.println(g == (a + b));
 		System.out.println(g.equals(a + b));
 	}
+	
+	
+	/**
+	 * toString 默认调用的是包装类的valueOf方法。会优先从常量池里面调用值
+	 *  public static Integer valueOf(int i) {
+        if(i >= -128 && i <= IntegerCache.high)
+            return IntegerCache.cache[i + 128];
+        else
+            return new Integer(i);
+    }
+	 */
+	
 }

@@ -2,7 +2,12 @@ package com.team.gaoguangjin.javabase.reflect;
 
 public class FanShe {
 	public String id;
-	public String name;
+	private String name;
+	
+	static {
+		
+		System.out.println("初始化static代码块");
+	}
 	
 	public FanShe(String id, String name) {
 		this.id = id;
