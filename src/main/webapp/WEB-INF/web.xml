@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	id="WebApp_ID" version="2.5">
 
-
+	<!-- 机器人 -->
 	<servlet>
 		<servlet-name>RobotServlet</servlet-name>
 		<servlet-class>com.team.gaoguangjin.robot.RobotServlet</servlet-class>
@@ -13,11 +13,7 @@
 		<servlet-name>RobotServlet</servlet-name>
 		<url-pattern>/ggj/RobotServlet</url-pattern>
 	</servlet-mapping>
-	<welcome-file-list>
-		<welcome-file>index.jsp</welcome-file>
-	</welcome-file-list>
-
-
+	<!-- 帮助陆辉的那个查询页面 -->
 	<servlet>
 		<servlet-name>QueryServlet</servlet-name>
 		<servlet-class>com.team.gaoguangjin.help.QueryServlet</servlet-class>
@@ -26,8 +22,8 @@
 		<servlet-name>QueryServlet</servlet-name>
 		<url-pattern>/ggj/QueryServlet</url-pattern>
 	</servlet-mapping>
-	
-	<!--测试线程servlet线程安全用到的  -->
+
+	<!--测试线程servlet线程安全用到的 -->
 	<servlet>
 		<servlet-name>ThreadServlet</servlet-name>
 		<servlet-class>com.team.gaoguangjin.thread.testservlet.ThreadServlet</servlet-class>
@@ -48,5 +44,73 @@
 	</filter-mapping>
 
 
+
+
+	<!--模仿有道页面 spring配置文件 -->
+	
+	
+	<!-- youdao.root为根目录的地址，一般在tomact的webapp，配置这个是找到写日志文件的根目录用到 -->
+	<context-param>
+		<param-name>webAppRootKey</param-name>
+		<param-value>youdao.root</param-value>  
+	</context-param>
+	<!-- Log4j 配置文件位置 -->
+	<context-param>
+		<param-name>log4jConfigLocation</param-name>
+		<param-value>classpath:/youdao/log4j.properties</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>log4jRefreshInterval</param-name>
+		<param-value>60000</param-value>
+	</context-param>
+
+
+	<!-- classpath是指 WEB-INF文件夹下的classes目录 -->
+	<!-- Spring配置文件位置 参数定义了要装入的 Spring 配置文件。  -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:/youdao/youdaospring.xml</param-value>
+	</context-param>
+
+
+	<!--Spring Log4J 监听配置装载-->
+	<listener>
+		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+	</listener>
+
+	<!--spring监听器-->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	
+	
+	
+	<!-- Spring MVC -->
+	<servlet>
+	<servlet-name>springMvc</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		
+		<init-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:/youdao/youdaospring.xml</param-value>
+		</init-param>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>springMvc</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	
+	</servlet-mapping>
+
+	
+
+	<!-- session失效时间：二小时 -->
+	<session-config>
+		<session-timeout>120</session-timeout>
+	</session-config>
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
 </web-app>
 

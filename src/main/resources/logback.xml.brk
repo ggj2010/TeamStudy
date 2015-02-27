@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
+<!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径-->
     <appender name="logfile" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <File>/teamStudy/log/log.log</File>
         <encoder>
@@ -13,14 +14,30 @@
             </TimeBasedFileNamingAndTriggeringPolicy>
         </rollingPolicy>
     </appender>
+     <!-- 控制台输出  --> 
     <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>[%level][%date] %logger[%line] %msg%n</pattern>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n </pattern>
         </encoder>
     </appender>
-    <logger name="java.sql" level="info"></logger>
-	<logger name="com.team" level="info" />
-    <root level="info">
+    
+     <!-- 控制台输出   
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">  
+       <Encoding>UTF-8</Encoding>     
+        <layout class="ch.qos.logback.classic.PatternLayout">     
+             格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符  
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n     
+            </pattern>     
+        </layout>     
+    </appender>  
+    -->   
+    
+    <!-- 指定某个包下面的日志级别，如果root设置的日志级别为info 而某个包设置的为debug，这样某个包也可以打印debug的日志了 -->
+	<logger name="com.team" level="debug" />
+	
+	 <!-- 日志输出级别 DEBUG 和INFO  如果改成了INFO那么代码里面的log.debug()内容就打印不出来了，因为打印方法决定记录请求的级别-->  
+     <!-- TRACE < DEBUG < INFO < WARN < ERROR。  -->
+    <root level="INFO">
         <appender-ref ref="logfile"/>
         <appender-ref ref="stdout"/>
     </root>

@@ -38,7 +38,7 @@ public class RuntimeTest {
 			who();
 			System.out.println("----------------------------------");
 			// 文件系统信息
-			file();
+			// file();
 			System.out.println("----------------------------------");
 			// 网络信息
 			net();
@@ -184,7 +184,7 @@ public class RuntimeTest {
 	private static void file() throws Exception {
 		Sigar sigar = new Sigar();
 		FileSystem fslist[] = sigar.getFileSystemList();
-		for (int i = 0; i < fslist.length; i++) {
+		for (int i = 0; i < fslist.length - 1; i++) {
 			System.out.println("分区的盘符名称" + i);
 			FileSystem fs = fslist[i];
 			// 分区的盘符名称

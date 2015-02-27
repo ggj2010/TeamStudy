@@ -8,10 +8,13 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<!-- spring 3.1才支持hibernate4 ,hibernate4比较新，所以的话要多学习，你懂的-->
-		<!-- 
+		
 		<spring.version>3.0.5.RELEASE</spring.version>
-		 -->
+		 <!--
 		<spring.version>4.0.5.RELEASE</spring.version>
+		 -->
+		 
+		 <!--dubbo 2.4.10依赖sping2.5架包 会导致冲突 -->
 		 <dubbo.version>2.4.10</dubbo.version>
 		  <zkclient.version>0.1</zkclient.version>
 	</properties>
@@ -23,6 +26,12 @@
 			<artifactId>spring-context</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-webmvc-portlet</artifactId>
+		<version>${spring.version}</version>
+	</dependency>
+		
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aop</artifactId>
@@ -107,6 +116,13 @@
 		</dependency>
 		
 		<!--spring结束 -->
+			<!-- jstl spring view视图用到 -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+		
 		
 		<!--hibernate开始 -->
 		<dependency>
@@ -115,7 +131,7 @@
 			<version>4.3.8.Final</version>
 		</dependency>
 
-		<!--hibernate依赖包 -->
+		<!--hibernate依赖包
 		
 		<dependency>
 			<groupId>dom4j</groupId>
@@ -167,7 +183,7 @@
 			<artifactId>c3p0</artifactId>
 			<version>0.9.1.2</version>
 		</dependency>
-		<!---hibernate结束-->
+		hibernate结束-->
 		
 		<dependency>
 			<groupId>com.alibaba</groupId>
@@ -192,25 +208,32 @@
 			<version>4.3.1</version>
 		</dependency>
 
-		<!-- 如果用了logback，那么下面两个都要注释掉
+		<!-- 如果用了logback，那么下面slf4j要注释掉
 		 <dependency> 
 			 <groupId>ch.qos.logback</groupId> 
 			<artifactId>logback-classic</artifactId> 
 			<version>1.0.13</version> 
 			<scope>runtime</scope> 
 		</dependency> -->
-		<!-- slf4j注释，因为logback里面包含 -->
+		<!-- slf4j注释，因为logback里面包含
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-jdk14</artifactId>
 			<version>1.5.11</version>
-		</dependency>
-		<!-- 日志文件相关架包-->
+		</dependency> -->
+		<!-- SLF4J结合Log4j -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.7.2</version>
+		</dependency> 
+		<!--单独的log4j架包
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 			<version>1.2.17</version>
 		</dependency>
+		-->
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
@@ -307,6 +330,13 @@
 				<groupId>com.alibaba</groupId>
 				<artifactId>dubbo</artifactId>
 				<version>${dubbo.version}</version>
+				<!-- 这样写法是去除dubbo依赖的spring2.5架包，因为多余的会导致冲突 -->
+				<exclusions>  
+                <exclusion>  
+                    <artifactId>spring</artifactId>  
+                    <groupId>org.springframework</groupId>  
+                </exclusion>  
+            </exclusions>  
 	   </dependency>
 	   <!-- zookeeper -->
 	  	 <dependency>

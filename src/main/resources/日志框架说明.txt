@@ -1,6 +1,6 @@
-1、logback
+1、logback 学习可以参考这个网页 http://blog.csdn.net/chunming8302/article/details/7321314
 
-需要用到架包：  <!-- 如果用了logback，那么下面两个都要注释掉 
+需要用到架包：  <!-- 如果用了logback，那么slf4j要注释掉 ,因为logback架包的依赖包里面就有slf4j
 		 <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
