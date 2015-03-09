@@ -9,10 +9,10 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<!-- spring 3.1才支持hibernate4 ,hibernate4比较新，所以的话要多学习，你懂的-->
 		
-		<spring.version>3.0.5.RELEASE</spring.version>
-		 <!--
+		
+		 <!--<spring.version>3.0.5.RELEASE</spring.version> -->
 		<spring.version>4.0.5.RELEASE</spring.version>
-		 -->
+		
 		 
 		 <!--dubbo 2.4.10依赖sping2.5架包 会导致冲突 -->
 		 <dubbo.version>2.4.10</dubbo.version>
@@ -131,7 +131,7 @@
 			<version>4.3.8.Final</version>
 		</dependency>
 
-		<!--hibernate依赖包
+		<!--hibernate依赖包-->
 		
 		<dependency>
 			<groupId>dom4j</groupId>
@@ -183,7 +183,7 @@
 			<artifactId>c3p0</artifactId>
 			<version>0.9.1.2</version>
 		</dependency>
-		hibernate结束-->
+		<!--hibernate结束-->
 		
 		<dependency>
 			<groupId>com.alibaba</groupId>
@@ -349,6 +349,12 @@
 			<groupId>org.quartz-scheduler</groupId>
 			<artifactId>quartz</artifactId>
 			<version>1.8.4</version>
+		</dependency>
+		<!-- apapche常用类 -->
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.6</version>
 		</dependency>
 	</dependencies>
 </project>

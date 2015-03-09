@@ -28,6 +28,7 @@ public class JunitTestSpringJdbc {
 	public void testJdbcTemplate() throws SQLException {
 		// sString result = jdbcTemplate.queryForObject("select sysdate from dual", String.class);
 		// log.info("result:" + result);
+		jdbcTemplate.execute("");
 	}
 	
 	@Test
@@ -38,8 +39,7 @@ public class JunitTestSpringJdbc {
 			while (rs.next()) {
 				System.out.println(rs.getString("sysdate"));
 			}
-		}
-		catch (SQLException e) {
+		} catch (SQLException e) {
 			log.error("spring testDriverManagerDataSource()方法查询异常！" + e.getLocalizedMessage());
 		}
 	}

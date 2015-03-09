@@ -5,7 +5,8 @@
 <hibernate-configuration>
 <session-factory>
 	<!-- 自动创建表,如果表没有，在初始化，获取sessionFatcory的时候 就会新增表 -->
-	<property name="hbm2ddl.auto">update</property> 
+	<!--  
+	<property name="hbm2ddl.auto">update</property> -->
 	   <property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
         <property name="connection.url">jdbc:oracle:thin:@localhost:1521:ZSORA10G</property>
         <property name="connection.username">gao</property>

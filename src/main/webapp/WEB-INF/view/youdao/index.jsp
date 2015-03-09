@@ -1,26 +1,26 @@
-<%@ page language="java" import="java.util.*" pageEncoding="ISO-8859-1"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ include file="/youdao/common/header.jsp" %>
+<%@ include file="/youdao/common/taglibs.jsp" %>
 <html>
   <head>
-    <base href="<%=basePath%>">
-    
-    <title>My JSP 'index.jsp' starting page</title>
+    <title>有道云笔记</title>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
   </head>
+  <script type="text/javascript">
+	
+  require(['jquery'], function($) {
+  	   $(function() {
+  		   $("#init").text("还原登陆到主界面！！！！！！！！！！！！！"); 
+  	   })
+  	   alert($().jquery);
+   
+  });
+  </script>
   
   <body>
-    This is my JSP page. <br>
+  	还原登陆到主界面
+  	<span id="init"></span>
   </body>
 </html>

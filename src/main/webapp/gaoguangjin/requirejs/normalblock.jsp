@@ -2,12 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>object</title>
+<title>block测试</title>
 
 <!-- async属性表明这个文件需要异步加载，避免网页失去响应。IE不支持这个属性，只支持defer，所以把defer也写上。 -->
-<script src="js/block.js""></script>
-<!--  
-<script src="js/test.js" defer async="true"></script>-->
+<script src="js/block.js"></script>
+<!--  <script src="js/block.js" defer async="true"></script>-->
 </head>
 
 

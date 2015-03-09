@@ -1,0 +1,38 @@
+--oracle数据库 druid数据库连接池
+--url=jdbc:oracle:thin:@localhost:1521:ZSORA10G  服务名字是这个
+
+
+--把一下内容拷贝到数据库
+
+--创建有道用户
+create user youdao identified by youdao
+--给用户授权dba
+grant dba to youdao
+
+--创建表
+
+--用户表
+create table YOUDAO.TCHUMAN
+(
+  HUMANID       INTEGER not null,
+  HUMANNAME     VARCHAR2(80) not null,
+  CREATEDATE    DATE,
+  FLAG          INTEGER default 1 not null,
+  HUMANPASSWORD VARCHAR2(60)
+)
+
+--oracle删除序列化：
+
+ DROP SEQUENCE seq_human;
+
+--oracle创建序列化：
+create sequence seq_human   
+    minvalue 1   
+    maxvalue 999999   
+    start with 1   
+    increment by 1   
+    cache 20   
+    cycle   
+    order;  
+   --获取sequence 获取主键 
+ select seq_human.nextval from dual

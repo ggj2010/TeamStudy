@@ -1,0 +1,6 @@
+有道访问的
+http://localhost:8080/TeamStudy/yd  会进行拦截
+
+http://localhost:8080/TeamStudy/login.do登陆
+
+http://localhost:8080/TeamStudy/logout.do退出

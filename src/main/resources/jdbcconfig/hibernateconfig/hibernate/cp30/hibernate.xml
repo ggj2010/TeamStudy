@@ -40,7 +40,7 @@
 	
 		
 		<!-- 映射实体路径 -->
-			<mapping resource="jdbcconfig/hibernateconfig/hibernate/bean/xml/classroom.hbm.xml" />
+		<mapping resource="jdbcconfig/hibernateconfig/hibernate/bean/xml/classroom.hbm.xml" />
         <mapping resource="jdbcconfig/hibernateconfig/hibernate/bean/xml/student.hbm.xml" />
 
 

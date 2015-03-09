@@ -43,12 +43,7 @@
 		<url-pattern>/gaoguangjin/weixin</url-pattern>
 	</filter-mapping>
 
-
-
-
 	<!--模仿有道页面 spring配置文件 -->
-	
-	
 	<!-- youdao.root为根目录的地址，一般在tomact的webapp，配置这个是找到写日志文件的根目录用到 -->
 	<context-param>
 		<param-name>webAppRootKey</param-name>
@@ -65,14 +60,12 @@
 		<param-value>60000</param-value>
 	</context-param>
 
-
 	<!-- classpath是指 WEB-INF文件夹下的classes目录 -->
-	<!-- Spring配置文件位置 参数定义了要装入的 Spring 配置文件。  -->
+	<!-- Spring配置文件位置 参数定义了要装入的 Spring 配置文件-->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath:/youdao/youdaospring.xml</param-value>
+		<param-value>classpath:/youdao/*.xml</param-value>
 	</context-param>
-
 
 	<!--Spring Log4J 监听配置装载-->
 	<listener>
@@ -83,24 +76,43 @@
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-	
-	
-	
+	<!--utf-8  -->
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>*.do</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>*.jsp</url-pattern>
+	</filter-mapping>
 	<!-- Spring MVC -->
 	<servlet>
 	<servlet-name>springMvc</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		
 		<init-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath:/youdao/youdaospring.xml</param-value>
 		</init-param>
 	</servlet>
-	
 	<servlet-mapping>
 		<servlet-name>springMvc</servlet-name>
 		<url-pattern>*.do</url-pattern>
-	
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>springMvc</servlet-name>
+		<url-pattern>/yd/*</url-pattern>
 	</servlet-mapping>
 
 	

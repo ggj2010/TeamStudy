@@ -11,10 +11,11 @@ public class NormalProxyTest {
 		PlayGameInterface pg = new StartPlayGame();
 		PlayGameProxy pgProxy = new PlayGameProxy(pg);
 		// Proxy.newProxyInstance()最主要是这个方法
-		PlayGameInterface PlayGaemProxy = (PlayGameInterface) Proxy.newProxyInstance(pg.getClass().getClassLoader(), pg
-				.getClass().getInterfaces(), pgProxy);
+		PlayGameInterface PlayGaemProxy = (PlayGameInterface) Proxy.newProxyInstance(pg.getClass().getClassLoader(), pg.getClass().getInterfaces(),
+				pgProxy);
 		
 		PlayGaemProxy.palyGame();
+		PlayGaemProxy.palyGame2();
 		
 	}
 }

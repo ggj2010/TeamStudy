@@ -4,7 +4,11 @@
           "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
 <session-factory>
-<property name="current_session_context_class">thread</property>
+<!--hibernate自己手动提交事物用到的 这个属性的作用:这样配置是本地jdbc事务配置,你通过getCurrentSession创建的session会绑定到当前线程
+-->
+<!--<property name="current_session_context_class">thread</property>-->
+
+
 	<mapping resource="jdbcconfig/hibernateconfig/hibernate/bean/xml/classroom.hbm.xml" />
 	<mapping resource="jdbcconfig/hibernateconfig/hibernate/bean/xml/student.hbm.xml" />
 </session-factory>

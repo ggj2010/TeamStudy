@@ -5,7 +5,10 @@
 <hibernate-mapping package="com.team.gaoguangjin.jdbc.hibernate.bean">
 	<class name="ClassRoom" table="gao.tc_classroom">
 		<id name="id">
-		<generator class="uuid.hex"></generator>
+		<generator class="uuid"></generator>
+		<!-- <generator class="sequence">  oracle用sequence创建主键规范
+<param name="sequence">person_seq</param>指定sequence名
+</generator> -->
 		</id>
 			<property  name="roomName" not-null="true" column="room_name"></property>
 			<property  name="roomSize" not-null="true" column="room_size"></property>

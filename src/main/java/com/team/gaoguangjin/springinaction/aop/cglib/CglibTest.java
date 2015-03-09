@@ -12,6 +12,7 @@ public class CglibTest {
 		
 		StartPlayGame startPlayGame = (StartPlayGame) cglibProxy.getProxy(StartPlayGame.class);
 		startPlayGame.palyGame();
+		startPlayGame.palyGame2();
 		
 	}
 }

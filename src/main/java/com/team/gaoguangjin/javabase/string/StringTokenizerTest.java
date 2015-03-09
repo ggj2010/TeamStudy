@@ -25,28 +25,28 @@ public class StringTokenizerTest {
 	private static void testSplit() {
 		
 		String needSplitStr = getSplitStr();
-		System.out.println(needSplitStr);
+		// System.out.println(needSplitStr);
 		long begintime1 = System.currentTimeMillis();
 		// for (int i = 0; i < 20; i++) {
 		String[] st = needSplitStr.split(",");
 		for (String str : st) {
-			System.out.print(str + "A");
+			System.out.print(str);
 		}
 		// }
 		long endtime1 = System.currentTimeMillis();
-		
+		System.out.println();// 空行
 		long begintime2 = System.currentTimeMillis();
 		// for (int i = 0; i < 20; i++) {
 		StringTokenizer stz = new StringTokenizer(needSplitStr, ",");
 		
 		while (stz.hasMoreTokens()) {
-			System.out.print(stz.nextToken() + "A");
+			System.out.print(stz.nextToken());
 		}
 		
 		// }
 		
 		long endtime2 = System.currentTimeMillis();
-		
+		System.out.println();// 空行
 		log.info("split()耗费时间：" + (endtime1 - begintime1) + "ms");
 		log.info("StringTokenizer()耗费时间：" + (endtime2 - begintime2) + "ms");
 		

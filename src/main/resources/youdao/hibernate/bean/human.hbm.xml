@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.team.youdao.bean">
+	<class name="Human" table="youdao.tchuman">
+		<id name="humanId" column="humanId" type="java.lang.Integer">
+			<!-- oracle用sequence创建主键规范指定sequence名 -->
+			<generator class="sequence">
+				<param name="sequence">seq_human</param>
+			</generator>
+		</id>
+		<property name="humanName" not-null="true" column="humanname" type="java.lang.String"></property>
+		<property name="humanPassword" not-null="true" column="humanPassword" type="java.lang.String"></property>
+		<property name="createdate" column="createdate" type="java.util.Date"></property>
+		<property name="flag" not-null="true" column="flag" type="java.lang.Integer"></property>
+	</class>
+</hibernate-mapping>

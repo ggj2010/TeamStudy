@@ -13,21 +13,19 @@ public class JunitTestSpringAop {
 	@Test
 	public void test() {
 		// 用ProxyFactory方法去调用aop
-		// testByMethod();
+		testByMethod();
 		// 用spring配置文件去调用aop
-		testAopXml();
+		// testAopXml();
 		
 	}
 	
 	private void testAopXml() {
 		try {
-			ApplicationContext ac = new ClassPathXmlApplicationContext(
-					"com/team/gaoguangjin/springinaction/springAop/beans.xml");
+			ApplicationContext ac = new ClassPathXmlApplicationContext("com/team/gaoguangjin/springinaction/springAop/beans.xml");
 			PlayGame play = (PlayGame) ac.getBean("play");
 			
 			play.playLOL();
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			log.error("测试xml aop增强失败！：" + e.getLocalizedMessage());
 		}
 		
@@ -68,8 +66,7 @@ public class JunitTestSpringAop {
 			
 			play.playLOL();
 			
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			log.error("测试aop增强失败！：" + e.getLocalizedMessage());
 		}
 	}

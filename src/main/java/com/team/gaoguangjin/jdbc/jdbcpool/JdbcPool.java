@@ -27,8 +27,7 @@ public class JdbcPool {
 			
 			basicDataSource = (BasicDataSource) BasicDataSourceFactory.createDataSource(properties);
 			
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
@@ -38,8 +37,8 @@ public class JdbcPool {
 		Connection connection = null;
 		try {
 			connection = basicDataSource.getConnection();
-		}
-		catch (Exception e) {
+			connection.close();
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return connection;
