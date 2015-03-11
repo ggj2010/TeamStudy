@@ -36,8 +36,7 @@ public class ExceptionCapability {
 			for (int i = 0; i < 100; i++) {
 				catchExceptionNormal();
 			}
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			log.error("捕获Exception：" + e.getLocalizedMessage());
 		}
 		long endTime2 = System.currentTimeMillis();
@@ -70,7 +69,7 @@ public class ExceptionCapability {
 		}
 		long endTime2 = System.currentTimeMillis();
 		
-		log.info("catchExceptionTest花费时间：" + (endTime - time));
+		log.info("catchExceptionTestList花费时间：" + (endTime - time));
 		log.info("catchDetailException花费时间：" + (endTime2 - time2));
 		
 	}
@@ -81,11 +80,9 @@ public class ExceptionCapability {
 			File file = new File("aa");
 			FileInputStream fis = new FileInputStream(file);
 			fis.close();
-		}
-		catch (FileNotFoundException e) {
+		} catch (FileNotFoundException e) {
 			log.error("捕获FileNotFoundException：" + e.getLocalizedMessage());
-		}
-		catch (IOException e) {
+		} catch (IOException e) {
 			log.error("捕获IOException：" + e.getLocalizedMessage());
 		}
 		
@@ -96,8 +93,7 @@ public class ExceptionCapability {
 			File file = new File("aa");
 			FileInputStream fis = new FileInputStream(file);
 			fis.close();
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			log.error("捕获Exception：" + e.getLocalizedMessage());
 		}
 		

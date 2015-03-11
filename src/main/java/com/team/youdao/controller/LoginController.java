@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.team.youdao.base.Constant;
 import com.team.youdao.base.SessionUtil;
 import com.team.youdao.bean.Human;
+import com.team.youdao.service.ExceptionService;
 import com.team.youdao.service.HumanService;
 
 /**
@@ -28,6 +29,8 @@ import com.team.youdao.service.HumanService;
 public class LoginController {
 	@Autowired
 	HumanService humanService;
+	@Autowired
+	ExceptionService exceptionService;
 	@Autowired
 	SessionUtil sessionUtil;
 	
@@ -86,6 +89,13 @@ public class LoginController {
 		return mv;
 	}
 	
+	/**
+	 * @Description: 注册保存
+	 * @param human
+	 * @return
+	 * @throws Exception
+	 * @return:ModelAndView
+	 */
 	@RequestMapping(value = "/youdao/register/save", method = { RequestMethod.POST })
 	public ModelAndView registerSave(Human human) throws Exception {
 		ModelAndView mv = new ModelAndView();
@@ -97,4 +107,37 @@ public class LoginController {
 		}
 		return mv;
 	}
+	
+	/**
+	 * @Description: 异常捕获测试
+	 * @return spring事物对运行时异常 不会捕获回滚 。对非运行时候异常会捕获进行回滚操作
+	 * @see:spring一般给service配置事物，然后一个service调用不同的dao， 但是不允许dao层调用别的到层，防止跨事物的不回滚
+	 * @return:ModelAndView
+	 */
+	@RequestMapping(value = "/youdao/exception")
+	public ModelAndView testException() {
+		ModelAndView mv = new ModelAndView();
+		try {
+			mv.setViewName("/exception/exception");
+			
+			// 方法命名是get*开头，事物是只读状态，所以无法执行更新和插入操作
+			// exceptionService.getData();
+			
+			// 正常保存
+			// exceptionService.saveData();
+			
+			// 以save命名的 事物不是readonly状态,但是有一个不能为空字段为空，看看事物是否回滚
+			// exceptionService.saveDataWithNull();//测试回滚
+			
+			// 保存数据，带的是运行时异常，不需要捕获的，看看事物是否回滚
+			// exceptionService.saveDataWihtUnCheckedException();// 运行时异常，会回滚
+			
+			// 保存数据，带非运行时异常，看看数据库事物能否回滚;
+			// exceptionService.saveDataWithcheckedExcepton();// 因为是运行时异常，事物不会回滚
+		} catch (Exception e) {
+			log.error("这是异常啊" + e.getLocalizedMessage());
+		}
+		return mv;
+	}
+	
 }
