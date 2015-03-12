@@ -356,5 +356,15 @@
 			<artifactId>commons-lang</artifactId>
 			<version>2.6</version>
 		</dependency>
+		
+		<!--  hadoop1.0.3架包-->
+		<dependency>
+			<groupId>org.apache.hadoop</groupId>
+			<artifactId>hadoop-core</artifactId>
+			<version>1.0.3</version>
+			<!-- 
+			<version>1.0.3</version> -->
+		</dependency>
+		
 	</dependencies>
 </project>

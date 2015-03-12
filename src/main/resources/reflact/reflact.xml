@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"  
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+    http://www.springframework.org/schema/context      
+    http://www.springframework.org/schema/context/spring-context-2.5.xsd     
+    http://www.springframework.org/schema/aop     
+    http://www.springframework.org/schema/aop/spring-aop-2.5.xsd     
+    http://www.springframework.org/schema/tx     
+    http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">   
+	
+	
+	<bean id="reflact" class="com.team.gaoguangjin.javabase.servlet.ioc.service.MainTest" scope="singleton">
+		<property name="debug" value="true"/>
+		<!-- 两种写法 
+		<property name="debug">
+			<value>true</value>
+		</property>
+		-->
+		<property name="dateFormat">
+			<value>yyyyMMddHHmmssSSS</value>
+		</property>
+		<property name="defalutMap">
+			<props>
+				<!-- 必须要这种格式写，不能写成 prop key='room' value='100'这种样式 -->
+				<prop key="roomName">北京数字政通</prop>
+				<prop key="roomSize">100</prop>
+			</props>
+		</property>
+	</bean>
+	 <bean id="person" class="com.team.gaoguangjin.javabase.servlet.ioc.enty.Person" init-method="init" destroy-method="destroy"> 
+        <property name="name"> 
+            <value>gaoguangjin</value> 
+        </property> 
+        <property name="age"> 
+            <value>24</value> 
+        </property> 
+    </bean> 
+    
+    <!-- spring注解三种方式，属性、构造器，工厂 -->
+    <!-- 用p标签来赋值 -->
+    <bean id="paramType" class="com.team.gaoguangjin.javabase.servlet.ioc.enty.ParamType">
+    	<constructor-arg index="0" value="高广金"/>
+    	<constructor-arg index="1" value="12"/>
+    	<!-- 传null值 -->
+    	<property name="nullTest"><null/></property>
+    	<!-- list赋值 -->
+    	<property name="listString">
+    		<list>
+    		<value>one</value>
+    		<value>two</value>
+    		<value>three</value>
+    		</list>
+    	</property>
+    	<!-- 数组 -->
+    	<property name="st">
+    		<list>
+	    		<value>数组1</value>
+	    		<value>数组2</value>
+	    		<value>three</value>
+    		</list>
+    	</property>
+    	<!-- set -->
+    	<property name="set">
+    		<set>
+    		<value>set1</value>
+    		<value>set2</value>
+    		<value>set3</value>
+    		</set>
+    	</property>
+    	
+    	<!-- map -->
+    	<property name="map">
+    		<map>
+    			<entry>
+	    			<key>
+	    				<value>map1</value>
+	    			</key>
+	    			<value>这是map1</value>
+    			</entry>
+    		<entry key="map2" value="这是简化后的map2"></entry>
+    		</map>
+    	</property>
+    </bean>
+    
+    <!-- 工厂方法类 -->
+    <bean id="createStudent" class="com.team.gaoguangjin.javabase.servlet.ioc.enty.StudentFactory"/>
+    <bean  id="student1" factory-bean="createStudent" factory-method="createStudent"/>
+    <bean  id="studentInjectBean" class="com.team.gaoguangjin.javabase.servlet.ioc.enty.InjectBean"/>
+    
+    
+    
+    
+    
+</beans>

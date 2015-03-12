@@ -13,6 +13,20 @@
 		<servlet-name>RobotServlet</servlet-name>
 		<url-pattern>/ggj/RobotServlet</url-pattern>
 	</servlet-mapping>
+	
+	<!-- 机器人 -->
+	<servlet>
+		<servlet-name>refactTest</servlet-name>
+		<servlet-class>com.team.gaoguangjin.javabase.servlet.ioc.service.MainTest</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>refactTest</servlet-name>
+		<url-pattern>/refactTest</url-pattern>
+	</servlet-mapping>
+	
+	
+	
+	
 	<!-- 帮助陆辉的那个查询页面 -->
 	<servlet>
 		<servlet-name>QueryServlet</servlet-name>

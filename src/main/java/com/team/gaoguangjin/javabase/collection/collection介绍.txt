@@ -1,0 +1,9 @@
+1、常用集合类的继承结构如下： 
+Collection<--List<--Vector 
+Collection<--List<--ArrayList 
+Collection<--List<--LinkedList 
+Collection<--Set<--HashSet 
+Collection<--Set<--HashSet<--LinkedHashSet 
+Collection<--Set<--SortedSet<--TreeSet 
+Map<--SortedMap<--TreeMap 
+Map<--HashMap 
