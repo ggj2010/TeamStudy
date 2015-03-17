@@ -108,15 +108,13 @@
 		<div class="rightpage">
 			<h4>WordCount的代码</h4>
 			<ul id="worldcount">
-				<li><a>WorldCountNew.java</a></li>
-				<li><a>WordCountOld.java<a></li>
-				<li>Duplicate.java</li>
+				<li><a tilte="统计单次次数">WorldCountNew.java</a></li>
+				<li><a tilte="统计单次次数">WordCountOld.java<a></li>
+				<li><a tilte="去重复的数据">Duplicate.java<a></li>
 			</ul>
-			<h4>WordCount的代码</h4>
-			<ul id="worldcount">
-				<li><a>WorldCountNew.java</a></li>
-				<li>wordwcount</li>
-				<li>wordwcount1</li>
+			<h4>sort代码</h4>
+			<ul id="sort">
+				<li><a title="hadoop默认对key值进行排序的">Sort.java<a></li>
 			</ul>
 			<h4>WordCount的代码</h4>
 			<ul>
