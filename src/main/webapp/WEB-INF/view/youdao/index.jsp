@@ -12,7 +12,7 @@
 	
   require(['jquery'], function($) {
   	   $(function() {
-  		   $("#init").text("还原登陆到主界面！！！！！！！！！！！！！"); 
+  		   $("#init").text("欢迎登陆到主界面！！！！！！！！！！！！！"); 
   	   })
   	   alert($().jquery);
    
@@ -20,7 +20,7 @@
   </script>
   
   <body>
-  	还原登陆到主界面
+  	欢迎登陆到主界面！
   	<span id="init"></span>
   </body>
 </html>

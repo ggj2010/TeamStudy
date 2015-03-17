@@ -20,6 +20,7 @@ import org.apache.hadoop.mapred.TextInputFormat;
 import org.apache.hadoop.mapred.TextOutputFormat;
 
 import com.team.hadoop.base.HadoopConstant;
+import com.team.hadoop.util.HdfsDAO;
 
 /**
  * @ClassName:WordCountOld.java
@@ -91,10 +92,15 @@ public class WordCountOld {
 		conf.setInputFormat(TextInputFormat.class);//
 		conf.setOutputFormat(TextOutputFormat.class);//
 		
-		FileInputFormat.setInputPaths(conf, new Path(input));// 文件输入
-		FileOutputFormat.setOutputPath(conf, new Path(output));// 文件输出
+		FileInputFormat.setInputPaths(conf, new Path(HadoopConstant.HDFS_PATH + "/input/wordcountnew/wordcountnew.txt"));// 文件输入
+		FileOutputFormat.setOutputPath(conf, new Path(HadoopConstant.HDFS_PATH + "/out/wordcountold"));// 文件输出
 		
+		HdfsDAO hdfs = new HdfsDAO();
+		// 删除输入文件夹
+		hdfs.rmr("/out/wordcountold");
 		JobClient.runJob(conf);
+		// 查看执行结果
+		hdfs.cat("/out/wordcountold/part-00000");
 		System.exit(0);
 	}
 	

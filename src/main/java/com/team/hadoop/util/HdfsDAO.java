@@ -44,7 +44,7 @@ public class HdfsDAO {
 		
 		// hdfs.cat("/c/part-00000");
 		
-		// hdfs.download("/user/part-00000", "e:");
+		hdfs.download("/out/wordcountnew/part-r-00000", "e:");
 		// hdfs.copyFile("e:/access.log.10", "/user/hdfs/log_kpi");
 		// hdfs.ls("/user");
 		

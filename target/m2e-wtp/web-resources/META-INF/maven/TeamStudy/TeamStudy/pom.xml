@@ -109,12 +109,6 @@
 			<!--<scope>test</scope> -->
 		</dependency>
 
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-aspects</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-		
 		<!--spring结束 -->
 			<!-- jstl spring view视图用到 -->
 		<dependency>
@@ -142,11 +136,6 @@
 			<groupId>org.hibernate.common</groupId>
 			<artifactId>hibernate-commons-annotations</artifactId>
 			<version>4.0.5.Final</version>
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate.javax.persistence</groupId>
-			<artifactId>hibernate-jpa-2.1-api</artifactId>
-			<version>1.0.0.Final</version>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate.javax.persistence</groupId>
@@ -357,14 +346,23 @@
 			<version>2.6</version>
 		</dependency>
 		
-		<!--  hadoop1.0.3架包-->
+		<!--  hadoop1.0.3架包	-->
 		<dependency>
 			<groupId>org.apache.hadoop</groupId>
 			<artifactId>hadoop-core</artifactId>
 			<version>1.0.3</version>
-			<!-- 
-			<version>1.0.3</version> -->
+			<!-- 去掉这两个架包${path}el表达式就可以用了  -->
+			<exclusions>
+				<exclusion>
+					<artifactId>jasper-runtime</artifactId>
+					<groupId>tomcat</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>jasper-compiler</artifactId>
+					<groupId>tomcat</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
-		
+	
 	</dependencies>
 </project>

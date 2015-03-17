@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8" %>
+<%@ page isELIgnored="false" %><!-- 如果$el表达式不管用加这个 -->
 <% 
 	request.setAttribute("path",request.getContextPath());
 %>

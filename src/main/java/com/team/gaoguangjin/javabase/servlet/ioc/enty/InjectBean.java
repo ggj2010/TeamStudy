@@ -1,4 +1,4 @@
-﻿package com.team.gaoguangjin.javabase.servlet.ioc.enty;
+package com.team.gaoguangjin.javabase.servlet.ioc.enty;
 
 import java.util.Date;
 
