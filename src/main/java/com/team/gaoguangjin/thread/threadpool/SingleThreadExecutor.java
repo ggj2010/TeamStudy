@@ -10,10 +10,10 @@ public class SingleThreadExecutor extends Thread {
 	
 	public static void main(String[] args) {
 		// 创建一个单线程的线程池
-		// ExecutorService pool = Executors.newSingleThreadExecutor();
+		ExecutorService pool = Executors.newSingleThreadExecutor();
 		
 		// 创建固定大小的线程池
-		ExecutorService pool = Executors.newFixedThreadPool(2);
+		// ExecutorService pool = Executors.newFixedThreadPool(2);
 		
 		// 创建一个可缓存的线程池
 		// ExecutorService pool = Executors.newCachedThreadPool();

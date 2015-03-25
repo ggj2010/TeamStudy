@@ -2,8 +2,8 @@ package com.team.gaoguangjin.test.lookbytecode;
 
 public class Add {
 	public static void main(String[] args) {
-		// test1();
-		test2();
+		test1();
+		// test2();
 		
 	}
 	

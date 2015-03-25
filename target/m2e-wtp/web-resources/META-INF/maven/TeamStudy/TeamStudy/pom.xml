@@ -364,5 +364,12 @@
 			</exclusions>
 		</dependency>
 	
+		<!-- mina框架 socket -->
+		<dependency>
+            <groupId>org.apache.mina</groupId>
+            <artifactId>mina-core</artifactId>
+            <version>2.0.4</version>
+        </dependency>
+			
 	</dependencies>
 </project>

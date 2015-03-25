@@ -82,6 +82,7 @@ public class WordCountOld {
 		JobConf conf = new JobConf(WordCountOld.class);
 		conf.setJobName("WordCountOld");
 		
+		conf.setJarByClass(WordCountOld.class);
 		conf.setOutputKeyClass(Text.class);// 作业输出数据关键类
 		conf.setOutputValueClass(IntWritable.class);// 作业输出值类
 		
@@ -103,5 +104,4 @@ public class WordCountOld {
 		hdfs.cat("/out/wordcountold/part-00000");
 		System.exit(0);
 	}
-	
 }
