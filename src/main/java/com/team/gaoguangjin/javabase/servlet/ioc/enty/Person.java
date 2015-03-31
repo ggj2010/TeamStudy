@@ -15,7 +15,7 @@ public class Person implements InitializingBean, DisposableBean {
 	private int age;
 	
 	public Person() {
-		System.out.println("--------||　构造方法在调用...");
+		System.out.println("【1】构造方法在调用...");
 		this.name = "默认用户名";
 		this.age = 250;
 		System.out.println(this);
@@ -42,14 +42,14 @@ public class Person implements InitializingBean, DisposableBean {
 	}
 	
 	public void init() {
-		System.out.println("--------||　init()正在调用...");
+		System.out.println("【3】　init()正在调用...");
 		this.name = "init";
 		this.age = 998;
 		System.out.println(this);
 	}
 	
 	public void afterPropertiesSet() throws Exception {
-		System.out.println("--------||　afterPropertiesSet()正在调用...");
+		System.out.println("【2】　afterPropertiesSet()正在调用...");
 		this.age = 999;
 		System.out.println(this);
 	}

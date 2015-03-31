@@ -38,6 +38,7 @@ public class Test {
 			
 			BufferedWriter bw = new BufferedWriter(new FileWriter(new File("e:wordcount.html")));
 			bw.write(sb.toString());
+			bw.close();
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

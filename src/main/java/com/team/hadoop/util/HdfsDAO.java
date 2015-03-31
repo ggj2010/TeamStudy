@@ -33,18 +33,18 @@ public class HdfsDAO {
 		
 		HdfsDAO hdfs = new HdfsDAO();
 		
-		hdfs.mkdirs("/user/hdfs/log_kpi");
+		// hdfs.mkdirs("/user/hdfs/log_kpi");
 		
 		// hdfs.mkdirs("/user/hdfs/log_kpi");
 		// hdfs.mkdirs("/user/hdfs/log_kpi");
 		// hdfs.mkdirs("/user/hdfs/recommend");
 		// hdfs.copyFile("datafile/item.csv", "/tmp/new");
-		// hdfs.ls("/tmp/new");
+		hdfs.ls("");
 		// hdfs.rename("/user/hdfs/pagerank/tmp3", "/user/hdfs/pagerank/tmp4");
 		
 		// hdfs.cat("/c/part-00000");
 		
-		hdfs.download("/out/wordcountnew/part-r-00000", "e:");
+		// hdfs.download("/out/wordcountnew/part-r-00000", "e:");
 		// hdfs.copyFile("e:/access.log.10", "/user/hdfs/log_kpi");
 		// hdfs.ls("/user");
 		

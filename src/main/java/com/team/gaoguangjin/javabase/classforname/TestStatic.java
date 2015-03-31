@@ -43,16 +43,15 @@ public class TestStatic {
 			// Class<?> class1 = Class.forName("com.team.gaoguangjin.javabase.classforname.Person");
 			
 			// 获取classloader 再装载类，不会做类的初始化
-			// Class<?> class2 = TestStatic.class.getClassLoader().loadClass(
-			// "com.team.gaoguangjin.javabase.classforname.Person");
+			Class<?> class2 = TestStatic.class.getClassLoader().loadClass("com.team.gaoguangjin.javabase.classforname.Person");
 			// class2.newInstance();
 			
 			// 装载类，不会做类的初始化
 			// Class<Person> class3 = Person.class;
-			// class3.newInstance();
 			
-		}
-		catch (Exception e) {
+			// // class3.newInstance();
+			
+		} catch (Exception e) {
 			log.info("" + e.getLocalizedMessage());
 		}
 		
@@ -102,8 +101,7 @@ public class TestStatic {
 			
 			System.out.println("----------------");
 			
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			System.out.println(e);
 		}
 	}

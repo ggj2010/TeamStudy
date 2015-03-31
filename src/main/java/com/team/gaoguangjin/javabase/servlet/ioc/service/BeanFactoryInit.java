@@ -12,7 +12,7 @@ public class BeanFactoryInit {
 	public static void test() {
 		ApplicationContext context = BeanContextHelper.getApplicationContext();
 		Person person = (Person) context.getBean("person");
-		System.out.println("--------||　从Spring BeanFactory获取person...");
-		System.out.println(person.getAge());
+		System.out.println("【4】　从Spring BeanFactory获取person...");
+		// System.out.println(person.getAge());
 	}
 }

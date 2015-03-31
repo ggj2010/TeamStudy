@@ -1,6 +1,8 @@
 package com.team.gaoguangjin.thread.同步;
 
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * @ClassName:ThreadSafeParam.java
@@ -10,7 +12,11 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class ThreadSafeParam {
 	public static void main(String[] args) {
+		// ..........线程安全的变量
 		AtomicInteger ai = new AtomicInteger();
+		AtomicBoolean ab = new AtomicBoolean();
+		AtomicLong al = new AtomicLong();
+		
 		int i = ai.getAndIncrement();// 线程安全的变量
 		int a = 1;
 		a++;// 多线程环境下不安全
