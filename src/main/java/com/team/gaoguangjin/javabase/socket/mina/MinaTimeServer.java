@@ -1,4 +1,4 @@
-﻿package com.team.gaoguangjin.javabase.socket.mina;
+package com.team.gaoguangjin.javabase.socket.mina;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;

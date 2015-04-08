@@ -34,13 +34,14 @@ public class CountDownLatchTest {
 		
 	}
 	
+	/**
+	 * @Description: 挂起当前线程，直至所有线程都到达barrier状态再同时执行后续任务；
+	 * @return:void
+	 */
 	private static void test2() {
-		final CyclicBarrier latch = new CyclicBarrier(2);
+		CyclicBarrier latch = new CyclicBarrier(2, new MainThread());
 		thread2(latch);
 		thread2(latch);
-		
-		main();
-		
 	}
 	
 	private static void thread(final CountDownLatch latch) {
@@ -88,4 +89,5 @@ public class CountDownLatchTest {
 		System.out.println("子线程执行之后执行主方法");
 		
 	}
+	
 }

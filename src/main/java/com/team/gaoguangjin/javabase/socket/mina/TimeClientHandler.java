@@ -1,4 +1,4 @@
-﻿package com.team.gaoguangjin.javabase.socket.mina;
+package com.team.gaoguangjin.javabase.socket.mina;
 
 import org.apache.mina.core.service.IoHandlerAdapter;
 import org.apache.mina.core.session.IoSession;

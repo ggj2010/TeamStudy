@@ -1,6 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ include file="/youdao/common/header.jsp"%>
 <%@ include file="/youdao/common/taglibs.jsp"%>
+
 <html>
 <head>
 <title>有道云笔记</title>
@@ -145,12 +146,12 @@ h2 {
 </style>
 
 <script type="text/javascript">
-	require([ 'jquery' ], function($) {
-		$(function() {
-		})
-
-	});
-</script>
+			/** **/
+			require(['jquery'], function($) {
+				   $(function() {
+				   })
+			});
+	</script>
 <body>
 
 	<div class="header">

@@ -36,9 +36,9 @@ public class WatiTest2 {
 	
 	public synchronized String getValue() {
 		try {
-			log.info("获取值");
+			log.info("【1】获取值");
 			while (!flag) {
-				log.info("我在等待");
+				log.info("【2】我在等待");
 				wait();
 				log.info("值已经获取到，被通知了");
 			}

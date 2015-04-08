@@ -169,7 +169,7 @@ li {
 			require(['jquery'], function($) {
 				   $(function() {
 					   for(var i=0;i<1000;i++){
-						   $("#append").append("<span></span><br>"); 
+						   $("#append").append("<span>123132</span><br>"); 
 					   }
 				   })
 			});

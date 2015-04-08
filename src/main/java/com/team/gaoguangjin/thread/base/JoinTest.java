@@ -12,13 +12,13 @@ import lombok.extern.slf4j.Slf4j;
 public class JoinTest {
 	public static void main(String[] args) {
 		Thread thread = thread("线程1");
-		// Thread thread2 = thread("线程2");
+		Thread thread2 = thread("线程2");
 		thread.start();
-		// thread2.start();
+		thread2.start();
 		try {
 			log.info("主线程进入等待");
 			thread.join();// 如果不加这个就可以看到效果了
-			// thread2.join();// 如果不加这个就可以看到效果了
+			thread2.join();// 如果不加这个就可以看到效果了
 			// 运行主方法
 			log.info("开始运行主线程");
 		} catch (InterruptedException e) {

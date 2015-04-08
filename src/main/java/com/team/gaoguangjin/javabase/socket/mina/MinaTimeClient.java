@@ -1,4 +1,4 @@
-﻿package com.team.gaoguangjin.javabase.socket.mina;
+package com.team.gaoguangjin.javabase.socket.mina;
 
 import java.net.InetSocketAddress;
 import java.nio.charset.Charset;
