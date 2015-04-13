@@ -18,4 +18,14 @@ public class SessionUtil {
 		request.getSession().removeAttribute(loginToUrl);
 		
 	}
+	
+	/**
+	 * @Description: 判断是否登陆成功
+	 * @param request
+	 * @return
+	 * @return:boolean
+	 */
+	public boolean isLogin(HttpServletRequest request) {
+		return getSeesionByName(request, Constant.FILTERED_REQUEST) != null;
+	}
 }

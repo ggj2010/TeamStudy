@@ -34,7 +34,7 @@ public class StreamAndBuffere {
 			
 			// 如果写入的文件小于8m 而且没用调用flus（）方法，文件内容是写入不进去的噢！
 			// fw1.flush();
-			// fw1.close();
+			// fw1.close();//会强制刷新缓冲区
 			
 			FileWriter fw2 = new FileWriter(new File("d:file2.txt"));
 			// private static final int DEFAULT_BYTE_BUFFER_SIZE = 8192;
@@ -45,8 +45,7 @@ public class StreamAndBuffere {
 			// 因为写入的文件内容大于8m，所以可以写到文件里面去，调用flush()方法，将内容从缓冲区写入文件
 			// fw2.flush();
 			// fw2.close();
-		}
-		catch (IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		

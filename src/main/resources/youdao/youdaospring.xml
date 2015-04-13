@@ -113,6 +113,18 @@
 	<!--启动spring事务注解功能 -->
 	<tx:annotation-driven transaction-manager="transactionManager" />
 	
+	<!--springMvc 上传  ,如果用原生态的request获取流-->
+	 <bean id="multipartResolver"  
+        class="com.team.youdao.controller.CustomMultipartResolver" p:defaultEncoding="utf-8">  
+        <property name="maxUploadSize">  
+            <value>104857600</value>  
+        </property>  
+        <property name="maxInMemorySize">  
+            <value>4096</value>  
+        </property>  
+    </bean>  
+	
+	
 	<!--定时任务-->
 	<task:annotation-driven/>
 </beans>	

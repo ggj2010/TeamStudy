@@ -21,7 +21,7 @@ public class CurrentConditionDisplay implements Observer, DisplayElement {
 	
 	@Override
 	public void display() {
-		System.out.println("current 当前温度 观察者:" + temperature);
+		System.out.println("current公共版当前温度 观察者:" + temperature + "压力：" + pressure);
 		
 	}
 	

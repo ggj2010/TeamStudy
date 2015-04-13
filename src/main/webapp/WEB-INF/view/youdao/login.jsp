@@ -16,7 +16,7 @@ body,ul,li,a,h2 {
 	margin: 0;
 	padding: 0;
 	font-family: 微软雅黑;
-	color:white;
+	color:black;
 }
 
 /**导航栏背景图**/
