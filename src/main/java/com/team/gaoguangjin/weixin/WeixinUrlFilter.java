@@ -44,11 +44,10 @@ public class WeixinUrlFilter implements Filter {
 	private static final String Token = "ggj20101234567890";
 	
 	public void init(FilterConfig config) throws ServletException {
-		log.info("WeixinUrlFilter启动成功!");
+		log.info("WeixinUrlFilterfilter启动成功!");
 	}
 	
-	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
-			throws IOException, ServletException {
+	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest request = (HttpServletRequest) req;
 		HttpServletResponse response = (HttpServletResponse) res;
 		// 微信服务器将发送GET请求到填写的URL上,这里需要判定是否为GET请求
@@ -117,8 +116,7 @@ public class WeixinUrlFilter implements Filter {
 				// os.flush();
 				// os.close();
 			}
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			log.info("消息接受和发送出现异常!");
 			ex.printStackTrace();
 		}
@@ -276,8 +274,7 @@ public class WeixinUrlFilter implements Filter {
 			//
 		} else if (inputContent.contains("听歌")) {
 			inputMessage.setMsgType("text");
-			inputMessage.setContent("目前功能做的简单,只有以下歌曲回复格式如下:\r" + "【1】音乐你是我的眼\r" + "【2】音乐平凡之路\r" + "【3】音乐情歌王\r"
-					+ "【4】音乐李白\r");
+			inputMessage.setContent("目前功能做的简单,只有以下歌曲回复格式如下:\r" + "【1】音乐你是我的眼\r" + "【2】音乐平凡之路\r" + "【3】音乐情歌王\r" + "【4】音乐李白\r");
 			
 		} else {
 			getRobotContent(inputMessage);

@@ -2,6 +2,8 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
 
+	<!--web.xml加载顺序  context-param -> listener -> filter -> servlet -->
+
 	<!-- 机器人 -->
 	<servlet>
 		<servlet-name>RobotServlet</servlet-name>
@@ -22,10 +24,15 @@
 		<url-pattern>/refactTest</url-pattern>
 	</servlet-mapping>
 
-	<!-- hadoop就只用一个servlet去控制 -->
+	<!-- hadoop就只用一个servlet去控制 ,load-on-startup web.xml启动时候就加载，值越大越在后面加载-->
 	<servlet>
 		<servlet-name>hadoop</servlet-name>
 		<servlet-class>com.team.hadoop.web.HadoopServlet</servlet-class>
+		<init-param>
+			<param-name>hadoop</param-name>
+			<param-value>hadoop是个非常强大的东东！</param-value>
+		</init-param>
+		<load-on-startup>0</load-on-startup>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>hadoop</servlet-name>
@@ -61,6 +68,15 @@
 		<filter-name>WeixinUrlFilter</filter-name>
 		<url-pattern>/gaoguangjin/weixin</url-pattern>
 	</filter-mapping>
+	
+	<!--listener -->
+	<listener>
+		<listener-class>com.team.gaoguangjin.javabase.servlet.listener.ListenerTest</listener-class>
+	</listener>
+	
+	
+
+	
 
 	<!--模仿有道页面 spring配置文件 -->
 	<!-- youdao.root为根目录的地址，一般在tomact的webapp，配置这个是找到写日志文件的根目录用到 -->

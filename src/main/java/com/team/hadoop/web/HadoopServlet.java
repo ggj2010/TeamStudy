@@ -46,7 +46,10 @@ public class HadoopServlet extends HttpServlet {
 	
 	@Override
 	public void init() throws ServletException {
-		log.info("【1】init方法调用");
+		// listener filter 获取初始化参数 和servlet获取 init-param参数不一样
+		String hadoop = this.getInitParameter("hadoop");
+		log.info("【3web.xml启动】servlet的获取init-param的值：hadoop=," + hadoop);
+		log.info("【4web.xml启动】servlet的init方法调用,");
 		super.init();
 	}
 	

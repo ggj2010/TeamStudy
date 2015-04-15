@@ -36,6 +36,8 @@ public class TestStatic {
 	
 	/**
 	 * @Description: 类的装载方式有两种forname和classloader.load
+	 * @see:new ClassName()，就是所谓的静态加载， Class.forName("ClassName")，就是所谓的动态加载。
+	 * 
 	 */
 	private static void load() {
 		try {

@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import lombok.extern.slf4j.Slf4j;
 
-import org.apache.commons.fileupload.ProgressListener;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,6 +27,9 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import com.team.util.HttpURLConnectionUtil;
 import com.team.youdao.base.Constant;
 import com.team.youdao.base.SessionUtil;
 import com.team.youdao.bean.Human;
@@ -42,7 +44,7 @@ import com.team.youdao.service.HumanService;
  */
 @Slf4j
 @Controller
-public class LoginController implements ProgressListener {
+public class LoginController {
 	@Autowired
 	HumanService humanService;
 	@Autowired
@@ -246,9 +248,35 @@ public class LoginController implements ProgressListener {
 		
 	}
 	
-	@Override
-	public void update(long pBytesRead, long pContentLength, int pItems) {
-		
+	@RequestMapping(value = "/youdao/translation")
+	public ModelAndView translation() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("/homepage/translation");
+		return mav;
 	}
 	
+	@RequestMapping(value = "/youdao/gettranslation", method = { RequestMethod.GET })
+	@ResponseBody
+	public String getTranslation(String from, String message) {
+		try {
+			String to = "en";
+			if (to.equals(from))
+				to = "zh";
+			// 字符串转换成unicode
+			message = new String(message.getBytes("utf-8"));// 需要将字符集转换成utf-8.!!!!!!!!!!!
+			String str = "from=" + from + "&query=" + message + "&simple_means_flag=3&to=" + to + "&transtype=trans";
+			String url = "http://fanyi.baidu.com/v2transapi";
+			
+			// get方式
+			String callBack = HttpURLConnectionUtil.getURLConnectionMessage(url, true, str);
+			JSONObject transResultObject = (JSONObject) JSONObject.parseObject(callBack).get("trans_result");
+			JSONObject dataObject = (JSONObject) ((JSONArray) transResultObject.get("data")).get(0);
+			
+			return dataObject.toJSONString();
+			
+		} catch (Exception e) {
+			log.error("翻译失败！！" + e.getMessage());
+		}
+		return null;
+	}
 }

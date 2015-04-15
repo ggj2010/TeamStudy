@@ -73,7 +73,7 @@
 			$.ajax({
 				type : "post",
 				url : "${path}/youdao/progress.do",
-				dataType : "json",//不支持String类型可以用text
+				dataType : "json",//不支持String类型可以用text,如果返回值的类型和声明不一致，是不会调用success参数的
 				success : function(data) {
 					$("#process").text(data.percent);
 					$("#progressid").css("width",data.percent);
