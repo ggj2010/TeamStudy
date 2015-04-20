@@ -22,12 +22,14 @@ public class TestQueue {
 		Queue<String> queue = new LinkedList<String>();
 		queue.add("1");
 		queue.add("2");
+		log.info(queue.poll());
 		queue.add("3");
+		log.info(queue.poll());
 		log.info("queue.size():" + queue.size());
 		String str = "";
-		while ((str = queue.poll()) != null) {
-			log.info(str);
-		}
+		// while ((str = queue.poll()) != null) {
+		// log.info(str);
+		// }
 		
 		log.info("queue.size():" + queue.size());
 	}

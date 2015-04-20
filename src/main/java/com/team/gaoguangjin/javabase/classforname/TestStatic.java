@@ -12,6 +12,11 @@ import lombok.extern.slf4j.Slf4j;
  * @author gaoguangjin
  * @Date 2015-2-26 上午9:38:37
  */
+
+/**
+ * @see:当然，最明显的区别就是.getClass()是一个对象实例的方法，只有对象实例才有这个方法，具体的类是没有的。
+ * @see:类的Class类实例是通过.class获得的，显然，类没有.getClass()方法。
+ */
 @Slf4j
 public class TestStatic {
 	public static void main(String[] args) {

@@ -24,7 +24,7 @@ public class TestDaoProxy {
 		TransactionInterface proxyTarget = (TransactionInterface) Proxy.newProxyInstance(target.getClass().getClassLoader(), target.getClass()
 				.getInterfaces(), tproxy);
 		// 测试成功
-		// proxyTarget.insert();
+		proxyTarget.insert();
 		System.out.println();
 		// 测试失败的
 		proxyTarget.insertErrow();

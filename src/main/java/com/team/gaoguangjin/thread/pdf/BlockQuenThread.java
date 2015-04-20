@@ -2,7 +2,6 @@ package com.team.gaoguangjin.thread.pdf;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.TimeUnit;
 
 /**
  * @ClassName:BlockQuenThread.java
@@ -12,7 +11,20 @@ import java.util.concurrent.TimeUnit;
  */
 public class BlockQuenThread {
 	public static void main(String[] args) throws InterruptedException {
-		demo();
+		// demo();
+		demo1();
+	}
+	
+	private static void demo1() throws InterruptedException {
+		BlockingQueue<Object> blockingQ = new ArrayBlockingQueue<Object>(2);
+		blockingQ.put("132");
+		blockingQ.take();
+		// String aa = (String) blockingQ.take();
+		
+		if (blockingQ.isEmpty()) {
+			System.out.println("空值了");
+		}
+		
 	}
 	
 	private static void demo() throws InterruptedException {
@@ -28,8 +40,8 @@ public class BlockQuenThread {
 					try {
 						
 						Thread.sleep(1000);
-						object = blockingQ.poll(1, TimeUnit.SECONDS);//
-						// object = blockingQ.take();// 等到有数据才继续的噢，如果没有值，那就一直等待的
+						// object = blockingQ.poll(1, TimeUnit.SECONDS);//
+						object = blockingQ.take();// 等到有数据才继续的噢，如果没有值，那就一直等待的
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
@@ -44,8 +56,8 @@ public class BlockQuenThread {
 		};
 		thread.start();
 		
-		for (int i = 0; i < 16; i++) {
-			blockingQ.put("132"); // 如果队列满则阻塞 比如设定的是5个 放了
+		for (int i = 0; i < 10; i++) {
+			blockingQ.put(i); // 如果队列满则阻塞 比如设定的是5个 放了
 		}
 		
 	}

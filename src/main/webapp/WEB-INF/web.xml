@@ -58,6 +58,19 @@
 		<servlet-name>ThreadServlet</servlet-name>
 		<url-pattern>/ggj/ThreadServlet</url-pattern>
 	</servlet-mapping>
+	
+	<!--测试并发concurrent用的 -->
+	<servlet>
+		<servlet-name>concurrent</servlet-name>
+		<servlet-class>com.team.gaoguangjin.javabase.servlet.bingfa.ConcurrentServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>concurrent</servlet-name>
+		<url-pattern>/ggj/concurrent</url-pattern>
+	</servlet-mapping>
+	
+	
+	
 
 	<filter>
 		<description>微信消息接入接口</description>
@@ -109,7 +122,7 @@
 		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
 	</listener>
 
-	<!--spring监听器 -->
+	<!--spring监听器 ,在启动过程中,Spring 会使用一个默认的WebApplicationContext实现作为IoC容器，就是XmlWebApplicationContext-->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>

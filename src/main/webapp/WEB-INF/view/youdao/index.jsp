@@ -23,14 +23,12 @@
 				//$("#test").append("d\n");
 			}
 			$("[data-toggle='popover']").popover();//提示框启用
-			$("[data-toggle='tooltip']").popover();//提示框启用
+			 $('[data-toggle="tooltip"]').tooltip();//提示框启用
 			
 			
 			//登陆框的按钮点击之后
 			 $('#myButtons').on('click', function () {
 				    var $btn = $(this).button('loading');
-				   
-				   
 				setTimeout(function() {
 					$btn.button('reset');
 				}, 1000);

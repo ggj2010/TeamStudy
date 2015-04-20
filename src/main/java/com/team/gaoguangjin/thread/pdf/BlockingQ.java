@@ -8,8 +8,8 @@ public class BlockingQ {
 	private Queue<Object> linkedList = new LinkedList<Object>();
 	
 	public static void main(String[] args) throws InterruptedException {
-		test();
-		// test2();
+		// test();
+		test2();
 	}
 	
 	private static void test() throws InterruptedException {
