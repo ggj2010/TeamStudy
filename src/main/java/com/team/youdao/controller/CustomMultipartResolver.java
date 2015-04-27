@@ -15,6 +15,12 @@ import org.springframework.web.multipart.MaxUploadSizeExceededException;
 import org.springframework.web.multipart.MultipartException;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
+/**
+ * @ClassName:CustomMultipartResolver.java
+ * @Description: 上传文件更新进度条重写了CommonsMultipartResolver的方法
+ * @author gaoguangjin
+ * @Date 2015-4-21 上午8:57:30
+ */
 @Component
 public class CustomMultipartResolver extends CommonsMultipartResolver {
 	@Autowired

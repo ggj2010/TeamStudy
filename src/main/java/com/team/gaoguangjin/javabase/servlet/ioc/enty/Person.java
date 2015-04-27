@@ -45,13 +45,13 @@ public class Person implements InitializingBean, DisposableBean {
 		System.out.println("【3】　init()正在调用...");
 		this.name = "init";
 		this.age = 998;
-		System.out.println(this);
+		
 	}
 	
 	public void afterPropertiesSet() throws Exception {
 		System.out.println("【2】　afterPropertiesSet()正在调用...");
 		this.age = 999;
-		System.out.println(this);
+		
 	}
 	
 	public void destroy() throws Exception {

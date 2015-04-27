@@ -42,7 +42,30 @@
 
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate"
 		p:dataSource-ref="dataSource"/>
-
+		
+		
+		<!-- 事务管理器 -->
+	<bean id="txManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+		
+	<!-- 对单个bean类进行注解，配置DAO  -->
+	
+	<bean id="transactionDaoImp" class="com.team.gaoguangjin.jdbc.springJdbc.transaction.TransactionDaoImp" p:jdbcTemplate-ref="jdbcTemplate"/>
+	
+	<bean id="transactionDao" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean"
+		p:transactionManager-ref="txManager" 
+		p:target-ref="transactionDaoImp" 
+		p:proxyInterfaces="com.team.gaoguangjin.jdbc.springJdbc.transaction.TransactionDao" >
+		<!-- 配置事务属性 这个readonly属性 和我们理解的不能写入数据 不是同一个意思-->  
+        <property name="transactionAttributes">  
+            <props>  
+              <prop key="*">readOnly</prop>
+            </props>  
+        </property>  
+	</bean>
+	
 	<!--studentBean和studentBean2都是注解Student类  -->
 	<bean id="studentBean" class="com.team.gaoguangjin.jdbc.springJdbc.testBeanXml.Student"
 		p:teacher-ref="teacherBean" p:studentName="张静月" p:studentSex="女"/>

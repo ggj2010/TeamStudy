@@ -9,7 +9,7 @@ package com.team.gaoguangjin.深入java虚拟机.类加载;
 public class TestClassLoader {
 	public static void main(String[] args) {
 		// 架包路径
-		// path();
+		path();
 		// bootstrap引导类加载器，extension 扩展类加载器 app系统类加载器，用户自定义加载器
 		// loaderPath();
 		
@@ -35,10 +35,9 @@ public class TestClassLoader {
 			// 没拷贝之前输出的结果是sun.misc.Launcher$AppClassLoader@addbf1
 			System.out.println(classLoader);
 			
-			// 输出结果就是 sun.misc.Launcher$ExtClassLoader@42e816
-			System.out.println(classLoader);
-		}
-		catch (ClassNotFoundException e) {
+			// 拷贝到lib\ext目录下输出结果就是 sun.misc.Launcher$ExtClassLoader@42e816
+			// System.out.println(classLoader);
+		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 		

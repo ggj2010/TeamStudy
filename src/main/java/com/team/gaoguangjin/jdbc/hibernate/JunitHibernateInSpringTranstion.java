@@ -17,6 +17,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.team.gaoguangjin.jdbc.hibernate.bean.ClassRoom;
 import com.team.gaoguangjin.jdbc.hibernate.bean.Student;
@@ -25,10 +26,10 @@ import com.team.gaoguangjin.jdbc.hibernate.bean.Student;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({ "classpath:jdbcconfig/hibernateconfig/springHibernate.xml" })
 // 这个非常关键，如果不加入这个注解配置，事务控制就会完全失效！
-@TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = false)
+@TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
 // 这里的事务关联到配置文件中的事务控制器（transactionManager = "transactionManager"），同时指定自动回滚（defaultRollback = true）。这样做操作的数据才不会污染数据库！
 @TestExecutionListeners(listeners = { DependencyInjectionTestExecutionListener.class, TransactionalTestExecutionListener.class })
-public class JunitHibernateInSpringTest extends AbstractTransactionalJUnit4SpringContextTests {
+public class JunitHibernateInSpringTranstion extends AbstractTransactionalJUnit4SpringContextTests {
 	@Autowired
 	SessionFactory sessionFactory;
 	
@@ -49,21 +50,22 @@ public class JunitHibernateInSpringTest extends AbstractTransactionalJUnit4Sprin
 	/**
 	 * @Description: spring去管理事物
 	 */
+	@Transactional
 	public void findSpringManagerTransationQuery() {
-		// try {
-		
-		Session session = sessionFactory.getCurrentSession();
-		ClassRoom room = new ClassRoom();
-		room.setRoomName("测试44");
-		room.setRoomSize("12344");
-		log.error("=================");
-		
-		session.saveOrUpdate(room);
-		String a = "dd";
-		Integer.parseInt(a);// 添加这个错误信息验证事物是否配置成功,去掉try catch
-		// } catch (Exception e) {
-		// log.error("" + e.getLocalizedMessage());
-		// }
+		try {
+			
+			Session session = sessionFactory.getCurrentSession();
+			ClassRoom room = new ClassRoom();
+			room.setRoomName("测试5");
+			room.setRoomSize("123445");
+			log.error("=================");
+			
+			session.saveOrUpdate(room);
+			String a = "dd";
+			Integer.parseInt(a);// 添加这个错误信息验证事物是否配置成功,去掉try catch
+		} catch (Exception e) {
+			log.error("" + e.getLocalizedMessage());
+		}
 	}
 	
 	/**

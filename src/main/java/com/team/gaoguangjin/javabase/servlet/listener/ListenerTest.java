@@ -13,7 +13,6 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 public class ListenerTest implements ServletContextListener {
-	
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {
 		// 获取context-param的值需要先获取到其getServletContext，然后再获取getInitParameter
@@ -25,5 +24,4 @@ public class ListenerTest implements ServletContextListener {
 	@Override
 	public void contextDestroyed(ServletContextEvent sce) {
 	}
-	
 }

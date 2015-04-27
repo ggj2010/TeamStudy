@@ -8,6 +8,6 @@ public class TimeClientHandler extends IoHandlerAdapter {
 	}
 	
 	public void messageReceived(IoSession session, Object message) throws Exception {
-		System.out.println(message + "收到的消息client");// 显示接收到的消息
+		System.out.println("【服务端回复：这是时间：】" + message + "收到的消息client");// 显示接收到的消息
 	}
 }

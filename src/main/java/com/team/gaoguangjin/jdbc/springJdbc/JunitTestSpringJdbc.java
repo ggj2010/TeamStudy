@@ -26,9 +26,9 @@ public class JunitTestSpringJdbc {
 	
 	@Test
 	public void testJdbcTemplate() throws SQLException {
-		// sString result = jdbcTemplate.queryForObject("select sysdate from dual", String.class);
-		// log.info("result:" + result);
-		jdbcTemplate.execute("");
+		String result = jdbcTemplate.queryForObject("select sysdate from dual", String.class);
+		log.info("result:" + result);
+		// jdbcTemplate.execute("");
 	}
 	
 	@Test

@@ -44,7 +44,7 @@ public class WeixinUrlFilter implements Filter {
 	private static final String Token = "ggj20101234567890";
 	
 	public void init(FilterConfig config) throws ServletException {
-		log.info("WeixinUrlFilterfilter启动成功!");
+		log.info("【2.2】WeixinUrlFilterfilter启动成功!");
 	}
 	
 	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
@@ -53,7 +53,6 @@ public class WeixinUrlFilter implements Filter {
 		// 微信服务器将发送GET请求到填写的URL上,这里需要判定是否为GET请求
 		boolean isGet = request.getMethod().toLowerCase().equals("get");
 		log.info("获得微信请求:" + request.getMethod() + " 方式");
-		
 		try {
 			if (isGet) {
 				checkServer(req, res);

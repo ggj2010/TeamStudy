@@ -1,0 +1,4 @@
+@Data：相当于同时使用了@ToString、@EqualsAndHashCode、@Getter、@Setter和@RequiredArgsConstructor这些注解，对于POJO类十分有用。
+@NonNull：给方法参数增加这个注解会自动在方法内对该参数进行是否为空的校验，如果为空，则抛出NPE。
+@Cleanup：自动生成try-finally这样的代码来关闭流（你一定写过使用-关闭流的样板代码）。
+@Getter(lazy=true)：可以替代掉经典的Double Check Lock样板代码！

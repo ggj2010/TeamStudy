@@ -147,7 +147,7 @@ public class LoginController {
 			mv.setViewName("/exception/exception");
 			
 			// 方法命名是get*开头，事物是只读状态，所以无法执行更新和插入操作
-			// exceptionService.getData();
+			exceptionService.getData();
 			
 			// 正常保存
 			// exceptionService.saveData();

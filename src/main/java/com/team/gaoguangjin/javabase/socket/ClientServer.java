@@ -30,7 +30,7 @@ public class ClientServer {
 			BufferedReader br = new BufferedReader(new InputStreamReader(client.getInputStream(), "utf-8"));
 			BufferedWriter bo = new BufferedWriter(new OutputStreamWriter(client.getOutputStream()));
 			bo.write("这是测试");
-			bo.flush();
+			bo.flush();// 刷新下
 			bo.close();// socket编程连接之后 输出流一定要关掉
 			
 			System.out.println("结束");
