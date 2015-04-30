@@ -168,7 +168,23 @@
 		<servlet-name>springMvc</servlet-name>
 		<url-pattern>/yd/*</url-pattern>
 	</servlet-mapping>
-
+	
+	
+	
+	
+	
+	
+	
+	<!-- 缓存、gzip压缩核心过滤器 -->
+	<filter>
+		<filter-name>PageEhCacheFilter</filter-name>
+		<filter-class>com.team.gaoguangjin.缓存.ehcahe.PageEhcacheFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>PageEhCacheFilter</filter-name>
+		<url-pattern>/gaoguangjin/cache/*</url-pattern>
+	</filter-mapping>
+	
 	<!-- session失效时间：二小时 -->
 	<session-config>
 		<session-timeout>120</session-timeout>

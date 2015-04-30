@@ -37,7 +37,7 @@ public class AccountServiceTest {
 		String name = "gaoguangjin";
 		String pwd = "123";
 		
-		Account accountExpected = new Account();
+		Account accountExpected = new Account("");
 		accountExpected.setName(name);
 		accountExpected.setPwd(pwd);
 		accountExpected.setId(new Long(10));

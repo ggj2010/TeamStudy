@@ -24,7 +24,7 @@
 		<result property="subjectName" column="subject_name" />
 		<result property="subjectTeacherName" column="subject_teacher_name" />
 		<!-- 级联查询 -->
-		<collection property="studentList"  resultMap="com.team.gaoguangjin.jdbc.mybatis.mapper.StudentMapper.studentMap"/>
+		<collection property="studentList"  resultMap="studentMap"/>
 	</resultMap>
 	
 	

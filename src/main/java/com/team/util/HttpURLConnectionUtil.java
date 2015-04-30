@@ -22,7 +22,17 @@ import com.alibaba.fastjson.JSONObject;
 public class HttpURLConnectionUtil {
 	
 	public static void main(String[] args) throws IOException {
-		test();
+		// test();
+		test2();
+	}
+	
+	private static void test2() throws IOException {
+		
+		String param = "code_type=1&mobile_no=18638217959&randomCode=ffn7";
+		String url = "http://www.sd-express.net/main/public/send/msg/code.html";
+		String callBack = getURLConnectionMessage(url, true, param);
+		System.out.println(callBack);
+		
 	}
 	
 	/*

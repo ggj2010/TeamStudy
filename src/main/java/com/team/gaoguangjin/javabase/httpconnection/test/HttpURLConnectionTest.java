@@ -10,7 +10,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class Test {
+public class HttpURLConnectionTest {
 	public static void main(String[] args) {
 		try {
 			URL url = new URL(
@@ -38,6 +38,7 @@ public class Test {
 			
 			BufferedWriter bw = new BufferedWriter(new FileWriter(new File("e:wordcount.html")));
 			bw.write(sb.toString());
+			System.out.println(sb.toString());
 			bw.close();
 		} catch (MalformedURLException e) {
 			e.printStackTrace();

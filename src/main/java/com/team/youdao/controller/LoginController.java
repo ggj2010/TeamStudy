@@ -12,6 +12,7 @@ import java.util.Iterator;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -279,4 +280,21 @@ public class LoginController {
 		}
 		return null;
 	}
+	
+	@RequestMapping(value = "/youdao/httpclient", method = { RequestMethod.POST })
+	@ResponseBody
+	public void testHttpClient(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		log.info("session:" + session);
+		session.setAttribute("name", "gaoguangjin");
+	}
+	
+	@RequestMapping(value = "/youdao/httpclient2", method = { RequestMethod.POST })
+	@ResponseBody
+	public void testHttpClient2(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		log.info("session:" + session);
+		log.info("sessionAttrabiute:" + session.getAttribute("randomCode"));
+	}
+	
 }
