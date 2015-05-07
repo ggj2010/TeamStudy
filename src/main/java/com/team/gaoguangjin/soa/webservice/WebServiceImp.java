@@ -11,13 +11,19 @@ import javax.xml.ws.Holder;
 @WebService(name = "WebServiceInterface", targetNamespace = "www.ggjlovezjy.com", serviceName = "webservice")
 // name = "WebServiceInterface" 生成对应wsdl的方面名称
 public class WebServiceImp implements WebServiceInterface {
-	public int m = 0;
 	
 	public String find(String message) {
 		try {
-			System.out.println(m + "值被调用,时间是" + new Date());
-			Thread.sleep(4000);// 测试webservce并发调用
-			System.out.println(m++ + "休眠之后,时间是" + new Date());
+			System.out.println(message + "值被调用,时间是" + new Date());
+			if ("0".equals(message)) {
+				while (true) {
+					Thread.sleep(100);// 测试webservce并发调用
+				}
+			} else {
+				Thread.sleep(100);// 测试webservce并发调用
+			}
+			
+			System.out.println(message + ":" + "休眠之后,时间是" + new Date());
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

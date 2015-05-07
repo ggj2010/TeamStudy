@@ -397,5 +397,24 @@
 	    <version>1.1.2</version>
 	</dependency>
 	
+	<!-- activeMQ -->
+	<dependency>
+		<groupId>org.apache.activemq</groupId>
+		<artifactId>activemq-core</artifactId>
+		<version>5.7.0</version>
+	</dependency>
+	
+		<!--spring Boot 
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-web</artifactId>
+		<version>1.0.1.RELEASE</version>
+	</dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+            <version>1.0.1.RELEASE</version>
+        </dependency>
+	 -->
 	</dependencies>
 </project>
