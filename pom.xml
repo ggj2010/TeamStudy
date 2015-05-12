@@ -416,5 +416,12 @@
             <version>1.0.1.RELEASE</version>
         </dependency>
 	 -->
+<!-- java操作redis 2.6.0依赖的common-pool2 所以选用2.1.0 -->
+	<dependency>
+		<groupId>redis.clients</groupId>
+		<artifactId>jedis</artifactId>
+		<version>2.1.0</version>
+	</dependency>
+	
 	</dependencies>
 </project>

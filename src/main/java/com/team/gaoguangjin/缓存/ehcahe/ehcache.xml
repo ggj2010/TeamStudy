@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ehcache.xsd">
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ehcache.xsd"
+updateCheck="false" monitoring="autodetect" dynamicConfig="true">
     <!--操作系统不同 这个系统属性所表示的目录也不同  -->
     <diskStore path="E:/xfmovie"/>
     <defaultCache maxElementsInMemory="10000" eternal="false" timeToIdleSeconds="30" timeToLiveSeconds="30" overflowToDisk="false"/>
@@ -10,6 +11,7 @@
         timeToIdleSeconds：缓存数据的钝化时间，也就是在一个元素消亡之前，
                     两次访问时间的最大时间间隔值，这只能在元素不是永久驻留时有效，
                     如果该值是 0 就意味着元素可以停顿无穷长的时间。
+                   diskPersistent为true，否则重启服务后缓存文件会被清理掉
         timeToLiveSeconds：缓存数据的生存时间，也就是一个元素从构建到消亡的最大时间间隔值，
                     这只能在元素不是永久驻留时有效，如果该值是0就意味着元素可以停顿无穷长的时间。
         overflowToDisk：内存不足时，是否启用磁盘缓存。表示使用硬盘缓存策略；
@@ -21,9 +23,10 @@
         overflowToDisk="true" 
         timeToIdleSeconds="60" 
         timeToLiveSeconds="120"
-         diskPersistent="false"
+         diskPersistent="true"
         memoryStoreEvictionPolicy="LFU" />
         
+        <!-- 
           <cache name="SimplePageCachingFilter" 
         maxElementsInMemory="10000" 
         eternal="false"
@@ -31,6 +34,6 @@
         timeToIdleSeconds="60" 
         timeToLiveSeconds="120"
         memoryStoreEvictionPolicy="LFU" />
-        
+         -->
  
 </ehcache>

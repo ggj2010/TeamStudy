@@ -22,7 +22,7 @@ public class JunitTestProvider {
 		
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new String[] { "dubbo/dubbo-provider.xml" });
 		context.start();
-		System.in.read(); // 为保证服务一直开着，利用输入流的阻塞来模拟
+		// System.in.read(); // 为保证服务一直开着，利用输入流的阻塞来模拟
 		// ApplicationContext ac = new ClassPathXmlApplicationContext("dubbo/dubbo-provider.xml");
 	}
 	

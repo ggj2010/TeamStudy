@@ -5,6 +5,8 @@ import net.sf.ehcache.Cache;
 import net.sf.ehcache.CacheManager;
 import net.sf.ehcache.Element;
 
+import org.junit.Test;
+
 /**
  * @ClassName:TestEhcache.java
  * @Description:
@@ -15,40 +17,47 @@ import net.sf.ehcache.Element;
 public class TestEhcache {
 	
 	public static void main(String[] args) {
-		create();
+		
 		getCache();
 	}
 	
-	private static void getCache() {
+	/**
+	 * @Description:先用junit 在磁盘缓存文件。然后启用main方法查询缓存
+	 * @return:void
+	 */
+	public static void getCache() {
 		CacheManager cachManager = CacheManager.create(TestEhcache.class.getClassLoader().getResourceAsStream(
 				"com/team/gaoguangjin/缓存/ehcahe/ehcache.xml"));
 		Cache cachteTest = cachManager.getCache("test");
-		Element value = cachteTest.get("name2");
+		Element value = cachteTest.get("name2");// diskPersistent为true，否则重启服务后缓存文件会被清理掉
 		log.info("" + value.getValue());
 		
-		// 得到缓存中的对象数
-		log.info("" + cachteTest.getSize());
-		// 得到缓存对象占用内存的大小
-		log.info("" + cachteTest.getMemoryStoreSize());
-		// 得到缓存读取的命中次数
-		log.info("" + cachteTest.getStatistics().getLocalDiskSize());
-		// 得到缓存读取的错失次数
-		log.info("" + cachteTest.getStatistics().getLocalHeapSize());
+		// // 得到缓存中的对象数
+		// log.info("" + cachteTest.getSize());
+		// // 得到缓存对象占用内存的大小
+		// log.info("" + cachteTest.getMemoryStoreSize());
+		// // 得到缓存读取的命中次数
+		// log.info("" + cachteTest.getStatistics().getLocalDiskSize());
+		// // 得到缓存读取的错失次数
+		// log.info("" + cachteTest.getStatistics().getLocalHeapSize());
 		
 	}
 	
 	/**
 	 * @Description: 创建cache
 	 */
-	private static void create() {
+	@Test
+	public void create() {
+		System.setProperty("net.sf.ehcache.enableShutdownHook", "true");
 		CacheManager cachManager = CacheManager.create(TestEhcache.class.getClassLoader().getResourceAsStream(
 				"com/team/gaoguangjin/缓存/ehcahe/ehcache.xml"));
 		// CacheManager cachManager = CacheManager.create();//必须在classpath目录下面放ehcache.xml
 		Cache cachteTest = cachManager.getCache("test");// 获取配置的cache实例
-		Element element = new Element("name1", "高广金1");
-		Element element2 = new Element("name2", "高广金2");
+		Element element = new Element("name1", "gao");
+		Element element2 = new Element("name2", "guang");
 		cachteTest.put(element);
 		cachteTest.put(element2);
+		
 		// cachManager.shutdown();
 	}
 	
