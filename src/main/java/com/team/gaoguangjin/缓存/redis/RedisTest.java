@@ -14,6 +14,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisPubSub;
 
 /**
  * @ClassName:RedisTest.java
@@ -125,7 +126,7 @@ public class RedisTest {
 			log.info(" sort排序之后：" + string);// 从小到大
 		}
 		
-		jedis.del("list");
+		// jedis.del("list");
 	}
 	
 	@Test
@@ -191,7 +192,84 @@ public class RedisTest {
 		// sortScore();
 		// autoincrease();
 		// 获取所有key
-		getAllKey();
+		// getAllKey();
+		// 查询某个key的类型，大小，使用实际
+		// checkKey();
+		// publish和subsrcibe 订阅者和发布者
+		jms();//
+		
+	}
+	
+	/**
+	 * @Description:服务提供者和消费者都以多线程方式，这样才不会阻塞到。也可以自己受到去命令行添加publish key value
+	 * @return:void
+	 */
+	private static void jms() {
+		final Jedis jedis = RedisPool.getJedis();
+		
+		final JedisPubSub jedisPubSub = new NotifySub(jedis, "A");
+		final JedisPubSub jedisPubSub2 = new NotifySub(jedis, "B");
+		
+		// 发布消息的
+		
+		// 调用消息的消费单，每一个监听启动一个线程，不然会阻塞
+		// 每个监听的key,如果客户端发布了，只能一对一获取，如果A先获取到了，B就获取不到
+		new Thread() {
+			public void run() {
+				jedis.subscribe(jedisPubSub, "subscribeMessage1");
+			};
+		}.start();
+		new Thread() {
+			public void run() {
+				jedis.subscribe(jedisPubSub2, "subscribeMessage2");
+			};
+		}.start();
+		
+		/* 服务提供者 */
+		new Thread() {
+			public void run() {
+				try {
+					Thread.sleep(4000);
+					jedis.psubscribe(jedisPubSub2, "subscribeMessage2", "高广金是帅哥2");// 需要自定义一个类去继承抽象类
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			};
+		}.start();
+		new Thread() {
+			public void run() {
+				try {
+					Thread.sleep(2000);
+					jedis.psubscribe(jedisPubSub, "subscribeMessage1", "高广金是帅哥1");// 需要自定义一个类去继承抽象类
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			};
+		}.start();
+		
+		// jedis.subscribe(jedisPubSub, "subscribeMessage");
+		// jedis.subscribe(jedisPubSub2, "subscribeMessage");
+		// RedisPool.returnResource(jedis);// 返回连接池
+	}
+	
+	// redis里面类型
+	// 1、int 2、embstr（字符串）3、ziplist或者linklist(list、map) 4、hashtable（set）5、
+	private static void checkKey() {
+		Jedis jedis = RedisPool.getJedis();
+		
+		Set<String> keyNameList = jedis.keys("*");
+		for (Iterator<String> iterator = keyNameList.iterator(); iterator.hasNext();) {
+			String keyName = iterator.next();
+			String type = jedis.objectEncoding(keyName);// 回给定 key 锁储存的值所使用的内部表示(representation)
+			Long time = jedis.objectIdletime(keyName);// 最近一次呗调用时间//给定 key 自储存以来的空闲时间
+			Long count = jedis.objectRefcount(keyName);// 返回给定 key 引用所储存的值的次数。
+			log.info("keyName=" + keyName + "  ||  " + "keyType=" + type + "  || " + "Idletime=" + time + "  || " + "Refcount=" + count);
+		}
+		
+		// jedis.del("refreshcount");
+		// jedis.set("refreshcount", "100000");//100000值只被引用一次
+		
+		RedisPool.returnResource(jedis);// 返回连接池
 	}
 	
 	private static void getAllKey() {
@@ -240,4 +318,95 @@ public class RedisTest {
 		RedisPool.returnResource(jedis);
 		
 	}
+	
+	public static class NotifySub extends JedisPubSub {
+		
+		private final Jedis jedis;
+		private final String name;
+		
+		public NotifySub(Jedis jedis, String name) {
+			this.jedis = jedis;
+			this.name = name;
+		}
+		
+		@Override
+		public void onMessage(String channel, String message) {
+			// log.info("1onMessage" + jedis.get(channel));
+			log.info("消费端【" + name + "】获取到值：" + channel + "=" + message);
+			
+		}
+		
+		@Override
+		public void onPMessage(String pattern, String channel, String message) {
+			log.info("2onPMessage");
+			
+		}
+		
+		@Override
+		public void onSubscribe(String channel, int subscribedChannels) {
+			log.info("3onSubscribe:消费端【" + name + "】开始监听key=" + channel);
+			
+		}
+		
+		@Override
+		public void onUnsubscribe(String channel, int subscribedChannels) {
+			log.info("4onUnsubscribe");
+			
+		}
+		
+		@Override
+		public void onPUnsubscribe(String pattern, int subscribedChannels) {
+			log.info("5onPUnsubscribe");
+			
+		}
+		
+		@Override
+		public void onPSubscribe(String pattern, int subscribedChannels) {
+			
+			log.info(pattern);
+			
+		}
+		// @Override
+		// public void onMessage(String key, String msg) {
+		// if (log.isInfoEnabled()) {
+		// log.info("redis event: " + key + " = " + msg);
+		// }
+		// if (msg.equals(Constants.REGISTER) || msg.equals(Constants.UNREGISTER)) {
+		// try {
+		// Jedis jedis = jedisPool.getResource();
+		// try {
+		// doNotify(jedis, key);
+		// }
+		// finally {
+		// jedisPool.returnResource(jedis);
+		// }
+		// } catch (Throwable t) {
+		// log.error(t.getMessage(), t);
+		// }
+		// }
+		// }
+		//
+		// @Override
+		// public void onPMessage(String pattern, String key, String msg) {
+		// onMessage(key, msg);
+		// }
+		//
+		// @Override
+		// public void onSubscribe(String key, int num) {
+		// }
+		//
+		// @Override
+		// public void onPSubscribe(String pattern, int num) {
+		// }
+		//
+		// @Override
+		// public void onUnsubscribe(String key, int num) {
+		// }
+		//
+		// @Override
+		// public void onPUnsubscribe(String pattern, int num) {
+		// }
+		
+	}
+	
 }
