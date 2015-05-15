@@ -102,6 +102,7 @@ public class RedisTest {
 	@Test
 	public void testList() {
 		log.info("---------------测试List格式---------------");
+		jedis.del("list");
 		List<String> list = new ArrayList<String>();
 		
 		// 第二个是起始位置，第三个是结束位置，jedis.llen获取长度 -1表示取得所有
@@ -110,8 +111,7 @@ public class RedisTest {
 		log.info("[lpush 存放到list里面]");
 		for (int i = 5; i > 0; i--)
 			jedis.lpush("list", "" + i);
-		jedis.lpush("list", "" + 9);
-		jedis.lpush("list", "" + 8);
+		jedis.lpush("list", "" + "100");
 		
 		// 【lrange】命令
 		list = jedis.lrange("list", 0, -1);
@@ -126,7 +126,6 @@ public class RedisTest {
 			log.info(" sort排序之后：" + string);// 从小到大
 		}
 		
-		// jedis.del("list");
 	}
 	
 	@Test
@@ -189,14 +188,33 @@ public class RedisTest {
 	// redis 排行榜测试
 	
 	public static void main(String[] args) {
-		// sortScore();
+		sortScore();
 		// autoincrease();
 		// 获取所有key
 		// getAllKey();
 		// 查询某个key的类型，大小，使用实际
 		// checkKey();
 		// publish和subsrcibe 订阅者和发布者
-		jms();//
+		// jms();
+		// 测试不同数据库select()
+		// selectDataBase();
+		
+	}
+	
+	private static void selectDataBase() {
+		final Jedis jedis = RedisPool.getJedis();
+		
+		jedis.select(0);
+		
+		jedis.set("select", "123");
+		
+		final Jedis jedis2 = RedisPool.getJedis();
+		
+		jedis2.select(1);
+		jedis2.set("select", "345");
+		
+		log.info(jedis.get("select"));
+		log.info(jedis2.get("select"));
 		
 	}
 	
@@ -205,47 +223,58 @@ public class RedisTest {
 	 * @return:void
 	 */
 	private static void jms() {
+		// 每一个连接对应的消息接收端
 		final Jedis jedis = RedisPool.getJedis();
+		final Jedis jedis2 = RedisPool.getJedis();
 		
-		final JedisPubSub jedisPubSub = new NotifySub(jedis, "A");
-		final JedisPubSub jedisPubSub2 = new NotifySub(jedis, "B");
+		final JedisPubSub jedisPubSub = new NotifySub("A");
+		
+		final JedisPubSub jedisPubSub2 = new NotifySub("B");
+		final JedisPubSub jedisPubSub3 = new NotifySub("C");
 		
 		// 发布消息的
 		
 		// 调用消息的消费单，每一个监听启动一个线程，不然会阻塞
 		// 每个监听的key,如果客户端发布了，只能一对一获取，如果A先获取到了，B就获取不到
+		// new Thread() {
+		// public void run() {
+		// jedis.subscribe(jedisPubSub, "subscribeMessage1");
+		// };
+		// }.start();
+		
 		new Thread() {
 			public void run() {
-				jedis.subscribe(jedisPubSub, "subscribeMessage1");
-			};
-		}.start();
-		new Thread() {
-			public void run() {
-				jedis.subscribe(jedisPubSub2, "subscribeMessage2");
+				jedis.subscribe(jedisPubSub2, "gao");
 			};
 		}.start();
 		
-		/* 服务提供者 */
 		new Thread() {
 			public void run() {
-				try {
-					Thread.sleep(4000);
-					jedis.psubscribe(jedisPubSub2, "subscribeMessage2", "高广金是帅哥2");// 需要自定义一个类去继承抽象类
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
+				jedis2.subscribe(jedisPubSub3, "gao");
 			};
 		}.start();
-		new Thread() {
-			public void run() {
-				try {
-					Thread.sleep(2000);
-					jedis.psubscribe(jedisPubSub, "subscribeMessage1", "高广金是帅哥1");// 需要自定义一个类去继承抽象类
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			};
-		}.start();
+		
+		// /* 服务提供者 */
+		// new Thread() {
+		// public void run() {
+		// try {
+		// Thread.sleep(4000);
+		// jedis.psubscribe(jedisPubSub2, "subscribeMessage2", "高广金是帅哥2");// 需要自定义一个类去继承抽象类
+		// } catch (InterruptedException e) {
+		// e.printStackTrace();
+		// }
+		// };
+		// }.start();
+		// new Thread() {
+		// public void run() {
+		// try {
+		// Thread.sleep(2000);
+		// jedis.psubscribe(jedisPubSub, "subscribeMessage1", "高广金是帅哥1");// 需要自定义一个类去继承抽象类
+		// } catch (InterruptedException e) {
+		// e.printStackTrace();
+		// }
+		// };
+		// }.start();
 		
 		// jedis.subscribe(jedisPubSub, "subscribeMessage");
 		// jedis.subscribe(jedisPubSub2, "subscribeMessage");
@@ -305,7 +334,7 @@ public class RedisTest {
 		
 		System.out.println("=[zadd]添加===[zrevrange]排序之后的值====");
 		Set<String> set = jedis.zrevrange("scorSort", 0, 9);// 获取top10的用户,按照分数从大到小排序
-		
+		// zrank 是从小到大的顺序 + WITHSCORES 会打印value
 		for (Iterator<String> iterator = set.iterator(); iterator.hasNext();)
 			System.out.print(iterator.next() + ":");
 		
@@ -321,24 +350,21 @@ public class RedisTest {
 	
 	public static class NotifySub extends JedisPubSub {
 		
-		private final Jedis jedis;
 		private final String name;
 		
-		public NotifySub(Jedis jedis, String name) {
-			this.jedis = jedis;
+		public NotifySub(String name) {
 			this.name = name;
 		}
 		
 		@Override
 		public void onMessage(String channel, String message) {
-			// log.info("1onMessage" + jedis.get(channel));
-			log.info("消费端【" + name + "】获取到值：" + channel + "=" + message);
+			log.info("1onMessage消费端【" + name + "】获取到值：" + channel + "=" + message);
 			
 		}
 		
 		@Override
 		public void onPMessage(String pattern, String channel, String message) {
-			log.info("2onPMessage");
+			log.info("2onPMessage 【" + name + "】返回值" + pattern + "=" + message);
 			
 		}
 		
@@ -360,53 +386,10 @@ public class RedisTest {
 			
 		}
 		
-		@Override
+		// 取得按表达式的方式订阅的消息后的处理
 		public void onPSubscribe(String pattern, int subscribedChannels) {
-			
-			log.info(pattern);
-			
+			log.info("6 onPSubscribe【" + name + "】pattern=" + pattern + ":subscribedChannels=" + subscribedChannels);
 		}
-		// @Override
-		// public void onMessage(String key, String msg) {
-		// if (log.isInfoEnabled()) {
-		// log.info("redis event: " + key + " = " + msg);
-		// }
-		// if (msg.equals(Constants.REGISTER) || msg.equals(Constants.UNREGISTER)) {
-		// try {
-		// Jedis jedis = jedisPool.getResource();
-		// try {
-		// doNotify(jedis, key);
-		// }
-		// finally {
-		// jedisPool.returnResource(jedis);
-		// }
-		// } catch (Throwable t) {
-		// log.error(t.getMessage(), t);
-		// }
-		// }
-		// }
-		//
-		// @Override
-		// public void onPMessage(String pattern, String key, String msg) {
-		// onMessage(key, msg);
-		// }
-		//
-		// @Override
-		// public void onSubscribe(String key, int num) {
-		// }
-		//
-		// @Override
-		// public void onPSubscribe(String pattern, int num) {
-		// }
-		//
-		// @Override
-		// public void onUnsubscribe(String key, int num) {
-		// }
-		//
-		// @Override
-		// public void onPUnsubscribe(String pattern, int num) {
-		// }
-		
 	}
 	
 }

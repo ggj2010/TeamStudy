@@ -155,7 +155,7 @@
 			<param-name>contextConfigLocation</param-name>
 			<!-- 本地用的spring配置项 -->
 			<!-- -->
-			<param-value>classpath:/youdao/youdaospring.xml</param-value>
+			<param-value>classpath:/youdao/youdaospring-dispatcherservlet.xml</param-value>
 			<!-- 没用jdbc在服务器上用的 -->
 			<!-- <param-value>classpath:springwithoutjdbc.xml</param-value> -->
 		</init-param>
@@ -168,11 +168,6 @@
 		<servlet-name>springMvc</servlet-name>
 		<url-pattern>/yd/*</url-pattern>
 	</servlet-mapping>
-	
-	
-	
-	
-	
 	
 	
 	<!-- 缓存、gzip压缩核心过滤器 -->

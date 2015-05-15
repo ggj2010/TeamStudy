@@ -14,5 +14,10 @@
 		<property name="humanPassword" not-null="true" column="humanPassword"></property>
 		<property name="createdate" column="createdate" type="java.util.Date"></property>
 		<property name="flag" not-null="true" column="flag" type="java.lang.String"></property>
+		
+		private int NoteBookGroupId;
+	private String noteBookGroupName;
+	private int textSum;// 统计该笔记本组下面有多少文本
+		
 	</class>
 </hibernate-mapping>

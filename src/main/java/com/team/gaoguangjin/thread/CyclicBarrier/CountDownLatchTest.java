@@ -39,7 +39,9 @@ public class CountDownLatchTest {
 	 * @return:void
 	 */
 	private static void test2() {
-		CyclicBarrier latch = new CyclicBarrier(2, new MainThread());
+		CyclicBarrier latch = new CyclicBarrier(4, new MainThread());
+		thread2(latch);
+		thread2(latch);
 		thread2(latch);
 		thread2(latch);
 	}

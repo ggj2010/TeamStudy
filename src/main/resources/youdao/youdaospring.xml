@@ -15,33 +15,17 @@
     http://www.springframework.org/schema/tx/spring-tx-3.0.xsd 
     http://www.springframework.org/schema/task
 	http://www.springframework.org/schema/task/spring-task-3.0.xsd
-    " default-lazy-init ="true"><!--default-lazy-init ="true"所有文件用到时候再加载default-lazy-init ="true"  -->
+    " ><!--default-lazy-init ="true"所有文件用到时候再加载default-lazy-init ="true"  -->
 
 
 	<!--把标记了@controller注解的类都转换成bean -->
 	<context:component-scan base-package="com.team.youdao"></context:component-scan>
 
 
-	<!-- 对模型视图名称的解析，就是在模型视图名称后面添加后缀 -->
-	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<!-- 配置视图层 使用jstl标签 -->
-		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
-		<property name="prefix" value="/WEB-INF/view/youdao"></property><!-- 前缀 -->
-		<property name="suffix" value=".jsp"></property><!-- 后缀 -->
-	</bean>
-
-	<!-- 以下配置将拦截特有的URL请求 -->
-	<mvc:interceptors>
-		<mvc:interceptor>
-			<mvc:mapping path="/youdao/main/**" />
-			<bean class="com.team.youdao.common.LoginInterceptor" />
-		</mvc:interceptor>
-	</mvc:interceptors>
-
 
 	<!-- 数据库我们搞两种方式hibernate和springjdbc -->
 	<!-- 用阿里的连接池，lazy-init="true"启动时候再加载 -->
-	<context:property-placeholder location="classpath:youdao/druidpool.properties" />
+	<context:property-placeholder ignore-unresolvable="true" location="classpath:cache/redis/redis.properties,classpath:youdao/druidpool.properties" />
 	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close"  lazy-init="true">
 		<property name="driverClassName" value="${driver}" />
 		<property name="url" value="${url}" />
@@ -78,6 +62,7 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="hibernateProperties">
 			<props>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
 				<prop key="hibernate.dialect">org.hibernate.dialect.OracleDialect</prop>
 				<prop key="hibernate.show_sql">false</prop>
 				<prop key="hibernate.query.substitutions">true 1, false 0, yes 1, no 0</prop>
@@ -109,40 +94,8 @@
 		</tx:attributes>
 	</tx:advice>
 	
-	<!--启动spring事务注解功能 -->
-	<tx:annotation-driven transaction-manager="transactionManager" />
-	
-	<!--springMvc 上传  ,如果用原生态的request获取流-->
-	 <bean id="multipartResolver"  
-        class="com.team.youdao.controller.CustomMultipartResolver" p:defaultEncoding="utf-8">  
-        <property name="maxUploadSize">  
-            <value>104857600</value>  
-        </property>  
-        <property name="maxInMemorySize">  
-            <value>4096</value>  
-        </property>  
-    </bean>  
 	
 	
-	<!--定时任务-->
-	<task:annotation-driven/>
-	
-	<!-- 解决@ResponseBody ajax 乱码问题 -->
-	 <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
-	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">  
-        <property name="cacheSeconds" value="0" />  
-        <property name="messageConverters">  
-             <list>  
-                 <bean class = "org.springframework.http.converter.StringHttpMessageConverter">  
-                    <property name = "supportedMediaTypes">  
-                          <list>  
-                              <value>text/html;charset=UTF-8</value>  
-                         </list>  
-                    </property>  
-                 </bean>  
-            </list>  
-        </property>  
-</bean>  
 	
 </beans>	
 

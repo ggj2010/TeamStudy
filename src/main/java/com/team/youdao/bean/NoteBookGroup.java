@@ -14,7 +14,7 @@ import com.team.youdao.base.BaseBean;
 @Getter
 @Setter
 public class NoteBookGroup extends BaseBean {
-	private int NoteBookGroupId;
+	private int noteBookGroupId;
 	private String noteBookGroupName;
 	private int textSum;// 统计该笔记本组下面有多少文本
 	
