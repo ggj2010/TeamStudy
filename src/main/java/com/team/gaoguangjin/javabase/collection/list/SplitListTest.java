@@ -29,8 +29,11 @@ public class SplitListTest {
 	private static void capability() {
 		SplitListTest s1 = new SplitListTest();
 		List list = new ArrayList();
-		for (int i = 0; i < 10000000; i++)
+		for (int i = 0; i < 100000; i++)
 			list.add(i);
+		List list2 = new ArrayList();
+		for (int i = 0; i < 100000; i++)
+			list2.add(i);
 		
 		long begintime1 = System.currentTimeMillis();
 		
@@ -38,7 +41,7 @@ public class SplitListTest {
 		long endtime1 = System.currentTimeMillis();
 		
 		long begintime2 = System.currentTimeMillis();
-		s1.useClass(list);
+		s1.useClass(list2);
 		long endtime2 = System.currentTimeMillis();
 		
 		Log.info("userSub花费时间：" + (endtime1 - begintime1));
@@ -49,9 +52,9 @@ public class SplitListTest {
 		ListSwitch lw2 = new ListSwitch();
 		int m = list.size() / 10;
 		lw2.list0 = list.subList(0, m);
-		log.info("useClass:" + lw2.list0.get(9999));
+		log.info("useClass:" + lw2.list0.get(99));
 		lw2.list1 = list.subList(m * 1, m * 2);
-		log.info("useClass:" + lw2.list1.get(9999));
+		log.info("useClass:" + lw2.list1.get(99));
 		lw2.list2 = list.subList(m * 2, m * 3);
 		lw2.list3 = list.subList(m * 3, m * 4);
 		lw2.list4 = list.subList(m * 4, m * 5);
@@ -66,8 +69,8 @@ public class SplitListTest {
 	private void userSub(List list) {
 		ListSwitch ls = new ListSwitch();
 		ls.listCut(list);
-		log.info("userSub:" + ls.list0.get(9999));
-		log.info("userSub:" + ls.list1.get(9999));
+		log.info("userSub:" + ls.list0.get(99));
+		log.info("userSub:" + ls.list1.get(99));
 		
 	}
 	

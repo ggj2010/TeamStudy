@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 import lombok.extern.slf4j.Slf4j;
-import oracle.jdbc.driver.OracleTypes;
+import oracle.jdbc.OracleTypes;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

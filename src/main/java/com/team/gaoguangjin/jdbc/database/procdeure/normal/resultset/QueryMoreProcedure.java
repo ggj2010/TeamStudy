@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import oracle.jdbc.driver.OracleTypes;
+import oracle.jdbc.OracleTypes;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.SqlOutParameter;
@@ -14,6 +14,9 @@ import org.springframework.jdbc.core.SqlParameter;
 import org.springframework.jdbc.object.StoredProcedure;
 
 import com.team.util.MapRowMapper;
+/*
+ * import oracle.jdbc.OracleTypes;  oracle6和14 引入的架包不一样
+ * */
 
 /**
  * @ClassName:QueryMoreProcedure.java

@@ -1,9 +1,6 @@
 package com.team.gaoguangjin.缓存.redis;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.Set;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -12,14 +9,17 @@ import org.junit.Test;
 
 import redis.clients.jedis.Jedis;
 
+import com.alibaba.fastjson.JSON;
+import com.team.youdao.bean.Note;
+
 /**
- * @ClassName:RedisTest.java
- * @Description: java 中调用redis,本例子中我在123.56.118.135服务器里面部署了redis服务
+ * @ClassName:RedisTestThree.java
+ * @Description:
  * @author gaoguangjin
- * @Date 2015-5-11 上午10:02:03
+ * @Date 2015-5-17 下午7:39:32
  */
 @Slf4j
-public class RedisTestTwo {
+public class RedisTestThree {
 	private Jedis jedis;
 	
 	@Before
@@ -32,112 +32,63 @@ public class RedisTestTwo {
 	
 	@Test
 	public void testMap() {
-		log.info("---------------测试Map格式---------------");
+		jedis.flushDB();
 		
-		// hset(key, field, value)：向名称为key的hash中添加元素field
-		// hget(key, field)：返回名称为key的hash中field对应的value
-		jedis.hset("singleHash", "name", "奥利奥");
-		jedis.hset("singleHash", "age", "1岁");
-		String singleName = jedis.hget("singleHash", "name");
-		String singleAge = jedis.hget("singleHash", "age");
-		log.info("hset/hget:" + singleName + ":" + singleAge);
+		System.out.println(jedis.set("dd", "bb"));
+		Note note = new Note();
+		note.setAuthorName("gao");
+		note.setFlag(1);
 		
-		// hmget(key, (fields))：返回名称为key的hash中field i对应的value
-		// hmset(key, (fields))：向名称为key的hash中添加元素field
+		Object object = JSON.toJSON(note);
 		
-		// jedis.hmset("firstMap", "maomi","奥利奥","age","猫咪1岁咯");目前jedis不支持这种方式
+		jedis.set("tcnote:1", object.toString());
 		
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("gao", "高");
-		map.put("guang", "广");
-		map.put("jin", "金");
+		String store = jedis.get("tcnote:1");
+		System.out.println(store);
 		
-		// jedis的封装，将获取到的map然后迭代成字符串调用hmset命令
-		jedis.hmset("firstMap", map);
+		Note note2 = JSON.parseObject(store, Note.class);
 		
-		// 获取key中key 【hget】
-		String gao = jedis.hget("firstMap", "gao");
-		log.info("获取map中某个key的值：[hget] firstMap gao:" + gao);
+		System.out.println(note2.getAuthorName() + ":" + note2.getFlag());
 		
-		// 获取所有 返回是Map<String, String> 【hgetAll】
-		Map<String, String> mapList = jedis.hgetAll("firstMap");
-		for (Iterator<String> iterator = mapList.keySet().iterator(); iterator.hasNext();) {
-			String key = iterator.next();
-			log.info("hgetAll:key=" + key + ":value=" + mapList.get(key));
+		jedis.set("tcnote:1:noteid", "1");
+		jedis.set("tcnote:1:noteid_name", "ceshi");
+		jedis.set("tcnote:1:authoro_name", "gaoguangjin");
+		jedis.set("tcnote:1:from_url", "www.baidu.com");
+		jedis.set("tcnote:1:content", "空值");
+		jedis.set("tcnote:1:createdate", "2015-03-14");
+		jedis.set("tcnote:1:flag", "0");
+		jedis.set("tcnote:1:notebook", "1");
+		jedis.set("tcnote:1:notebookgroup", "1");
+		
+		jedis.set("tcnote:2:noteid", "2");
+		jedis.set("tcnote:2:noteid_name", "ceshi");
+		jedis.set("tcnote:2:authoro_name", "gaoguangjin");
+		jedis.set("tcnote:2:from_url", "www.baidu.com");
+		jedis.set("tcnote:2:content", "空值");
+		jedis.set("tcnote:2:createdate", "2015-03-14");
+		jedis.set("tcnote:2:flag", "0");
+		jedis.set("tcnote:2:notebook", "1");
+		jedis.set("tcnote:2:notebookgroup", "1");
+		
+		// 获取笔记本主键是1的书籍
+		// Set<String> aa = jedis.keys("tcnote:*:notebook");
+		// for (String string : aa) {
+		// StringTokenizer st = new StringTokenizer(string, ":");
+		// st.nextToken();
+		// String id = st.nextToken();
+		// Set<String> keys = jedis.keys("tcnote:" + id + ":*");
+		//
+		// for (String string2 : keys) {
+		// System.out.println(jedis.get(string2));
+		// }
+		// }
+		
+		Set<String> aa = jedis.keys("tcnote:*");
+		for (String string : aa) {
+			System.out.println(string);
 		}
 		
 	}
-	
-	@Test
-	public void msetTest() {
-		// 多个键值对 【mset】 key1 "dd" key2 "dd"
-		jedis.mset("gao", "高", "guang", "广", "jin", "金");// key value/key value
-		List<String> list = jedis.mget("gao", "guang", "jin");
-		String listString = "";
-		for (String string : list) {
-			listString += string;
-		}
-		log.info("mget和mset：" + listString);
-	}
-	
-	@Test
-	public void listTest() {
-		log.info("---------------测试List格式---------------");
-		// 使用之前删除
-		jedis.del("listdemo");
-		// lpush默认是往后面追加
-		jedis.lpush("listdemo", "1");
-		jedis.lpush("listdemo", "2");
-		// rpush是往前面添加
-		jedis.rpush("listdemo", "3");
-		List<String> list = jedis.lrange("listdemo", 0, -1);
-		String listString = "";
-		for (String string : list) {
-			listString += string + "==>";
-		}
-		
-		// llen 返回list长度
-		Long length = jedis.llen("listdemo");
-		
-		// ltrim 截取list,从0开始 包括结尾的n 0~1就是截取2个
-		String returnType = jedis.ltrim("listdemo", 0, 1);// OK
-		
-		// lset给某个位置重新赋值
-		jedis.lset("listdemo", 0, "100");
-		
-		// lindex获取某个位置对应的value
-		String value = jedis.lindex("listdemo", 0);
-		
-		log.info("[原来输入顺序是]3=>1=》2");
-		log.info("[lrang输出的默认是先进先出]:" + listString);
-		log.info("lln list的长度是：" + length);
-		log.info("ltrim 截取之后list的长度：" + jedis.llen("listdemo") + returnType);
-		log.info("lset 重新赋值之后的某个位置的值 lindex:" + value);
-		
-		// lrem(key, count, value)：删除count个key的list中值为value的元素
-		jedis.lpush("listdemo", "100");
-		log.info("lrem 删除之前list的大小:" + jedis.llen("listdemo"));
-		jedis.lrem("listdemo", 2, "100");// 删除list里面 2为值为100的元素
-		log.info("lrem 删除n=2个value元素之后 list的大小:" + jedis.llen("listdemo"));
-		
-		/*****/
-		jedis.del("listdemo");
-		jedis.lpush("listdemo", "1");
-		jedis.lpush("listdemo", "2");
-		jedis.lpush("listdemo", "3");
-		jedis.lpush("listdemo", "4");
-		// lpop删除list中的首位元素
-		String top = jedis.lpop("listdemo");
-		// rpop删除list中的尾元素
-		String back = jedis.rpop("listdemo");
-		
-		log.info("重新赋值list 1=>2>3>4  lindex 0=4 lindex3=1 输出是倒序的");
-		log.info("默认是【4】 lpop删除list首元素之后 首元素的值：" + jedis.lindex("listdemo", 0));
-		log.info("默认是【1】 rpop删除list首元素之后 首元素的值：" + jedis.lindex("listdemo", 1));
-		
-		log.info(jedis.info());
-	}
-	
 	//
 	// 1）连接操作命令
 	// quit：关闭连接（connection）
@@ -234,14 +185,5 @@ public class RedisTestTwo {
 	// hvals(key)：返回名称为key的hash中所有键对应的value
 	//
 	// hgetall(key)：返回名称为key的hash中所有的键（field）及其对应的value
-	
-	// zadd key score member [[score member] [score member] ...]
-	// 查询 zrange key start stop [withscores]
-	// 统计在 zcount key min max
-	// 返回有续集key中member的score zscore key member
-	// 返回有续集key中指定范围[通过索引start stop]的member[及score]，返回member根据score按降序排列
-	// zrevrange key start stop [withscores]
-	// 根据score从低到高，返回member在有续集中的index zrank key member
-	// 根据score从高到低排序，返回member在有序集key中的index zrevrank key member
 	
 }

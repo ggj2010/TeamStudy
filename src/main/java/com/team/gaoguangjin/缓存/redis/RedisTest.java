@@ -187,7 +187,7 @@ public class RedisTest {
 	
 	// redis 排行榜测试
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		sortScore();
 		// autoincrease();
 		// 获取所有key
@@ -198,6 +198,63 @@ public class RedisTest {
 		// jms();
 		// 测试不同数据库select()
 		// selectDataBase();
+		
+		// redis事物
+		// notUsetransation();
+		
+		// useTransation();
+	}
+	
+	// multi 开启事物， exec提交事物。redis只能保证一个client发起的事务中的命令可以连续的执行，而中间不会插入其他client的命令
+	// 开启事物之后所有命令都在queue里面，等到执行exec就会提交所有的命令，如果当中某个命令错误不会回滚所有的命令，只有错误的命令执行不过去
+	private static void useTransation() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	private static void notUsetransation() throws InterruptedException {
+		final Jedis jedis1 = RedisPool.getJedis();
+		final Jedis jedis2 = RedisPool.getJedis();
+		final Jedis jedis3 = RedisPool.getJedis();
+		
+		jedis1.set("transation", "1");
+		
+		log.info("使用之前transation值：" + jedis1.get("transation"));
+		Thread thread1 = new Thread() {
+			public void run() {
+				String transation = jedis1.get("transation");
+				try {
+					log.info("初始化jedis1 transation值：" + transation);
+					Thread.sleep(1000);
+					jedis1.set("transation", "" + (Integer.parseInt(transation) + 1));
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		};
+		
+		Thread thread2 = new Thread() {
+			public void run() {
+				String transation = jedis2.get("transation");
+				try {
+					log.info("初始化jedis2 transation值：" + transation);
+					Thread.sleep(1000);
+					jedis2.set("transation", "" + (Integer.parseInt(transation) + 1));
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		};
+		thread1.start();
+		thread2.start();
+		
+		thread1.join();
+		thread2.join();
+		String transation = jedis3.get("transation");
+		log.info("没使用事物，我想要的是效果是，让transtion由两个客户端操作，每次都是在原来基础上加一。如果是三，那就是正确");
+		log.info("结束之后transation值：" + transation);
 		
 	}
 	

@@ -16,7 +16,13 @@ import org.apache.commons.httpclient.cookie.CookieSpec;
 import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.io.IOUtils;
+import org.apache.http.HttpEntity;
 import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
 
 /**
  * @ClassName:HttpClientTest.java
@@ -28,7 +34,9 @@ import org.apache.http.client.ClientProtocolException;
 public class HttpClientTest {
 	public static void main(String[] args) throws ClientProtocolException, IOException {
 		// demo();
-		cookie();// httclient带cookie
+		// cookie();// httclient带cookie
+		
+		pageGetTest();// 网页抓取两种方式输出性能比较
 	}
 	
 	// 1. 创建HttpClient对象。
@@ -43,13 +51,14 @@ public class HttpClientTest {
 	private static void demo() throws ClientProtocolException, IOException {
 		// 得到HttpClient对象,不同版本的写法
 		HttpClient httpClient = new HttpClient();
-		HttpMethodBase getMethod = new GetMethod("http://www.qk365.com/");
+		HttpClient httpClient2 = new HttpClient();
+		HttpMethodBase getMethod = new GetMethod("http://www.baidu.com/");
 		HttpMethodBase postMethod = new PostMethod("http://www.qk365.com/");
-		// 执行getMethod,返回状态
+		// 执行getMethod,返回状态,以刺激执行一个
 		int statusCode1 = httpClient.executeMethod(getMethod);
-		int statusCode2 = httpClient.executeMethod(postMethod);
-		
 		testByMethod(getMethod);
+		
+		int statusCode2 = httpClient2.executeMethod(postMethod);
 		testByMethod(postMethod);
 		
 		// 创建默认的httpClient实例.
@@ -74,6 +83,7 @@ public class HttpClientTest {
 				log.info(html);
 			}
 		} catch (IOException e) {
+			log.error("" + e.getLocalizedMessage());
 		}
 		finally {
 			// 释放连接
@@ -134,5 +144,41 @@ public class HttpClientTest {
 		//
 		// }
 		
+	}
+	
+	private static String getContentByHttpClient(String url) throws HttpException, IOException {
+		CloseableHttpClient httpClients = HttpClients.createDefault();
+		// DefaultHttpClient client = new DefaultHttpClient();
+		HttpGet httpGet = new HttpGet(url);// get
+		CloseableHttpResponse response = httpClients.execute(httpGet);
+		HttpEntity entity = response.getEntity();
+		String html = EntityUtils.toString(entity);
+		log.info(html);
+		return html;
+	}
+	
+	private static String getContentByCommonsHttpClient(String url) throws HttpException, IOException {
+		// 获取到的是输入流
+		HttpClient httpClient = new HttpClient();
+		HttpMethodBase postMethod = new PostMethod(url);
+		int statusCode1 = httpClient.executeMethod(postMethod);
+		InputStream inputStream = postMethod.getResponseBodyAsStream();
+		String html = IOUtils.toString(inputStream);
+		log.info(html);
+		return html;
+	}
+	
+	private static void pageGetTest() throws HttpException, IOException {
+		try {
+			long time = System.currentTimeMillis();
+			for (int i = 0; i < 10; i++)
+				getContentByHttpClient("http://www.tuicool.com/");// 这个性能好点
+			// getContentByCommonsHttpClient("http://www.tuicool.com/");
+			long endtime = System.currentTimeMillis();
+			System.out.println((endtime - time));
+		} catch (Exception e) {
+		}
+		// 创建默认的httpClient实例.
+		// String[] contents = content.split("<a href=\"");
 	}
 }

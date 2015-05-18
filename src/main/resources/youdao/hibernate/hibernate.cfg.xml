@@ -9,5 +9,7 @@
 		<property name="format_sql">false</property>
 		<mapping resource="youdao/hibernate/bean/human.hbm.xml" />
 		<mapping resource="youdao/hibernate/bean/noteBookGroup.hbm.xml" />
+		<mapping resource="youdao/hibernate/bean/noteBook.hbm.xml" />
+		<mapping resource="youdao/hibernate/bean/note.hbm.xml" />
 	</session-factory>
 </hibernate-configuration>

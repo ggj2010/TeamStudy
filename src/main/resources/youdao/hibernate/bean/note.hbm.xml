@@ -3,16 +3,21 @@
 	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="com.team.youdao.bean">
-	<class name="Human" table="youdao.tchuman">
-		<id name="humanId" column="humanId">
+	<class name="Note" table="tcnote">
+		<id name="noteId" column="noteId">
 			<!-- oracle用sequence创建主键规范指定sequence名 -->
 			<generator class="sequence">
 				<param name="sequence">seq_human</param>
 			</generator>
 		</id>
-		<property name="humanname" not-null="true" column="humanname" type="java.lang.String"></property>
-		<property name="humanPassword" not-null="true" column="humanPassword"></property>
+		<property name="noteName"  column="note_name" type="java.lang.String"></property>
+		<property name="authorName"  column="author_name" type="java.lang.String"></property>
+		<property name="fromUrl" column="from_url" type="java.lang.String"></property>
+		<!-- 文章定义成clob类型 select dbms_lob.substr(content) from youdao.tcnote -->
+		<property name="content" column="content"  type="clob"></property>
 		<property name="createdate" column="createdate" type="java.util.Date"></property>
-		<property name="flag" not-null="true" column="flag" type="java.lang.String"></property>
+		<property name="flag" not-null="true" column="flag" type="java.lang.Integer"></property>
+		<many-to-one name="noteBook" column="noteBook" lazy="false" not-null="true"></many-to-one>
+		<many-to-one name="noteBookGroup" column="noteBookGroup" lazy="false" not-null="true"></many-to-one>
 	</class>
 </hibernate-mapping>
