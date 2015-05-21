@@ -188,21 +188,33 @@ public class RedisTest {
 	// redis 排行榜测试
 	
 	public static void main(String[] args) throws InterruptedException {
-		sortScore();
+		// sortScore();
 		// autoincrease();
 		// 获取所有key
 		// getAllKey();
 		// 查询某个key的类型，大小，使用实际
 		// checkKey();
 		// publish和subsrcibe 订阅者和发布者
-		// jms();
+		jms();
 		// 测试不同数据库select()
 		// selectDataBase();
 		
 		// redis事物
+		// redis如果因为命令不对导致的错误不会回滚事物，只是改命令执行不了，其他命令都可以继续执行
 		// notUsetransation();
 		
 		// useTransation();
+		
+		// redis 队列
+		// queue();
+		
+	}
+	
+	private static void queue() {
+		
+		Jedis jedis = RedisPool.getJedis();
+		String a = jedis.rpop("list");
+		
 	}
 	
 	// multi 开启事物， exec提交事物。redis只能保证一个client发起的事务中的命令可以连续的执行，而中间不会插入其他client的命令

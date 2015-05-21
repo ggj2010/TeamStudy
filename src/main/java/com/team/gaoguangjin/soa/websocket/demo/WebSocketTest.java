@@ -14,7 +14,7 @@ import javax.websocket.server.ServerEndpoint;
  * @author gaoguangjin
  * @Date 2015-5-13 下午2:28:06
  */
-@ServerEndpoint("/hello")
+@ServerEndpoint("/hello/websocket")
 public class WebSocketTest {
 	
 	// 当服务器接收到客户端发送的消息时所调用的方法。

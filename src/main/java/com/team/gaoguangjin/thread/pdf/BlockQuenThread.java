@@ -11,8 +11,8 @@ import java.util.concurrent.BlockingQueue;
  */
 public class BlockQuenThread {
 	public static void main(String[] args) throws InterruptedException {
-		// demo();
-		demo1();
+		demo();
+		// demo1();
 	}
 	
 	private static void demo1() throws InterruptedException {

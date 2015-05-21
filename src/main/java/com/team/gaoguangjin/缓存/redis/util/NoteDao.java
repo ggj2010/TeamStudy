@@ -38,12 +38,12 @@ public class NoteDao extends RedisDao<Note> {
 	public static void main(String[] args) {
 		try {
 			NoteDao noteDao = new NoteDao();
-			// noteDao.select(noteDao);// 查询
+			noteDao.select(noteDao);// 查询
 			// noteDao.insert();// 插入
-			noteDao.update(noteDao);// 更新
+			// noteDao.update(noteDao);// 更新
 			// noteDao.delete( noteDao);
 			// 异步更新到数据库
-			dataBaseUpdate(noteDao);
+			// dataBaseUpdate(noteDao);
 		} catch (Exception e) {
 			log.error("redis查询错误！" + e.getLocalizedMessage());
 		}
@@ -99,17 +99,17 @@ public class NoteDao extends RedisDao<Note> {
 		String authorName2 = "gao";
 		String flag = "0";
 		// 查询根据id
-		// selectById(noteDao);
+		selectById(noteDao);
 		// /* 查询方式一 根据set/get */
 		// selectTypeOne(noteDao, fromUrl);
 		// /* 查询方式二 * 根据 sadd/smembers */
 		// selectTypeTwo(noteDao, fromUrl);
 		/* 查询方式三 and */
-		selectTypeThree(noteDao, authorName1, fromUrl);
-		/* 查询方式四 or */
-		selectTypeFour(noteDao, authorName1, authorName2);
-		/* 查询方式五 and和or 同时存在 */
-		selectTypeFour(noteDao, authorName1, authorName2, flag);
+		// selectTypeThree(noteDao, authorName1, fromUrl);
+		// /* 查询方式四 or */
+		// selectTypeFour(noteDao, authorName1, authorName2);
+		// /* 查询方式五 and和or 同时存在 */
+		// selectTypeFive(noteDao, authorName1, authorName2, flag);
 		
 	}
 	
@@ -141,7 +141,7 @@ public class NoteDao extends RedisDao<Note> {
 	 * @param authorName2
 	 * @return:void
 	 */
-	private void selectTypeFour(NoteDao noteDao, String authorName1, String authorName2) {
+	private void selectTypeFive(NoteDao noteDao, String authorName1, String authorName2) {
 		log.info("=================================");
 		long time = System.currentTimeMillis();
 		Set<String> sortKey = jedis.sunion("Note:authorName:" + authorName1, "Note:authorName:" + authorName2);
