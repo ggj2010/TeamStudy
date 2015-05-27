@@ -132,8 +132,8 @@ public class RedisTestTwo {
 		String back = jedis.rpop("listdemo");
 		
 		log.info("重新赋值list 1=>2>3>4  lindex 0=4 lindex3=1 输出是倒序的");
-		log.info("默认是【4】 lpop删除list首元素之后 首元素的值：" + jedis.lindex("listdemo", 0));
-		log.info("默认是【1】 rpop删除list首元素之后 首元素的值：" + jedis.lindex("listdemo", 1));
+		log.info("默认是【4】  3 lpop删除list首元素之后 首元素的值：" + jedis.lindex("listdemo", 0));
+		log.info("默认是【1】  2 rpop删除list首元素之后 首元素的值：" + jedis.lindex("listdemo", 1));
 		
 		log.info(jedis.info());
 	}

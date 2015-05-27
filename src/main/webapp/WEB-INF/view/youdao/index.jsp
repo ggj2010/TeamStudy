@@ -10,10 +10,8 @@
 <meta http-equiv="expires" content="0">
 </head>
 <script type="text/javascript">
-	
 	require([ 'jquery', 'bootstrap' ], function($, b) {
 		$(function() {
-
 			$(".daohang > ul > li > a").on("click", function() {
 				$(".daohang .active").removeClass("active");
 				$(this).parent("li").prop("class", "active");
@@ -23,12 +21,11 @@
 				//$("#test").append("d\n");
 			}
 			$("[data-toggle='popover']").popover();//提示框启用
-			 $('[data-toggle="tooltip"]').tooltip();//提示框启用
-			
-			
+			$('[data-toggle="tooltip"]').tooltip();//提示框启用
+
 			//登陆框的按钮点击之后
-			 $('#myButtons').on('click', function () {
-				    var $btn = $(this).button('loading');
+			$('#myButtons').on('click', function() {
+				var $btn = $(this).button('loading');
 				setTimeout(function() {
 					$btn.button('reset');
 				}, 1000);
@@ -87,37 +84,33 @@ a:focus{color:pink}
 
 /*输入框的背景*/
 .bs-example {
-margin-right: 0;
-margin-left: 0;
-background-color: #fff;
-border-color: #ddd;
-border-width: 1px;
-border-radius: 4px 4px 0 0;
--webkit-box-shadow: none;
-box-shadow: none;
+	margin-right: 0;
+	margin-left: 0;
+	background-color: #fff;
+	border-color: #ddd;
+	border-width: 1px;
+	border-radius: 4px 4px 0 0;
+	-webkit-box-shadow: none;
+	box-shadow: none;
 }
-
 
 /**输入框聚焦时候的映射*/
 #focusedInput {
-border-color: rgba(82,168,236,.8);
-outline: 0;
--webkit-box-shadow: 0 0 8px rgba(82,168,236,.6);
-box-shadow: 0 0 8px rgba(82,168,236,.6);
+	border-color: rgba(82, 168, 236, .8);
+	outline: 0;
+	-webkit-box-shadow: 0 0 8px rgba(82, 168, 236, .6);
+	box-shadow: 0 0 8px rgba(82, 168, 236, .6);
 }
-
-
 
 .scrollspy-example {
-position: relative;
-height: 200px;
-margin-top: 10px;
-overflow: auto;
+	position: relative;
+	height: 200px;
+	margin-top: 10px;
+	overflow: auto;
 }
-
 </style>
 
-<body >
+<body>
 	<div class="top">
 		<div class="container-fluid">
 			<div>
@@ -289,12 +282,18 @@ overflow: auto;
 
 				<div class="page-header"></div>
 				<div id="code">
-					<p>比如这是代码《code》：<code>这是&lt;span&gt;dddd&lt;span&gt;</code></p>
+					<p>
+						比如这是代码《code》：
+						<code>这是&lt;span&gt;dddd&lt;span&gt;</code>
+					</p>
 				</div>
-				
+
 				<div class="page-header"></div>
 				<div>
-					<p>用户输入《kbd》<kbd>crtl+</kbd></p>
+					<p>
+						用户输入《kbd》
+						<kbd>crtl+</kbd>
+					</p>
 				</div>
 
 				<div id="table">
@@ -443,8 +442,9 @@ overflow: auto;
 						</tr>
 					</table>
 				</div>
-	<span style="color: red">
-						------------------在table前面增加一个div class=table-responsive,这样当其会在小屏幕设备上（小于768px）水平滚动。当屏幕大于 768px 宽度时，水平滚动条消失。-------------- </span>
+				<span style="color: red"> ------------------在table前面增加一个div
+					class=table-responsive,这样当其会在小屏幕设备上（小于768px）水平滚动。当屏幕大于 768px
+					宽度时，水平滚动条消失。-------------- </span>
 				<div class="table-responsive" title="class=table-responsive">
 					<table class="table" title="class=table-responsive">
 						<tr>
@@ -509,7 +509,7 @@ overflow: auto;
 						</tr>
 					</table>
 				</div>
-				
+
 				<div class="page-header"></div>
 
 				<div id="form" class="bs-example">
@@ -526,74 +526,78 @@ overflow: auto;
 						<input class="form-control" type="text" placeholder="输入框">
 					</div>
 					<div class="checkbox">
-						<input  type="radio"><label>单选按钮</label>
+						<input type="radio"><label>单选按钮</label>
 					</div>
 					<div class="checkbox">
-						<input  type="checkbox" ><label>复选框</label>
+						<input type="checkbox"><label>复选框</label>
 					</div>
 				</div>
-				
-				<div class="page-header"></div>
-				
-			<div class="form-inline">
-				<div class="form-group">
-				<label>form-inline内联输入框</label>
-					<input class="form-control" type="text" placeholder="内联输入框form-inline">
-				</div>
-				<div class="form-group">
-					<label>form-inline内联输入框</label>
-					<input class="form-control" type="text" placeholder="输入框form-inline">
-				</div>
-			</div>
 
-			<!--下拉框btn-group是必须要的  -->
-			<div class="btn-group"  id="drop">
-				<button class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-						下拉框 <span class="caret"></span></button>
-				<ul class="dropdown-menu" role="menu">
-         		 <li><a href="#">按钮1</a></li>
-         		 <li><a href="#">Another action</a></li>
-         		 <li><a href="#">Something else here</a></li>
-         		 	<!--分割线 -->
-         		 <li class="divider"></li>
-        		  <li><a href="#">Separated link</a></li>
-       			 </ul>
-       			 将下拉菜单触发器和下拉菜单都包裹在 .dropdown 里，或者另一个声明了 position: relative; 的元素。然后加入组成菜单的 HTML 代码。为下拉菜单的父元素添加 .dropup 类还可以让菜单向上弹出（默认是向下弹出）。
-			</div>
 				<div class="page-header"></div>
-				
-			<div class="row">
-				<div class="col-md-2">
-				<input type="text" class="form-control" placeholder="栅栏式">
+
+				<div class="form-inline">
+					<div class="form-group">
+						<label>form-inline内联输入框</label> <input class="form-control"
+							type="text" placeholder="内联输入框form-inline">
+					</div>
+					<div class="form-group">
+						<label>form-inline内联输入框</label> <input class="form-control"
+							type="text" placeholder="输入框form-inline">
+					</div>
 				</div>
-				<div class="col-md-10">
-				<input type="text" class="form-control"  placeholder="输入框">
+
+				<!--下拉框btn-group是必须要的  -->
+				<div class="btn-group" id="drop">
+					<button class="btn btn-info dropdown-toggle" data-toggle="dropdown"
+						aria-expanded="false">
+						下拉框 <span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="#">按钮1</a></li>
+						<li><a href="#">Another action</a></li>
+						<li><a href="#">Something else here</a></li>
+						<!--分割线 -->
+						<li class="divider"></li>
+						<li><a href="#">Separated link</a></li>
+					</ul>
+					将下拉菜单触发器和下拉菜单都包裹在 .dropdown 里，或者另一个声明了 position: relative;
+					的元素。然后加入组成菜单的 HTML 代码。为下拉菜单的父元素添加 .dropup 类还可以让菜单向上弹出（默认是向下弹出）。
 				</div>
-				
-				<div class="col-xs-2">
-				<input type="text" class="form-control" placeholder="输入框">
+				<div class="page-header"></div>
+
+				<div class="row">
+					<div class="col-md-2">
+						<input type="text" class="form-control" placeholder="栅栏式">
+					</div>
+					<div class="col-md-10">
+						<input type="text" class="form-control" placeholder="输入框">
+					</div>
+
+					<div class="col-xs-2">
+						<input type="text" class="form-control" placeholder="输入框">
+					</div>
+					<div class="col-xs-2">
+						<input type="text" class="form-control" placeholder="输入框">
+					</div>
+					<div class="col-xs-2">
+						<input type="text" class="form-control" placeholder="输入框">
+					</div>
+					<div class="col-xs-2">
+						<input type="text" class="form-control" placeholder="输入框">
+					</div>
+					<div class="col-xs-2">
+						<input type="text" class="form-control" placeholder="输入框">
+					</div>
+					<div class="col-xs-2">
+						<input type="text" class="form-control" placeholder="输入框">
+					</div>
+
+					<div>
+						<input type="text" class="form-control" id="focusedInput"
+							placeholder="聚焦之后的效果">
+					</div>
 				</div>
-				<div class="col-xs-2">
-				<input type="text" class="form-control"  placeholder="输入框">
-				</div>
-				<div class="col-xs-2">
-				<input type="text" class="form-control"  placeholder="输入框">
-				</div>
-				<div class="col-xs-2">
-				<input type="text" class="form-control"  placeholder="输入框">
-				</div>
-				<div class="col-xs-2">
-				<input type="text" class="form-control"  placeholder="输入框">
-				</div>
-				<div class="col-xs-2">
-				<input type="text" class="form-control"  placeholder="输入框">
-				</div>
-				
-				<div>
-					<input type="text" class="form-control" id="focusedInput" placeholder="聚焦之后的效果">
-				</div>
-			</div>
-				
+
 				<div class="page-header"></div>
 				<div id="button">
 					<div class="form-group">
@@ -602,7 +606,7 @@ overflow: auto;
 						<button class="btn btn-primary" disabled>disable按钮</button>
 					</div>
 				</div>
-					<div class="page-header"></div>
+				<div class="page-header"></div>
 				<div>
 					<select class="form-control">
 						<option>条件1</option>
@@ -610,29 +614,28 @@ overflow: auto;
 						<option>条件3</option>
 						<option>条件4</option>
 					</select>
-						<div class="page-header"></div>
-					<select multiple  class="form-control">
+					<div class="page-header"></div>
+					<select multiple class="form-control">
 						<option>条件1 multiple 显示多行</option>
-						<option>条件2 multiple </option>
+						<option>条件2 multiple</option>
 						<option>条件3</option>
 						<option>条件4</option>
 					</select>
 				</div>
-					<div class="page-header"></div>
+				<div class="page-header"></div>
 
 				<div id="nav">
-						<!--navbar 和颜色   navbar-fixed-top在顶部-->
+					<!--navbar 和颜色   navbar-fixed-top在顶部-->
 					<div class="navbar navbar-inverse ">
 						<div class="container">
-								<div class="navbar-header">
-								<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#title">
-									 <span class="sr-only">屏幕缩小的按钮</span>
-           							 <span class="icon-bar"></span>
-           							 <span class="icon-bar"></span>
-           							 <span class="icon-bar"></span>
+							<div class="navbar-header">
+								<button type="button" class="navbar-toggle collapsed"
+									data-toggle="collapse" data-target="#title">
+									<span class="sr-only">屏幕缩小的按钮</span> <span class="icon-bar"></span>
+									<span class="icon-bar"></span> <span class="icon-bar"></span>
 								</button>
-									<a class="navbar-brand" href="#">本地</a>
-								</div>
+								<a class="navbar-brand" href="#">本地</a>
+							</div>
 							<div id="title" class="collapse navbar-collapse">
 								<ul class="nav navbar-nav">
 									<li class="active"><a href="#">Home</a></li>
@@ -644,7 +647,7 @@ overflow: auto;
 					</div>
 				</div>
 
-			<div class="page-header"></div>
+				<div class="page-header"></div>
 
 				<ul class="nav nav-tabs">
 					<li role="presentation" class="active"><a href="#">Home</a></li>
@@ -659,53 +662,59 @@ overflow: auto;
 						离线<span class="badge">4</span>
 					</button>
 				</div>
-					<div class="page-header"></div>
+				<div class="page-header"></div>
 
 
 				<div class="row" id="image">
-						<div class="col-sm-6 col-md-4">
-							<div class="thumbnail">
-								<img class="img-rounded" src="http://m1.sinaimg.cn/maxwidth.2880/m1.sinaimg.cn/e79e5e1a817c4819cbc3f34eaecca7dc_301_294.jpg" alt="图片内容缩略图">
-								<div class="caption">
-									<h3>这是一个傻狗</h3>
-									<p>这是傻狗照片</p>
-									<p>
-										<a href="#" class="btn btn-primary" role="button">查看</a> <a
-											href="#" class="btn btn-default" role="button">删除</a>
-									</p>
-								</div>
+					<div class="col-sm-6 col-md-4">
+						<div class="thumbnail">
+							<img class="img-rounded"
+								src="http://m1.sinaimg.cn/maxwidth.2880/m1.sinaimg.cn/e79e5e1a817c4819cbc3f34eaecca7dc_301_294.jpg"
+								alt="图片内容缩略图">
+							<div class="caption">
+								<h3>这是一个傻狗</h3>
+								<p>这是傻狗照片</p>
+								<p>
+									<a href="#" class="btn btn-primary" role="button">查看</a> <a
+										href="#" class="btn btn-default" role="button">删除</a>
+								</p>
 							</div>
 						</div>
-						<div class="col-sm-6 col-md-4">
-							<div class="thumbnail">
-								<img class="img-circle" src="http://m1.sinaimg.cn/maxwidth.2880/m1.sinaimg.cn/e79e5e1a817c4819cbc3f34eaecca7dc_301_294.jpg" alt="图片内容缩略图">
-								<div class="caption">
-									<h3>这是一个傻狗</h3>
-									<p>这是傻狗照片</p>
-									<p>
-										<a href="#" class="btn btn-primary" role="button">查看</a> <a
-											href="#" class="btn btn-default" role="button">删除</a>
-									</p>
-								</div>
+					</div>
+					<div class="col-sm-6 col-md-4">
+						<div class="thumbnail">
+							<img class="img-circle"
+								src="http://m1.sinaimg.cn/maxwidth.2880/m1.sinaimg.cn/e79e5e1a817c4819cbc3f34eaecca7dc_301_294.jpg"
+								alt="图片内容缩略图">
+							<div class="caption">
+								<h3>这是一个傻狗</h3>
+								<p>这是傻狗照片</p>
+								<p>
+									<a href="#" class="btn btn-primary" role="button">查看</a> <a
+										href="#" class="btn btn-default" role="button">删除</a>
+								</p>
 							</div>
 						</div>
-						<div class="col-sm-6 col-md-4">
-							<div class="thumbnail">
-								<img class="img-thumbnail" src="http://m1.sinaimg.cn/maxwidth.2880/m1.sinaimg.cn/e79e5e1a817c4819cbc3f34eaecca7dc_301_294.jpg" alt="图片内容缩略图">
-								<div class="caption">
-									<h3>这是一个傻狗</h3>
-									<p>这是傻狗照片</p>
-									<p>
-										<a href="#" class="btn btn-primary" role="button">查看</a> <a
-											href="#" class="btn btn-default" role="button">删除</a>
-									</p>
-								</div>
+					</div>
+					<div class="col-sm-6 col-md-4">
+						<div class="thumbnail">
+							<img class="img-thumbnail"
+								src="http://m1.sinaimg.cn/maxwidth.2880/m1.sinaimg.cn/e79e5e1a817c4819cbc3f34eaecca7dc_301_294.jpg"
+								alt="图片内容缩略图">
+							<div class="caption">
+								<h3>这是一个傻狗</h3>
+								<p>这是傻狗照片</p>
+								<p>
+									<a href="#" class="btn btn-primary" role="button">查看</a> <a
+										href="#" class="btn btn-default" role="button">删除</a>
+								</p>
 							</div>
 						</div>
+					</div>
 				</div>
-				
-				
-					<div class="page-header"></div>
+
+
+				<div class="page-header"></div>
 				<div id="close">
 					<div class="alert alert-warning alert-dismissible" role="alert">
 						<button type="button" class="close" data-dismiss="alert"
@@ -715,13 +724,13 @@ overflow: auto;
 						<strong>提醒!</strong>这个页面可以关闭的！
 					</div>
 				</div>
-				
-				
+
+
 				<div class="alert alert-success" role="alert">123</div>
 
 				<div class="page-header"></div>
 
-				<div class="container" >
+				<div class="container">
 					<button type="button" class="btn btn-default" title="Popover title"
 						data-container="body" data-toggle="popover" data-placement="left"
 						data-content="左侧的 Popover 中的一些内容">左侧的 Popover</button>
@@ -736,78 +745,76 @@ overflow: auto;
 						data-container="body" data-toggle="popover" data-placement="right"
 						data-content="右侧的 Popover 中的一些内容">右侧的 Popover</button>
 				</div>
-					
-					<div class="page-header"></div>
-						<div id="process" class="progress">
-							<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" ari-valuemax="100" style="width: 60%;">
-								60%
-							</div>
-						</div>
-						<div class="form-group">
-							<label>请选择文件：</label>
-							<input type="file" class="form-control"  id="uploadFile">
-						</div>
-					
-						<div id="listgroup">
-							<ul class="list-group">
-								<li class="list-group-item">listgroup列表组</li>
-								<li class="list-group-item">《list-group-item》</li>
-								<li class="list-group-item">未读消息<span class="badge">3333</span></li>
-							</ul>
-						</div>
-						
-						<div id="list-group">
-							<a class="list-group-item active" href="#">这是连接的列表组</a>
-							<a class="list-group-item" href="#">这是连接的列表组</a>
-							<a class="list-group-item" href="#">这是连接的列表组</a>
-						</div>
-						
-						<div class="page-header"></div>
-							
-							
-						<div class="list-group">
-							<a href="#" class="list-group-item active" >
-								<h4 class="list-group-item-heading">List group 表头</h4>
-								<p class="list-group-item-text">内容内容</p>
-							</a>
-							<a href="#" class="list-group-item" >
-								<h4 class="list-group-item-heading">不是激活状态</h4>
-								<p class="list-group-item-text">内容内容</p>
-							</a>
-						</div>
-						
-					<div class="page-header"></div>
-							
-					<div class="panel panel-danger" id="panel">
-						<div class="panel-heading">《panel-heading》</div>
-						<div class="panel-body">这是文字《panel-body》</div>
-					</div>
-					
-					<div class="panel panel-danger" id="panelfull">
-						<div class="panel-heading">
-							好好学习
-						</div>
-						<!--如果去除panel-body  panel-heading就和table在一起了  	-->
-						<div class="panel-body">
-							<p>好好学习天天向上好好学习天天向上好好学习天天向上,好好学习天天向上好好学习天天向上好好学习天天向上,好好学习天天向上好好学习天天向上好好学习,如果去除panel-body  panel-heading就和table在一起了 。</p>
-						</div>
-					
-						<table class="table table-hover">
-							<tr class="info">
-								<th>标题1</th>
-								<th>标题2</th>
-								<th>标题2</th>
-							</tr>
-							<tr>
-								<td>1</td>
-								<td>2</td>
-								<td>3</td>
-							</tr>
-						</table>
+
+				<div class="page-header"></div>
+				<div id="process" class="progress">
+					<div class="progress-bar" role="progressbar" aria-valuenow="60"
+						aria-valuemin="0" ari-valuemax="100" style="width: 60%;">
+						60%</div>
+				</div>
+				<div class="form-group">
+					<label>请选择文件：</label> <input type="file" class="form-control"
+						id="uploadFile">
+				</div>
+
+				<div id="listgroup">
+					<ul class="list-group">
+						<li class="list-group-item">listgroup列表组</li>
+						<li class="list-group-item">《list-group-item》</li>
+						<li class="list-group-item">未读消息<span class="badge">3333</span></li>
+					</ul>
+				</div>
+
+				<div id="list-group">
+					<a class="list-group-item active" href="#">这是连接的列表组</a> <a
+						class="list-group-item" href="#">这是连接的列表组</a> <a
+						class="list-group-item" href="#">这是连接的列表组</a>
+				</div>
+
+				<div class="page-header"></div>
+
+
+				<div class="list-group">
+					<a href="#" class="list-group-item active">
+						<h4 class="list-group-item-heading">List group 表头</h4>
+						<p class="list-group-item-text">内容内容</p>
+					</a> <a href="#" class="list-group-item">
+						<h4 class="list-group-item-heading">不是激活状态</h4>
+						<p class="list-group-item-text">内容内容</p>
+					</a>
+				</div>
+
+				<div class="page-header"></div>
+
+				<div class="panel panel-danger" id="panel">
+					<div class="panel-heading">《panel-heading》</div>
+					<div class="panel-body">这是文字《panel-body》</div>
+				</div>
+
+				<div class="panel panel-danger" id="panelfull">
+					<div class="panel-heading">好好学习</div>
+					<!--如果去除panel-body  panel-heading就和table在一起了  	-->
+					<div class="panel-body">
+						<p>好好学习天天向上好好学习天天向上好好学习天天向上,好好学习天天向上好好学习天天向上好好学习天天向上,好好学习天天向上好好学习天天向上好好学习,如果去除panel-body
+							panel-heading就和table在一起了 。</p>
 					</div>
 
-			
-					<div class="page-header"></div>
+					<table class="table table-hover">
+						<tr class="info">
+							<th>标题1</th>
+							<th>标题2</th>
+							<th>标题2</th>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td>2</td>
+							<td>3</td>
+						</tr>
+					</table>
+				</div>
+
+
+				<div class="page-header"></div>
 
 				<!-- 4:3 aspect ratio -->
 				<div class="embed-responsive embed-responsive-4by3" id="iframes">
@@ -922,17 +929,18 @@ overflow: auto;
 					<div class="container-fluid">
 						<div class="navbar-header">
 							<!-- 这个是空值浏览器宽度变小的是当行条的变化 -->
-							<button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-example-js-navbar-collapse">
-								<span class="sr-only">dddddd</span>
-								 <span class="icon-bar"></span> 
-								 <span class="icon-bar"></span> 
-								 <span class="icon-bar"></span> 
-								 <span class="icon-bar"></span> 
-								 <!-- 有多少个自导航就写多少个横线的span -->
+							<button class="navbar-toggle collapsed" type="button"
+								data-toggle="collapse"
+								data-target=".bs-example-js-navbar-collapse">
+								<span class="sr-only">dddddd</span> <span class="icon-bar"></span>
+								<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+									class="icon-bar"></span>
+								<!-- 有多少个自导航就写多少个横线的span -->
 							</button>
 							<a class="navbar-brand" href="#">主导航栏目</a>
 						</div>
-						<div class="collapse navbar-collapse bs-example-js-navbar-collapse">
+						<div
+							class="collapse navbar-collapse bs-example-js-navbar-collapse">
 							<ul class="nav navbar-nav">
 								<li class="dropdown"><a id="drop1" href="#"
 									class="dropdown-toggle" data-toggle="dropdown"
@@ -991,8 +999,8 @@ overflow: auto;
 					<!-- /.container-fluid -->
 				</nav>
 
-<div class="page-header"></div>
-	
+				<div class="page-header"></div>
+
 				<!-- 滚动监听 -->
 				<div class="bs-example" data-example-id="embedded-scrollspy">
 					<nav id="navbar-example2"
@@ -1180,7 +1188,7 @@ overflow: auto;
 					</div>
 				</div>
 
-					<div class="page-header"></div>
+				<div class="page-header"></div>
 
 				<div>
 					<button type="button" class="btn btn-default" data-toggle="tooltip"
@@ -1200,10 +1208,12 @@ overflow: auto;
 						on right</button>
 				</div>
 
-		<div class="page-header"></div>
-				<a tabindex="0" class="btn btn-lg btn-danger" role="button" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="你是傻蛋么？">可消失的弹出框</a>
-		
-<div class="page-header"></div>
+				<div class="page-header"></div>
+				<a tabindex="0" class="btn btn-lg btn-danger" role="button"
+					data-toggle="popover" data-trigger="focus"
+					title="Dismissible popover" data-content="你是傻蛋么？">可消失的弹出框</a>
+
+				<div class="page-header"></div>
 
 				<div id="alertjs">
 					<div class="alert alert-warning alert-dismissible fade in"
@@ -1220,7 +1230,7 @@ overflow: auto;
 				<button type="button" id="myButtons" data-loading-text="登陆中。。。。。"
 					class="btn btn-primary" autocomplete="off">登陆</button>
 
-<div class="page-header"></div>
+				<div class="page-header"></div>
 
 				<div class="panel-group" id="accordion" role="tablist"
 					aria-multiselectable="true">
@@ -1271,17 +1281,18 @@ overflow: auto;
 				<div class="page-header"></div>
 
 				<div>
-					<a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" aria-expanded="false"
+					<a class="btn btn-primary" data-toggle="collapse"
+						href="#collapseExample" aria-expanded="false"
 						aria-controls="collapseExample"> Link with href </a>
 					<button class="btn btn-primary" type="button"
 						data-toggle="collapse" data-target="#collapseExample"
 						aria-expanded="false" aria-controls="collapseExample">
 						点击出来下面隐藏框内容噢</button>
 					<div class="collapse" id="collapseExample">
-						<div class="well">这是字体的噢 </div>
+						<div class="well">这是字体的噢</div>
 					</div>
 				</div>
-				
+
 				<div class="page-header"></div>
 
 				<div class="bs-example" data-example-id="carousel-with-captions">
@@ -1369,42 +1380,37 @@ overflow: auto;
 								<li><a href="#code">code</a></li>
 								<li><a href="#table">table</a></li>
 							</ul></li>
-							<li><a href="#">【3】文本框表单代码</a>
-								<ul class="nav">
-									<li><a href="#">表单1.form-control form-group</a></li>
-									<li><a href="#">水平排列的表单</a></li>
-									<li><a href="#button">按钮</a></li>
-								</ul>
-							</li>
-							<li><a href="#">【4】组件</a>
-								<ul class="nav">
-									<li><a href="#drop">drop下拉</a></li>
-									<li><a href="#nav">标签式的导航菜单</a></li>
-									<li><a href="#message">消息的提示</a></li>
-								</ul>
-							</li>
-							<li><a href="#">【5】组件</a>
-								<ul class="nav">
-									<li><a href="#bigscreen">超大屏幕</a></li>
-									<li><a href="#image">缩略图</a></li>
-									<li><a href="#close">关闭的对话框</a></li>
-									<li><a href="#process">进度条</a></li>
-								</ul>
-							</li>
-							<li><a href="#">【6】列表组</a>
-								<ul class="nav">
-									<li><a href="#listgroup">列表组list-group</a></li>
-								</ul>
-							</li>
-							<li><a href="#">【7】面版</a>
-								<ul class="nav">
-									<li><a href="#panel">面板</a></li>
-									<li><a href="#panelfull">带表格的面版</a></li>
-									<li><a href="#iframes">iframes嵌套网页</a></li>
-									<li><a href="#dialog">dialog弹出对话框</a></li>
-									<li><a href="#alertjs">alert.js警告消息</a></li>
-								</ul>
-							</li>
+						<li><a href="#">【3】文本框表单代码</a>
+							<ul class="nav">
+								<li><a href="#">表单1.form-control form-group</a></li>
+								<li><a href="#">水平排列的表单</a></li>
+								<li><a href="#button">按钮</a></li>
+							</ul></li>
+						<li><a href="#">【4】组件</a>
+							<ul class="nav">
+								<li><a href="#drop">drop下拉</a></li>
+								<li><a href="#nav">标签式的导航菜单</a></li>
+								<li><a href="#message">消息的提示</a></li>
+							</ul></li>
+						<li><a href="#">【5】组件</a>
+							<ul class="nav">
+								<li><a href="#bigscreen">超大屏幕</a></li>
+								<li><a href="#image">缩略图</a></li>
+								<li><a href="#close">关闭的对话框</a></li>
+								<li><a href="#process">进度条</a></li>
+							</ul></li>
+						<li><a href="#">【6】列表组</a>
+							<ul class="nav">
+								<li><a href="#listgroup">列表组list-group</a></li>
+							</ul></li>
+						<li><a href="#">【7】面版</a>
+							<ul class="nav">
+								<li><a href="#panel">面板</a></li>
+								<li><a href="#panelfull">带表格的面版</a></li>
+								<li><a href="#iframes">iframes嵌套网页</a></li>
+								<li><a href="#dialog">dialog弹出对话框</a></li>
+								<li><a href="#alertjs">alert.js警告消息</a></li>
+							</ul></li>
 					</ul>
 				</div>
 			</div>

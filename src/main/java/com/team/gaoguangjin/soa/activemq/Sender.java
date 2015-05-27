@@ -17,7 +17,7 @@ import org.apache.activemq.ActiveMQConnectionFactory;
  * @Date 2015-5-6 上午11:10:36
  */
 public class Sender {
-	private static final int SEND_NUMBER = 1;
+	private static final int SEND_NUMBER = 2;
 	
 	public static void main(String[] args) {
 		ConnectionFactory connectionFactory;// ConnectionFactory ：连接工厂，JMS 用它创建连接

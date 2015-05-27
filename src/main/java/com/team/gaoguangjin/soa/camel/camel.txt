@@ -1,0 +1,15 @@
+Apache Camel是一个非常实用的规则引擎库，能够用来处理来自于不同源的事件和信息。你可以在使用不同的协议比如VM，HTTP，FTP，JMS甚至是文件系统中来传递消息，并且让你的操作逻辑和传递逻辑保持分离，这能够让你更专注于消息的内容。
+
+一、当启动Camel后，它会创建一个CamelContext对象，该对象拥有了很多关于如何运行Camel的信息，还包含我们所创建的Route的定义
+CamelContext context = new DefaultCamelContext();
+
+二、路由类
+RouteBuilder.java(父类)
+接下来我们只需要构造一个路由类。路由就好比是Camel中怎样将消息从一端传递到另一端的一个指令定义。
+我们将会创建src/main/java/camelcoredemo/TimerRouteBuilder.java文件，每隔一秒向处理器发送一个消息，简单打印出来
+
+三、过程类
+Processor.java(接口) 过程
+
+
+四、改善启动CamelContext的主类

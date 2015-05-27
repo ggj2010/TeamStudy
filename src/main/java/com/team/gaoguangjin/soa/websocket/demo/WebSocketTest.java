@@ -1,6 +1,8 @@
 package com.team.gaoguangjin.soa.websocket.demo;
 
 import java.io.IOException;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
 
 import javax.websocket.OnClose;
 import javax.websocket.OnMessage;
@@ -8,44 +10,56 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * @ClassName:WebSocketTest.java
- * @Description: websocket学习。需要maven引入javax.websocket-api.jar
+ * @Description: websocket学习。toamct7、lib下面的这个websocket-api.jar
+ * @see:需要jdk7环境
  * @author gaoguangjin
  * @Date 2015-5-13 下午2:28:06
  */
-@ServerEndpoint("/hello/websocket")
+@Slf4j
+@ServerEndpoint("/websocket")
 public class WebSocketTest {
 	
-	// 当服务器接收到客户端发送的消息时所调用的方法。
+	// websocket 是线程安全的，和servlet不一样，全局变量 每连接一次，都是一个新的.所以如果共享全局变量那就加 static
+	private static ConcurrentHashMap<String, Session> sessionMap = new ConcurrentHashMap<String, Session>();
+	
+	// 当前台页面ws.send()方法时候，后台就开始受到信息，然后反馈回去
 	@OnMessage
 	public void onMessage(String message, Session session) throws IOException, InterruptedException {
+		
+		log.info("" + sessionMap.size());
 		// Print the client message for testing purposes
-		System.out.println("Received: " + message);
+		log.info("Received: " + message);
 		
-		// Send the first message to the client
-		session.getBasicRemote().sendText("This is the first server message");
+		session.getBasicRemote().sendText("我说：" + message);
 		
-		// Send 3 messages to the client every 5 seconds
-		int sentMessages = 0;
-		while (sentMessages < 3) {
-			Thread.sleep(5000);
-			session.getBasicRemote().sendText("This is an intermediate server message. Count: " + sentMessages);
-			sentMessages++;
+		for (Iterator iterator = sessionMap.keySet().iterator(); iterator.hasNext();) {
+			Object sessionId = iterator.next();
+			Session sessions = sessionMap.get(sessionId.toString());
+			if (session != sessions) {
+				if (sessions.isOpen())
+					sessions.getBasicRemote().sendText("群聊：" + message);
+			}
 		}
 		
-		// Send a final message to the client
-		session.getBasicRemote().sendText("This is the last server message");
+		// session.close();
 	}
 	
 	@OnOpen
-	public void onOpen() {
-		System.out.println("Client connected");
+	public void onOpen(Session session) {
+		String id = session.getId();
+		if (null == sessionMap.get(id)) {
+			sessionMap.put(id, session);
+		}
+		log.info("Client connected " + id + ":" + session);
 	}
 	
 	@OnClose
 	public void onClose() {
-		System.out.println("Connection closed");
+		log.info("Connection closed");
 	}
 }
 

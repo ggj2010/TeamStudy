@@ -14,6 +14,7 @@ public class HeapPoom {
 	
 	// 堆溢出
 	public static void main(String[] args) {
+		
 		List<OMject> list = new ArrayList<OMject>();
 		
 		while (true) {

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:camel="http://camel.apache.org/schema/spring"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd"
+	default-autowire="byName" default-init-method="init">
+
+	<bean id="myBean" class="com.team.gaoguangjin.soa.integration.DubbBean" />
+
+
+	<!--camel【direct】命令是用来上一个输出 是下一个输入的 -->
+	<camelContext id="camelDirectOne" xmlns="http://camel.apache.org/schema/spring">
+
+		<camel:route>
+			<camel:from uri="jms:queue:gaoQueue" />
+			<camel:convertBodyTo type="String"></camel:convertBodyTo>
+			<!-- 模拟将消息总线的值传到dubbo 此处用对象代替 -->
+			<camel:bean ref="myBean" />
+			<!--处理之后返回  -->
+			<camel:to uri="jms:queue:gaoQueue" />
+		</camel:route>
+
+	</camelContext>
+
+	<bean id="jms" class="org.apache.camel.component.jms.JmsComponent">
+		<property name="connectionFactory">
+			<bean class="org.apache.activemq.ActiveMQConnectionFactory">
+				<property name="brokerURL" value="failover://tcp://localhost:61616" />
+			</bean>
+		</property>
+	</bean>
+
+</beans>

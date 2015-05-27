@@ -431,12 +431,55 @@
 		<version>2.1.0</version>
 	</dependency>
 	
-	<!--websocket  -->
-	<dependency>
-		<groupId>javax.websocket</groupId>
-		<artifactId>javax.websocket-api</artifactId>
-		<version>1.1</version>
-	</dependency>
+	
+	
+	<!--spring Boot <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-web</artifactId> <version>1.0.1.RELEASE</version> 
+			</dependency> <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-actuator</artifactId> <version>1.0.1.RELEASE</version> 
+			</dependency> -->
+		<!-- java操作redis 2.6.0依赖的common-pool2 所以选用2.1.0 -->
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>2.1.0</version>
+		</dependency>
+
+		<!--websocket maven 版本太低，需要把toamct7、lib下面的这个websocket-api.jar拷贝到项目里面来 <dependency> <groupId>javax.websocket</groupId> <artifactId>javax.websocket-api</artifactId> 
+			<version>1.1</version> </dependency> -->
+		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-websocket-api</artifactId>
+			<version>7.0.62</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- Qbit微服务 需要jdk 8支持
+		<dependency>
+			<groupId>io.advantageous.qbit</groupId>
+			<artifactId>qbit-core</artifactId>
+			<version>0.8.2</version>
+		</dependency>
+ 		-->
+
+		<!-- camel -->
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-core</artifactId>
+			<version>2.15.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-spring</artifactId>
+			<version>2.15.2</version>
+		</dependency>
+		
+		
+		<!-- camel与jms activemq集成 -->
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-jms</artifactId>
+			<version>2.15.2</version>
+		</dependency>
+	
 	
 	</dependencies>
 </project>
