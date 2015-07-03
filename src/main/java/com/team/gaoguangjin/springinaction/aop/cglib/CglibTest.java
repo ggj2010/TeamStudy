@@ -9,10 +9,8 @@ public class CglibTest {
 	@Test
 	public void test() {
 		CglibProxy cglibProxy = new CglibProxy();
-		
 		StartPlayGame startPlayGame = (StartPlayGame) cglibProxy.getProxy(StartPlayGame.class);
 		startPlayGame.palyGame();
 		startPlayGame.palyGame2();
-		
 	}
 }

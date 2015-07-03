@@ -16,7 +16,10 @@
 		 
 		 <!--dubbo 2.4.10依赖sping2.5架包 会导致冲突 -->
 		 <dubbo.version>2.4.10</dubbo.version>
-		  <zkclient.version>0.1</zkclient.version>
+		  <zkclient.version>0.5</zkclient.version>
+		 
+		  <!-- freemaker -->
+		  <freemarker.version>2.3.20</freemarker.version>
 	</properties>
 
 	<dependencies>
@@ -249,7 +252,7 @@
 		<dependency>
 			<groupId>ojdbc</groupId>
 			<artifactId>ojdbc</artifactId>
-			<version>6</version>
+			<version>14</version>
 		</dependency>
 		<!-- 单元测试 -->
 		<dependency>
@@ -336,10 +339,11 @@
             </exclusions>  
 	   </dependency>
 	   <!-- zookeeper -->
-	  	 <dependency>
-				<groupId>com.github.sgroschupf</groupId>
-				<artifactId>zkclient</artifactId>
-				<version>${zkclient.version}</version>
+		<!-- zclient -->
+		<dependency>
+			<groupId>com.101tec</groupId>
+			<artifactId>zkclient</artifactId>
+			<version>${zkclient.version}</version>
 		</dependency>
 		<!-- quartz定时任务 -->
 		<dependency>
@@ -368,6 +372,10 @@
 				<exclusion>
 					<artifactId>jasper-compiler</artifactId>
 					<groupId>tomcat</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>jsp-api-2.1</artifactId>
+					<groupId>org.mortbay.jetty</groupId>
 				</exclusion>
 			</exclusions>
 		</dependency>
@@ -424,18 +432,7 @@
             <version>1.0.1.RELEASE</version>
         </dependency>
 	 -->
-<!-- java操作redis 2.6.0依赖的common-pool2 所以选用2.1.0 -->
-	<dependency>
-		<groupId>redis.clients</groupId>
-		<artifactId>jedis</artifactId>
-		<version>2.1.0</version>
-	</dependency>
 	
-	
-	
-	<!--spring Boot <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-web</artifactId> <version>1.0.1.RELEASE</version> 
-			</dependency> <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-actuator</artifactId> <version>1.0.1.RELEASE</version> 
-			</dependency> -->
 		<!-- java操作redis 2.6.0依赖的common-pool2 所以选用2.1.0 -->
 		<dependency>
 			<groupId>redis.clients</groupId>
@@ -449,6 +446,7 @@
 			<groupId>org.apache.tomcat</groupId>
 			<artifactId>tomcat-websocket-api</artifactId>
 			<version>7.0.62</version>
+			<!-- 编译需要而发布不需要的jar包 -->
 			<scope>provided</scope>
 		</dependency>
 
@@ -472,12 +470,25 @@
 			<version>2.15.2</version>
 		</dependency>
 		
-		
 		<!-- camel与jms activemq集成 -->
 		<dependency>
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-jms</artifactId>
 			<version>2.15.2</version>
+		</dependency>
+	
+		<!-- freemarker engine -->
+		<dependency>
+			<groupId>org.freemarker</groupId>
+			<artifactId>freemarker</artifactId>
+			<version>${freemarker.version}</version>
+		</dependency>
+
+		<!--memcached java客户端  -->
+		<dependency>
+			<groupId>com.whalin</groupId>
+			<artifactId>Memcached-Java-Client</artifactId>
+			<version>3.0.2</version>
 		</dependency>
 	
 	

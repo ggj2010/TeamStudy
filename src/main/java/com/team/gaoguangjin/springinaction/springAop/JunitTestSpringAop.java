@@ -23,33 +23,26 @@ public class JunitTestSpringAop {
 		try {
 			ApplicationContext ac = new ClassPathXmlApplicationContext("com/team/gaoguangjin/springinaction/springAop/beans.xml");
 			PlayGame play = (PlayGame) ac.getBean("play");
-			
 			play.playLOL();
 		} catch (Exception e) {
 			log.error("测试xml aop增强失败！：" + e.getLocalizedMessage());
 		}
-		
 	}
 	
 	private void testByMethod() {
 		// 测试前置增强
 		PlayGameBeforAdvice pba = new PlayGameBeforAdvice();
 		excuteAdviceByParam(pba);
-		
 		// 测试后置增强
 		PlayGameAfterAdvice paa = new PlayGameAfterAdvice();
 		excuteAdviceByParam(paa);
-		
 		// 测试环绕增强
 		PlayGameInterceptor pgi = new PlayGameInterceptor();
 		excuteAdviceByParam(pgi);
-		
 	}
 	
 	public void excuteAdviceByParam(Advice advice) {
-		
 		try {
-			
 			PlayGame target = new PlayGameImp();
 			// spring提供的代理工厂
 			ProxyFactory proxy = new ProxyFactory();
@@ -63,9 +56,7 @@ public class JunitTestSpringAop {
 			proxy.setOptimize(true);
 			// 生成代理类
 			PlayGame play = (PlayGame) proxy.getProxy();
-			
 			play.playLOL();
-			
 		} catch (Exception e) {
 			log.error("测试aop增强失败！：" + e.getLocalizedMessage());
 		}

@@ -13,7 +13,4 @@
 	 -->
 	<bean id="playGame" class="com.team.gaoguangjin.springinaction.aspectAop.PlayGameImp" />
 	<bean id="asepectDemo" class="com.team.gaoguangjin.springinaction.aspectAop.AspectDemo" />
-	
-	
-	  
 </beans>

@@ -17,6 +17,4 @@
 		p:proxyInterfaces="com.team.gaoguangjin.springinaction.springAop.PlayGame"
 		p:interceptorNames="playGameBeforAdvice" p:target-ref="target"
 		p:proxyTargetClass="true" p:singleton="true" /> 
-
-	  
 </beans>

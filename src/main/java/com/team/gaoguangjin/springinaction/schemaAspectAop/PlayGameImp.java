@@ -20,7 +20,6 @@ public class PlayGameImp implements PlayGame {
 	public String playCar(String param) {
 		log.info("【2】玩车啊");
 		return param;
-		
 	}
 	
 	public String playGame(String gameName) {
@@ -31,19 +30,15 @@ public class PlayGameImp implements PlayGame {
 	public String playAfter(String param) {
 		log.info("【2】玩【之后】啊");
 		return param;
-		
 	}
 	
 	public String playBefore(String param) {
 		log.info("【2】玩【之前】啊");
 		return param;
-		
 	}
 	
 	public String playMiddle(String param) {
 		log.info("【2】玩【中间】啊");
 		return param;
-		
 	}
-	
 }

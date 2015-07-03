@@ -13,3 +13,31 @@ Processor.java(接口) 过程
 
 
 四、改善启动CamelContext的主类
+
+
+
+
+
+Exchange exchange
+
+
+org.apache.camel.Exchange 是一个消息之间通信的抽象的会话。下面列出的就是这样一个会话，使得组件更为全面
+IN-Message:就是传入的
+OUT-Message：传出的。
+
+1、From
+(in out)
+2、process
+(in out)
+3、to
+（in out）
+
+1的 out  就是 2的 in
+2d out 就是 3的in
+
+如果没有2 的process过程
+1的in  就是3的in
+
+
+
+

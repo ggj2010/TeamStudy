@@ -4,7 +4,7 @@ import org.aspectj.lang.ProceedingJoinPoint;
 
 public class AdviceMethods {
 	public void preGreeting(String name) {
-		System.out.print("--所有方法都会触发!--参数为：");
+		System.out.print("所有方法都会触发!--参数为：");
 		System.out.println(name);
 	}
 	

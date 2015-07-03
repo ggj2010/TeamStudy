@@ -1,7 +1,7 @@
 package com.team.gaoguangjin.springinaction.springAop;
 
 public interface PlayGame {
-	void playLOL();
+	void playLOL() throws Exception;
 	
 	void playCs();
 	

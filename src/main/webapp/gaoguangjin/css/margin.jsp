@@ -52,7 +52,7 @@
 <body>
 	
 	<div class="margintest">
-		<div class="marginquchu">上边界</div>
+		<div class="marginquchu">上边界顺时针方向</div>
 		<div class="margintest1"
 			title="上外边距是 10px 右外边距是 5px 下外边距是 15px 左外边距是 20px ,4个就是顺时针方向
 	">

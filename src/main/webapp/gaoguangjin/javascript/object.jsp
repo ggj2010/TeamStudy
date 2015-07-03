@@ -22,23 +22,15 @@
 
 	function testObjectFunction() {
 		//调用方式一
-		$("#object1").text(
-				"【创建对象方式一】var objectTest={} " + object1.name
-						+ object1.testfunction());
+		$("#object1").text("【创建对象方式一】var objectTest={} " + object1.name+ object1.testfunction());
 
 		//调用方式二
-		$("#object2").text(
-				"【创建对象方式二】var objectTest=new Object() " + object2.name
-						+ object2.objectFunction());
+		$("#object2").text("【创建对象方式二】var objectTest=new Object() " + object2.name+ object2.objectFunction());
 
 		//调用方式三  object3必须要new  之后才会成为对象
 		var object = new object3();
-		$("#object3").text(
-				"【创建对象方式三】var objectTest=new Object() " + object.name
-						+ object.functiontest());
-		$("#object4").text(
-				"【创建对象方式四】var objectTest=new Object({}) " + object4.name
-						+ object4.function1()+object4.function2());
+		$("#object3").text("【创建对象方式三】var objectTest=new Object() " + object.name+ object.functiontest());
+		$("#object4").text("【创建对象方式四】var objectTest=new Object({}) " + object4.name+ object4.function1()+object4.function2());
 	}
 
 	var test = {
@@ -76,7 +68,7 @@
 		};
 	}
 	
-	//js模块化写法
+	//js模块化写法 对象写法对象写法
 	var object4=new Object({
 		function1 : function() {
 			return "是1个帅哥啊！";

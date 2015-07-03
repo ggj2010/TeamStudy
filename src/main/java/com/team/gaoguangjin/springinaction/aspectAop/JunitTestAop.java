@@ -56,7 +56,6 @@ public class JunitTestAop {
 		AspectJProxyFactory aspectFactory = new AspectJProxyFactory();
 		// 先要setTarget 然后再添加aspect切面
 		aspectFactory.setTarget(target);
-		
 		// 添加切面类
 		aspectFactory.addAspect(AspectDemo.class);
 		// 生成切面的代理对象

@@ -48,10 +48,10 @@ public class JunitTestSchemaAop {
 		try {
 			ApplicationContext ac = new ClassPathXmlApplicationContext("com/team/gaoguangjin/springinaction/schemaAspectAop/beans.xml");
 			PlayGame play = (PlayGame) ac.getBean("target");
-			play.playLOL("");
+			play.playLOL("lol");
 			
 			// 只对playlol加了aop 这是面向切点的拦截
-			play.playCs("");
+			play.playCs("cs");
 			
 		} catch (Exception e) {
 			log.error("测试xml aop增强失败！：" + e.getLocalizedMessage());
@@ -74,7 +74,7 @@ public class JunitTestSchemaAop {
 			ApplicationContext ac = new ClassPathXmlApplicationContext("com/team/gaoguangjin/springinaction/schemaAspectAop/beans.xml");
 			PlayGame play = (PlayGame) ac.getBean("play");
 			play.playCar("");
-			play.playCs("");
+			// play.playCs("");
 		} catch (Exception e) {
 			log.error("测试xml aop增强失败！：" + e.getLocalizedMessage());
 		}

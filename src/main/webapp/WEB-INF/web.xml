@@ -113,7 +113,7 @@
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<!-- 本地用的spring配置项 -->
-		<param-value>classpath:/youdao/*.xml,classpath:/camel/camel.xml</param-value>
+		<param-value>classpath:/youdao/*.xml</param-value>
 		<!-- <param-value>classpath:springwithoutjdbc.xml</param-value> -->
 	</context-param>
 
@@ -153,11 +153,11 @@
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<!-- 本地用的spring配置项 
-			<param-value>classpath:/youdao/youdaospring-dispatcherservlet.xml</param-value> -->
-			 <!-- 带camel 测试 -->
+			<!-- 本地用的spring配置项--> 
+			<param-value>classpath:/youdao/youdaospring-dispatcherservlet.xml</param-value> 
+			 <!-- 带camel 测试 
 			<param-value>classpath:/youdao/youdaospring-dispatcherservlet.xml,classpath:/camel/camel.xml</param-value>
-			
+			-->
 			<!-- 没用jdbc在服务器上用的 -->
 			<!-- <param-value>classpath:springwithoutjdbc.xml</param-value> -->
 		</init-param>

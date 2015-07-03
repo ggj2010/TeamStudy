@@ -92,7 +92,6 @@ public class HttpClientTest {
 	}
 	
 	private static void cookie() {
-		
 		HttpClient client = new HttpClient();
 		PostMethod postMethod = new PostMethod("http://www.sd-express.net/main/public/register.html");
 		PostMethod postMethod2 = new PostMethod("http://localhost:8080/TeamStudy/youdao/httpclient2.do");

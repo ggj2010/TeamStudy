@@ -26,8 +26,8 @@ public class MapTypeTest {
 		// test();
 		// hashMap();
 		// hashTable();
-		// LinkedHashMap();
-		treeMap();
+		LinkedHashMap();
+		// treeMap();
 		
 	}
 	
@@ -88,21 +88,21 @@ public class MapTypeTest {
 	 * @Description:linkedMap 有序
 	 */
 	private static void LinkedHashMap() {
-		// Map<String, String> linkedMap = new LinkedHashMap();
-		// linkedMap.put("a", "1");
-		// linkedMap.put("b", "2");
-		// linkedMap.put("c", "3");
-		// linkedMap.put("d", "4");
-		// for (Iterator<String> itreator = linkedMap.keySet().iterator(); itreator.hasNext();)
-		// log.info("linkedMap:有序" + linkedMap.get(itreator.next()));
-		//
-		// Map<String, String> hashMap = new HashMap<String, String>();
-		// hashMap.put("a", "1");
-		// hashMap.put("b", "2");
-		// hashMap.put("c", "3");
-		// hashMap.put("d", "4");
-		// for (Iterator<String> itreator = hashMap.keySet().iterator(); itreator.hasNext();)
-		// log.info("hashMap无序:" + hashMap.get(itreator.next()));
+		Map<String, String> linkedMap = new LinkedHashMap();
+		linkedMap.put("a", "1");
+		linkedMap.put("b", "2");
+		linkedMap.put("c", "3");
+		linkedMap.put("d", "4");
+		for (Iterator<String> itreator = linkedMap.keySet().iterator(); itreator.hasNext();)
+			log.info("linkedMap:有序" + linkedMap.get(itreator.next()));
+		
+		Map<String, String> hashMap = new HashMap<String, String>();
+		hashMap.put("a", "1");
+		hashMap.put("b", "2");
+		hashMap.put("c", "3");
+		hashMap.put("d", "4");
+		for (Iterator<String> itreator = hashMap.keySet().iterator(); itreator.hasNext();)
+			log.info("hashMap无序:" + hashMap.get(itreator.next()));
 		//
 		// 按照修改时间的map排序
 		

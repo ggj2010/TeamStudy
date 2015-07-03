@@ -13,7 +13,6 @@ import net.sf.cglib.proxy.MethodProxy;
  */
 @Slf4j
 public class CglibProxy implements MethodInterceptor {
-	
 	Enhancer enhancer = new Enhancer();
 	
 	public Object getProxy(Class clazz) {
@@ -23,12 +22,9 @@ public class CglibProxy implements MethodInterceptor {
 	}
 	
 	public Object intercept(Object obj, Method arg1, Object[] args, MethodProxy proxy) throws Throwable {
-		
 		log.info("【1】打开电脑噢");
 		Object result = proxy.invokeSuper(obj, args);
 		log.info("【3】关闭电脑");
-		
 		return result;
 	}
-	
 }

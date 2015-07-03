@@ -4,7 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class PlayGameImp implements PlayGame {
-	public void playLOL() {
+	public void playLOL() throws Exception {
 		log.info("【2】玩lol");
 	}
 	

@@ -38,11 +38,15 @@ public class WebSocketFirst {
 		log.info("【1】websocket接受数据" + message);
 		// 启动生产者，处理数据
 		
-		message = "【1】" + message;
-		
-		initproducer(message);
+		final String messages = "【1】" + message;
 		
 		// 启动消费者 接受数据
+		
+		// new Thread() {
+		// public void run() {
+		initproducer(messages);
+		// }
+		// }.start();
 		
 		String backMessage = initcommuser();
 		

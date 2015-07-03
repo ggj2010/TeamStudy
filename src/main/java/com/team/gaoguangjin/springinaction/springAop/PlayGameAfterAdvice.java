@@ -8,9 +8,7 @@ import org.springframework.aop.AfterReturningAdvice;
 
 @Slf4j
 public class PlayGameAfterAdvice implements AfterReturningAdvice {
-	
 	public void afterReturning(Object returnValue, Method method, Object[] args, Object target) throws Throwable {
 		log.info("【3】方法执行之后");
 	}
-	
 }

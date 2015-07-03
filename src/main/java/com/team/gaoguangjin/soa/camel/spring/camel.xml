@@ -7,14 +7,14 @@
 	<bean id="fileMoveProcess" class="com.team.gaoguangjin.soa.camel.process.FileMoveProcess"></bean>
 
 	<bean id="fileMoveRouteBuilder" class="com.team.gaoguangjin.soa.camel.routebuilder.FileMoveRouteBuilder"></bean>
- 
+
 
 	<bean id="myBean" class="com.team.gaoguangjin.soa.camel.bean.ExampleBean" />
 	<!--camel和spring集成的例子 <camelContext id="testFile" xmlns="http://camel.apache.org/schema/spring"> <camel:route> <camel:from uri="file:D:/ftp?delay=3000" 
 		/> <camel:process ref="fileMoveProcess" /> <camel:to uri="file:E:/xfmovie" /> </camel:route> </camelContext> -->
 	<!--camel【direct】命令是用来上一个输出 是下一个输入的 -->
 	<camelContext id="camelDirectOne" xmlns="http://camel.apache.org/schema/spring">
-		<!-- -->
+		<!-- 
 		<camel:route>
 			<camel:from uri="file:D:/ftp?delay=3000" />
 			<camel:process ref="fileMoveProcess" />
@@ -22,22 +22,27 @@
 			<camel:to uri="file:E:/xfmovie/two" />
 			<camel:bean ref="myBean" />
 			<camel:to uri="direct:directtest" />
-		</camel:route>
+		</camel:route>-->
 		<!--第二个路由用到的地址 是上一个穿过来的direct:directtest -->
+		<!-- 
 		<camel:route>
 			<camel:from uri="direct:directtest" />
 			<camel:process ref="fileMoveProcess" />
 			<camel:to uri="file:E:/xfmovie/direct" />
 		</camel:route>
-
+ -->
 
 		<!-- 输出内容结点是对象myBean <camel:route id="two"> <camel:from uri="direct:directtest" /> <camel:to uri="myBean" /> </camel:route> -->
 
 		<!-- camel 接收输入的字符串，然后转换成想要的格式再输出 <camel:route id="three"> <camel:from uri="direct:directtest" /> <camel:bean ref="myBean" /> <camel:to uri="file:E:/xfmovie/output" 
 			/> </camel:route> -->
 
-		<!-- <camel:route> <camel:from uri="jms:queue:gaoQueue" /> <camel:convertBodyTo type="String"></camel:convertBodyTo> <camel:bean ref="myBean" /> <camel:to 
-			uri="jms:queue:gaoQueue" /> </camel:route> -->
+		<camel:route>
+			<camel:from uri="jms:queue:gaoQueue" />
+			<camel:convertBodyTo type="String"></camel:convertBodyTo>
+			<camel:bean ref="myBean" />
+			<camel:to uri="jms:queue:gaoQueue" />
+		</camel:route>
 	</camelContext>
 
 	<bean id="jms" class="org.apache.camel.component.jms.JmsComponent">

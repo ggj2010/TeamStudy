@@ -22,9 +22,7 @@
 
 	function testObjectFunction() {
 		//调用方式一
-		$("#fuction1").text(
-				"	var function1=(function(){ " + function1.name
-						+ function1.m1());
+		$("#fuction1").text("var function1=(function(){ " + function1.name+ function1.m1());
 	}
 
 	var test = {

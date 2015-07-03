@@ -1,6 +1,7 @@
 package com.team.gaoguangjin.javaUtil.xml;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Iterator;
 
 import org.dom4j.Document;
@@ -9,7 +10,7 @@ import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
 public class Dom4j {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
 		String url = "src/main/resources/testxml/dom.xml";
 		parseXml(url);
 	}
@@ -23,8 +24,7 @@ public class Dom4j {
 			
 			parseXmlByElement(element);
 			
-		}
-		catch (DocumentException e) {
+		} catch (DocumentException e) {
 			e.printStackTrace();
 		}
 		

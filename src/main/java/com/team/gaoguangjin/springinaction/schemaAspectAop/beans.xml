@@ -7,61 +7,45 @@
            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
 	
 	
-		<!-- 1和2类似的 ,使用之前可以 先把1和2的注释去掉，把3注释-->
-	<bean id="target" class="com.team.gaoguangjin.springinaction.schemaAspectAop.PlayGameImp" />
-	<bean id="playGameAfterAdvice" class="com.team.gaoguangjin.springinaction.schemaAspectAop.PlayGameAfterAdvice" />
-	<bean id="playGameBeforAdvice" class="com.team.gaoguangjin.springinaction.schemaAspectAop.PlayGameBeforAdvice" />
-	<bean id="playGameInterceptor" class="com.team.gaoguangjin.springinaction.schemaAspectAop.PlayGameInterceptor" />
 	<bean id="adviceMethods" class="com.team.gaoguangjin.springinaction.schemaAspectAop.AdviceMethods" />
+	<aop:config proxy-target-class="true">
+		<!--可以配置多个 aop:aspect -->
+		<aop:aspect ref="adviceMethods">
+			<!-- args(name) 这个name属性为 public void preGreeting(String name)-->
+			<aop:pointcut expression="target(com.team.gaoguangjin.springinaction.schemaAspectAop.PlayGameImp) and args(name)" id="playGamePointcut"/>
+			<!--1PlayGameImp类的所有方法运行之前 都会触发这个条件
+			<aop:before method="preGreeting" pointcut="target(com.team.gaoguangjin.springinaction.schemaAspectAop.PlayGameImp) and args(name)" arg-names="name" />
+			-->
+			<!--2PlayGameImp类的所有方法运行之前 都会触发这个条件 1和2一样，只是用到了pointcut-->
+			<aop:before method="preGreeting" pointcut-ref="playGamePointcut"/>
+			
+			 <!--某个类的任何方法运行之后都会带返回参数的aop  -->
+			<aop:after-returning method="afterReturning"
+				pointcut="target(com.team.gaoguangjin.springinaction.schemaAspectAop.PlayGameImp)"
+				returning="retVal" />
+			<aop:around method="aroundMethod" pointcut="execution(* playLOL(..)) and within(com.team.gaoguangjin.springinaction.schemaAspectAop.PlayGameImp)"  />	
+		</aop:aspect>
+	</aop:config>
 	
-
-	<!--【1】 基于schemaAspectAop的配置切面
+	<!-- 基于schemaAspectAop的配置切面-->
+	<bean id="playGameAfterAdvice" class="com.team.gaoguangjin.springinaction.schemaAspectAop.PlayGameAfterAdvice" />
 	<aop:config proxy-target-class="true">
 	    <aop:advisor advice-ref="playGameAfterAdvice"  pointcut="execution(* com..*.playLOL(..))"/>  
-	</aop:config>-->
+	</aop:config>
 	
 	
-  	<!--【2】 xml配置aop的关系 
+	<!-- 1和2类似的 ,使用之前可以 先把1和2的注释去掉，把3注释-->
+	<bean id="target" class="com.team.gaoguangjin.springinaction.schemaAspectAop.PlayGameImp" />
+	<bean id="playGameBeforAdvice" class="com.team.gaoguangjin.springinaction.schemaAspectAop.PlayGameBeforAdvice" />
+	<bean id="playGameInterceptor" class="com.team.gaoguangjin.springinaction.schemaAspectAop.PlayGameInterceptor" />
+	
+  	<!--【2】 xml配置aop的关系
 	<bean id="play" class="org.springframework.aop.framework.ProxyFactoryBean"
 		p:proxyInterfaces="com.team.gaoguangjin.springinaction.schemaAspectAop.PlayGame"
 		p:interceptorNames="playGameBeforAdvice" p:target-ref="target"
 		p:proxyTargetClass="true" p:singleton="true" />
--->
+	-->
 
-	<!-- 【3】切面 -->
-	<aop:config proxy-target-class="true">
-		<aop:aspect ref="adviceMethods">
-		
-		<!-- 某个类的所有方法运行之前 都会触发这个	 -->
-			<aop:before method="preGreeting"
-				pointcut="target(com.team.gaoguangjin.springinaction.schemaAspectAop.PlayGameImp) and args(name)"
-				arg-names="name" />
-			
-			
-			 <!--某个类的任何方法运行之后都会带返回参数的aop  -->
-			 <!--  
-			<aop:after-returning method="afterReturning"
-				pointcut="target(com.team.gaoguangjin.springinaction.schemaAspectAop.PlayGameImp)"
-				returning="retVal" />
-				 -->
-			
-			<!-- 
-			<aop:around method="aroundMethod"
-				pointcut="execution(* serveTo(..)) and within(com.team.gaoguangjin.springinaction.schemaAspectAop.PlayGameImp)" />
-			<aop:after-throwing method="afterThrowingMethod"
-				pointcut="target(com.team.gaoguangjin.springinaction.schemaAspectAop.PlayGameImp) and execution(* checkBill(..))"
-				throwing="iae" />
-			<aop:after method="afterMethod" pointcut="execution(* com..*.playAfter(..))" />
-			<aop:declare-parents
-				implement-interface="com.team.gaoguangjin.springinaction.schemaAspectAop.PlayGameImp"
-				types-matching="com.team.gaoguangjin.springinaction.schemaAspectAop.PlayGame+" />
-			<aop:before method="bindParams"
-				pointcut="target(com.team.gaoguangjin.springinaction.schemaAspectAop.PlayGameImp) and args(name,num,..)" />
-		
-		-->
-		</aop:aspect>
+	
 
-	</aop:config>
-	
-	
 </beans>

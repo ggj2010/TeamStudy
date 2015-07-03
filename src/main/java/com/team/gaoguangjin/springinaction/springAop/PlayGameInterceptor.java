@@ -21,5 +21,4 @@ public class PlayGameInterceptor implements MethodInterceptor {
 		log.info("【3】环绕增强之后");
 		return null;
 	}
-	
 }

@@ -17,7 +17,6 @@ import org.junit.Test;
 public class TestEhcache {
 	
 	public static void main(String[] args) {
-		
 		getCache();
 	}
 	

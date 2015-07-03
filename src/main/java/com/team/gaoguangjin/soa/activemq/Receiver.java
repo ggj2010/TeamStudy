@@ -122,6 +122,8 @@ public class Receiver {
 				try {
 					System.out.println("【testListener】：被调用");
 					String userAdd = ((TextMessage) message).getText();
+					
+					Integer.parseInt("ddd");
 					System.out.println(userAdd);
 				} catch (JMSException e) {
 					e.printStackTrace();

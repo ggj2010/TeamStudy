@@ -60,19 +60,14 @@ body,pre {
 
 	<div style="clear:both;margin-top: 10px;height: 30px;margin-bottom: 20px">
 	position:relative;margin-left: 20px;黄色的div相对于原来位置移动了20px
-	
 	</div>
 
 	<div class="left"></div>
-
 	<div class="relative" title="position:relative;margin-left: 20px;">
-	
 		<div style="position: absolute; left:10px;width: 150px;height: 150px;background-color: grey" title="position: absolute; left:10px;width: 150px;height: 150px;background-color: grey">
 			如果父级别的div 设置了position:relative  那么子级别的就可以用position: absolute进行绝对定位，相对与父级别
 		</div>
-	
 	</div>
-
 	<div class="right"></div>
 
 

@@ -28,7 +28,6 @@ public class AppConfig implements CachingConfigurer {
 	@Bean
 	@Override
 	public CacheManager cacheManager() {
-		
 		try {
 			net.sf.ehcache.CacheManager ehcacheCacheManager = new net.sf.ehcache.CacheManager(
 					new ClassPathResource("cache/ehcache.xml").getInputStream());

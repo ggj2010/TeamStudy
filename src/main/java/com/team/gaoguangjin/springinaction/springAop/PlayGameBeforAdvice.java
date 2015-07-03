@@ -16,9 +16,7 @@ import org.springframework.aop.MethodBeforeAdvice;
  */
 @Slf4j
 public class PlayGameBeforAdvice implements MethodBeforeAdvice {
-	
 	public void before(Method method, Object[] args, Object target) throws Throwable {
 		log.info("【1】方法执行之前");
 	}
-	
 }
