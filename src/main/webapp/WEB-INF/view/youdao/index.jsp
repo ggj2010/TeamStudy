@@ -1187,9 +1187,7 @@ a:focus{color:pink}
 						</div>
 					</div>
 				</div>
-
 				<div class="page-header"></div>
-
 				<div>
 					<button type="button" class="btn btn-default" data-toggle="tooltip"
 						data-placement="left" title="Tooltip on left">Tooltip on

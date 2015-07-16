@@ -1,7 +1,46 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="">
-
-
-
+<mapper namespace="com.team.gaoguangjin.jdbc.mybatis.mapper.ClassRoomMapper">
+	<!-- classroom有三个字段 -->
+	<sql id="columns">
+	 id as "id",
+	 room_name as "roomName",
+	 room_size as "roomSize"
+	</sql>
+	
+	<!-- 定义column到实体的映射关系 -->
+	<resultMap id="classRoomResult" type="com.team.gaoguangjin.jdbc.mybatis.bean.ClassRoom" >
+		<id column="id" property="id"/>
+		<result column="room_name" property="roomName" />
+		<result column="room_size" property="roomSize"/>
+	</resultMap>
+	
+	<!-- 第一种方式  带include 、parameterType 和resultType resulttype对应的是config里面配置的typeAlias-->
+	<select id="get1" parameterType="String" resultType="ClassRoom">
+		select 
+	<include refid="columns"/>
+	 from gao.tc_classroom where id=#{id}
+	</select>
+	
+	<!-- 第二种方式 没有配置column到bean的映射关系，所以room_name和 room_size的值为空-->
+	<select id="get2" parameterType="String" resultType="ClassRoom">
+		select *
+	 from gao.tc_classroom where id=#{id}
+	</select>
+	
+	<!-- 第三种方式，resultMap  没有带参数 parameterType-->
+	<select id="get3" resultMap="classRoomResult" >
+		select *
+	 from gao.tc_classroom where id=#{id}
+	</select>
+	
+	<!-- 插入 有时候 入参数parameterType可以不用写的哎 -->
+	<insert id="insert1" >
+		<selectKey keyProperty="id" resultType="java.lang.String" order="BEFORE"  statementType="STATEMENT">
+     		select youdao.seq_human.nextval from dual
+     	</selectKey>
+	insert into  gao.tc_classroom 
+		(id,room_name,room_size)
+	values (#{id},#{roomName},#{roomSize})
+	</insert>
 </mapper>

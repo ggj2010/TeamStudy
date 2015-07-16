@@ -35,5 +35,7 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="src/main/resources/hbase-0.94.26.jar"/>
+	<classpathentry kind="lib" path="src/main/resources/IKAnalyzer2012FF_u1.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

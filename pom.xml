@@ -8,7 +8,6 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<!-- spring 3.1才支持hibernate4 ,hibernate4比较新，所以的话要多学习，你懂的-->
-		
 		 <!--
 		<spring.version>3.0.5.RELEASE</spring.version> -->
 		<spring.version>4.0.5.RELEASE</spring.version>
@@ -20,6 +19,10 @@
 		 
 		  <!-- freemaker -->
 		  <freemarker.version>2.3.20</freemarker.version>
+		  
+		  <lucene.version>4.0.0</lucene.version>
+		  <!-- oauth2.0 -->
+		  <oltu.version>1.0.0</oltu.version>
 	</properties>
 
 	<dependencies>
@@ -260,6 +263,12 @@
 			<artifactId>junit</artifactId>
 			<version>4.10</version>
 		</dependency>
+		<!-- Feed4JUnit带数据测试 -->
+		<dependency>
+			<groupId>org.databene</groupId>
+			<artifactId>contiperf</artifactId>
+			<version>2.2.0</version>
+		</dependency>
 		<!-- 模拟对象测试 -->
 		<dependency>
 			<groupId>org.mockito</groupId>
@@ -345,6 +354,7 @@
 			<artifactId>zkclient</artifactId>
 			<version>${zkclient.version}</version>
 		</dependency>
+		
 		<!-- quartz定时任务 -->
 		<dependency>
 			<groupId>org.quartz-scheduler</groupId>
@@ -490,7 +500,58 @@
 			<artifactId>Memcached-Java-Client</artifactId>
 			<version>3.0.2</version>
 		</dependency>
-	
-	
+		
+		<!--hbase-client调用 因为服务器上面版本是hbase-0.94.26，而maven仓库没有，所以从服务器上面把jar包拷贝过来-->
+		<dependency>
+			<groupId>org.apache.hbase</groupId>
+			<artifactId>hbase-client</artifactId>
+			<version>0.95.1-hadoop1</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>hbase-common</artifactId>
+					<groupId>org.apache.hbase</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!-- 搜索引擎 lucene -->
+		<dependency>
+			<groupId>org.apache.lucene</groupId>
+			<artifactId>lucene-core</artifactId>
+			<version>${lucene.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.lucene</groupId>
+			<artifactId>lucene-analyzers-common</artifactId>
+			<version>${lucene.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.lucene</groupId>
+			<artifactId>lucene-queryparser</artifactId>
+			<version>${lucene.version}</version>
+		</dependency>
+		<!--高亮  -->
+		<dependency>
+			<groupId> org.apache.lucene</groupId>
+			<artifactId>lucene-highlighter</artifactId>
+			<version>${lucene.version}</version>
+		</dependency>
+
+
+		<!-- apache oauth2.0 -->
+		<dependency>
+			<groupId>org.apache.oltu.oauth2</groupId>
+			<artifactId>org.apache.oltu.oauth2.authzserver</artifactId>
+			<version>${oltu.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.oltu.oauth2</groupId>
+			<artifactId>org.apache.oltu.oauth2.client</artifactId>
+			<version>${oltu.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.oltu.oauth2</groupId>
+			<artifactId>org.apache.oltu.oauth2.resourceserver</artifactId>
+			<version>${oltu.version}</version>
+		</dependency>
 	</dependencies>
 </project>

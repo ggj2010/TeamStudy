@@ -19,9 +19,7 @@ import com.team.gaoguangjin.jdbc.mybatis.mapper.StudentMapper;
 /**
  * 学习mybatis相关知识
  * @author gaoguangjin
- * 
  * date 2015-02-05
- * 
  */
 @Slf4j
 public class TestMybatisMain {
@@ -31,10 +29,8 @@ public class TestMybatisMain {
 	@Before
 	public void init() {
 		try {
-			sessionFactory = new SqlSessionFactoryBuilder().build(Resources
-					.getResourceAsReader("jdbcconfig/mybatisconfig/normal/configuration.xml"));
-		}
-		catch (IOException e) {
+			sessionFactory = new SqlSessionFactoryBuilder().build(Resources.getResourceAsReader("jdbcconfig/mybatisconfig/normal/configuration.xml"));
+		} catch (IOException e) {
 			log.error("mybatis初始化失败：" + e.getLocalizedMessage());
 		}
 		
@@ -48,9 +44,7 @@ public class TestMybatisMain {
 			testSelectStudentById(session);// 级联查询,多对一
 			testSelectClassRoomById(session);// 单个查询
 			testSelectOneToMany(session);// 一对多，一个选修课程，有多个学生上。
-			
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			log.error("执行sql失败：" + e.getLocalizedMessage());
 		}
 	}
@@ -82,7 +76,5 @@ public class TestMybatisMain {
 		StudentMapper studentMapper = session.getMapper(StudentMapper.class);
 		ClassRoom classRoom = studentMapper.selectClassRoomById("1");
 		log.info(classRoom.toString());
-		
 	}
-	
 }

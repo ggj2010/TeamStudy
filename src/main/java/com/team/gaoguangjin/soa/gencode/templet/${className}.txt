@@ -1,0 +1,9 @@
+package ${package};
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
+<#list listColumn as c>
+private ${c.name} ${c.type};
+</#list>

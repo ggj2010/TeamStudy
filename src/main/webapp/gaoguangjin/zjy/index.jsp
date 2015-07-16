@@ -1,56 +1,56 @@
 <!DOCTYPE HTML>
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@ page isELIgnored="false" %> 
+<%@ page isELIgnored="false"%>
 <%
 	String path = request.getContextPath();
-request.setAttribute("path",path);
+	request.setAttribute("path", path);
 	String basePath = request.getScheme() + "://"
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
 <html lang="en-US">
-	<head>
-		<base href="<%=basePath%>/gaoguangjin/zjy/">
-		<title>老婆生日快乐</title>
-		<meta http-equiv="pragma" content="no-cache">
-		<meta http-equiv="cache-control" content="no-cache">
-		<meta http-equiv="expires" content="0">
-		<meta http-equiv="keywords" content="张静月,高广金,ggjlovezjy">
-		<meta http-equiv="description" content="生日快乐">
-		
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="css/bootstrap.css" />
-		<link rel="stylesheet" href="css/font-awesome.min.css" />
-		<link rel="stylesheet" href="css/linea-icon.css" />
-		<link rel="stylesheet" href="css/fancy-buttons.css" />
-		
-		<!--=== Google Fonts ===-->
-		<link href='http://fonts.googleapis.com/css?family=Bangers'
-			rel='stylesheet' type='text/css'>
-		<link
-			href='http://fonts.googleapis.com/css?family=Roboto+Slab:300,700,400'
-			rel='stylesheet' type='text/css'>
-		<link href='http://fonts.googleapis.com/css?family=Raleway:600,400,300'
-			rel='stylesheet' type='text/css'>
-		<link
-			href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700'
-			rel='stylesheet' type='text/css'>
-		<!--=== Other CSS files ===-->
-		<link rel="stylesheet" href="css/animate.css" />
-		<link rel="stylesheet" href="css/jquery.vegas.css" />
-		<link rel="stylesheet" href="css/baraja.css" />
-		<link rel="stylesheet" href="css/jquery.bxslider.css" />
-		
-		<!--=== Main Stylesheets ===-->
-		<link rel="stylesheet" href="css/style.css" />
-		<link rel="stylesheet" href="css/responsive.css" />
-		
-		<!--=== Color Scheme, three colors are available red.css, orange.css and gray.css ===-->
-		<link rel="stylesheet" id="scheme-source" href="css/schemes/gray.css" />
-		
-		
-	</head>
+<head>
+<base href="<%=basePath%>/gaoguangjin/zjy/">
+<title>老婆生日快乐</title>
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="expires" content="0">
+<meta http-equiv="keywords" content="张静月,高广金,ggjlovezjy">
+<meta http-equiv="description" content="生日快乐">
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/bootstrap.css" />
+<link rel="stylesheet" href="css/font-awesome.min.css" />
+<link rel="stylesheet" href="css/linea-icon.css" />
+<link rel="stylesheet" href="css/fancy-buttons.css" />
+
+<!--=== Google Fonts ===-->
+<link href='http://fonts.googleapis.com/css?family=Bangers'
+	rel='stylesheet' type='text/css'>
+<link
+	href='http://fonts.googleapis.com/css?family=Roboto+Slab:300,700,400'
+	rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Raleway:600,400,300'
+	rel='stylesheet' type='text/css'>
+<link
+	href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700'
+	rel='stylesheet' type='text/css'>
+<!--=== Other CSS files ===-->
+<link rel="stylesheet" href="css/animate.css" />
+<link rel="stylesheet" href="css/jquery.vegas.css" />
+<link rel="stylesheet" href="css/baraja.css" />
+<link rel="stylesheet" href="css/jquery.bxslider.css" />
+
+<!--=== Main Stylesheets ===-->
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/responsive.css" />
+
+<!--=== Color Scheme, three colors are available red.css, orange.css and gray.css ===-->
+<link rel="stylesheet" id="scheme-source" href="css/schemes/gray.css" />
+
+
+</head>
 <body>
 
 	<!--=== Preloader section starts ===-->
@@ -127,56 +127,64 @@ request.setAttribute("path",path);
 
 						<!-- Single Feature Starts -->
 						<li class="single-feature" title="Card style"><img
-							src="http://bcs.duapp.com/ggjlovezjy/images/1.jpg" alt="" class="feature-image" /> <!-- Feature Icon -->
+							src="http://ggjlovezjy.oss-cn-shenzhen.aliyuncs.com/images/1.jpg"
+							alt="" class="feature-image" /> <!-- Feature Icon -->
 
 							<p class="feature-text">你在偷亲我！</p></li>
 						<!-- Single Feature Ends -->
 
 						<!-- Single Feature Starts -->
 						<li class="single-feature" title="50+ SVG Icon included"><img
-							src="http://bcs.duapp.com/ggjlovezjy/images/2.jpg" alt="" class="feature-image" /> <!-- Feature Icon -->
+							src="http://ggjlovezjy.oss-cn-shenzhen.aliyuncs.com/images/2.jpg"
+							alt="" class="feature-image" /> <!-- Feature Icon -->
 
 							<p class="feature-text">原来你也清纯过噢！</p></li>
 						<!-- Single Feature Ends -->
 
 						<!-- Single Feature Starts -->
 						<li class="single-feature" title="MailChimp Ready"><img
-							src="http://bcs.duapp.com/ggjlovezjy/images/3.jpg" alt="" class="feature-image" /> <!-- Feature Icon -->
+							src="http://ggjlovezjy.oss-cn-shenzhen.aliyuncs.com/images/3.jpg"
+							alt="" class="feature-image" /> <!-- Feature Icon -->
 
 							<p class="feature-text">暑假在KTV兼职制服照！</p></li>
 						<!-- Single Feature Ends -->
 
 						<!-- Single Feature Starts -->
 						<li class="single-feature" title="4 home style"><img
-							src="http://bcs.duapp.com/ggjlovezjy/images/4.jpg" alt="" class="feature-image" /> <!-- Feature Icon -->
+							src="http://ggjlovezjy.oss-cn-shenzhen.aliyuncs.com/images/4.jpg"
+							alt="" class="feature-image" /> <!-- Feature Icon -->
 
 							<p class="feature-text">那年减肥瘦成狗啊！！！</p></li>
 						<!-- Single Feature Ends -->
 
 						<!-- Single Feature Starts -->
 						<li class="single-feature" title="Parallax Backgrounds"><img
-							src="http://bcs.duapp.com/ggjlovezjy/images/5.jpg" alt="" class="feature-image" /> <!-- Feature Icon -->
+							src="http://ggjlovezjy.oss-cn-shenzhen.aliyuncs.com/images/5.jpg"
+							alt="" class="feature-image" /> <!-- Feature Icon -->
 
 							<p class="feature-text">第一次吃到必胜客的开心劲！</p></li>
 						<!-- Single Feature Ends -->
 
 						<!-- Single Feature Starts -->
 						<li class="single-feature" title="Ajax contact form"><img
-							src="http://bcs.duapp.com/ggjlovezjy/images/6.jpg" alt="" class="feature-image" /> <!-- Feature Icon -->
+							src="http://ggjlovezjy.oss-cn-shenzhen.aliyuncs.com/images/6.jpg"
+							alt="" class="feature-image" /> <!-- Feature Icon -->
 
 							<p class="feature-text">两个都是你的，看你开心的</p></li>
 						<!-- Single Feature Ends -->
 
 						<!-- Single Feature Starts -->
 						<li class="single-feature" title="unlimited Google fonts"><img
-							src="http://bcs.duapp.com/ggjlovezjy/images/7.jpg" alt="" class="feature-image" /> <!-- Feature Icon -->
+							src="http://ggjlovezjy.oss-cn-shenzhen.aliyuncs.com/images/7.jpg"
+							alt="" class="feature-image" /> <!-- Feature Icon -->
 
 							<p class="feature-text">在我宿舍玩自拍的二货</p></li>
 						<!-- Single Feature Ends -->
 
 						<!-- Single Feature Starts -->
 						<li class="single-feature" title="Feature heading"><img
-							src="http://bcs.duapp.com/ggjlovezjy/images/8.jpg" alt="" class="feature-image" /> <!-- Feature Icon -->
+							src="http://ggjlovezjy.oss-cn-shenzhen.aliyuncs.com/images/8.jpg"
+							alt="" class="feature-image" /> <!-- Feature Icon -->
 
 							<p class="feature-text">为了美丽的双眼皮动刀子之后的你，确实有那么几分人摸狗样</p></li>
 						<!-- Single Feature Ends -->
@@ -307,7 +315,9 @@ request.setAttribute("path",path);
 				</div>
 				<!-- Step Description Ends -->
 				<div class="col-md-4 step-img">
-					<img src="http://bcs.duapp.com/ggjlovezjy/images/note.png" alt="" />
+					<img
+						src="http://ggjlovezjy.oss-cn-shenzhen.aliyuncs.com/images/note.png"
+						alt="" />
 					<!-- Step Photo Here -->
 				</div>
 			</div>
@@ -339,7 +349,9 @@ request.setAttribute("path",path);
 				</div>
 				<!-- Step Description Ends -->
 				<div class="col-md-4 step-img">
-					<img src="http://bcs.duapp.com/ggjlovezjy/images/desk.png" alt="" />
+					<img
+						src="http://ggjlovezjy.oss-cn-shenzhen.aliyuncs.com/images/desk.png"
+						alt="" />
 					<!-- Step Photo Here -->
 				</div>
 			</div>
@@ -387,13 +399,19 @@ request.setAttribute("path",path);
 					</div>
 					<div id="bx-pager" class="client-photos">
 						<a data-slide-index="0" href="" class="photo-hold"> <span
-							class="photo-bg"> <img src="http://bcs.duapp.com/ggjlovezjy/images/job_1.jpg" alt="" /> <!-- Client photo 1 -->
+							class="photo-bg"> <img
+								src="http://ggjlovezjy.oss-cn-shenzhen.aliyuncs.com/images/job_1.jpg"
+								alt="" /> <!-- Client photo 1 -->
 						</span>
 						</a> <a data-slide-index="1" href="" class="photo-hold"> <span
-							class="photo-bg"> <img src="http://bcs.duapp.com/ggjlovezjy/images/job_2.jpg" alt="" /> <!-- Client photo 2 -->
+							class="photo-bg"> <img
+								src="http://ggjlovezjy.oss-cn-shenzhen.aliyuncs.com/images/job_2.jpg"
+								alt="" /> <!-- Client photo 2 -->
 						</span>
 						</a> <a data-slide-index="2" href="" class="photo-hold"> <span
-							class="photo-bg"> <img src="http://bcs.duapp.com/ggjlovezjy/images/job_3.jpg" alt="" /> <!-- Client photo 3 -->
+							class="photo-bg"> <img
+								src="http://ggjlovezjy.oss-cn-shenzhen.aliyuncs.com/images/job_3.jpg"
+								alt="" /> <!-- Client photo 3 -->
 						</span>
 						</a>
 					</div>
@@ -559,18 +577,18 @@ request.setAttribute("path",path);
 				</div>
 				<div class="col-md-10 col-md-offset-1 video-content">
 
-					<embed align="middle" allowfullscreen="true"
-						allowscriptaccess="always" height="130" quality="high"
-						src="http://www.iqiyi.com/common/flashplayer/20150311/SharePlayer_4_1_12_c3_2_4.swf?vid=ccc6b307bf50c0c8a92a16c6c5e4d5c8&pageURL=w_19rrlc50g1.swf&albumId=446326509&tvId=446326509&isPurchase=0&cnId=5&share_sTime=0&share_eTime=225&source="
-						type="application/x-shockwave-flash" width="300">
-				
+					<embed
+						src="http://player.video.qiyi.com/ccc6b307bf50c0c8a92a16c6c5e4d5c8/0/225/w_19rrlc50g1.swf-albumId=446326509-tvId=446326509-isPurchase=0-cnId=5"
+						quality="high" width="300" height="130" align="middle"
+						allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
+
 				</div>
 			</div>
 		</div>
 	</section>
 	<!--=== Video section Ends ===-->
 
-	
+
 
 
 	<!--=== Download section Starts ===-->
@@ -585,9 +603,8 @@ request.setAttribute("path",path);
 						<!-- Download Buttons -->
 						<a class="fancy-button button-line no-text btn-col large zoom"
 							href="#" title="下个月工资又要没了，/(ㄒoㄒ)/~~"> <span class="icon">
-								正在路上...明天快递小哥就送到家../(ㄒoㄒ)/~~
-						</span>
-						</a> 
+								正在路上...明天快递小哥就送到家../(ㄒoㄒ)/~~ </span>
+						</a>
 					</div>
 				</div>
 			</div>
@@ -617,22 +634,19 @@ request.setAttribute("path",path);
 
 						<div class="col-lg-12">
 							<input id="name" class="input-field form-item field-name"
-								type="text" required="required" name="name"
-								placeholder="姓名" /> <input id="email"
-								class="input-field form-item field-email" type="email"
-								required="required" name="email" placeholder="邮箱" />
+								type="text" required="required" name="name" placeholder="姓名" />
+							<input id="email" class="input-field form-item field-email"
+								type="email" required="required" name="email" placeholder="邮箱" />
 
 							<input id="subject" class="input-field form-item field-subject"
-								type="text" required="required" name="subject"
-								placeholder="主题" />
+								type="text" required="required" name="subject" placeholder="主题" />
 							<textarea id="message"
 								class="textarea-field form-item field-message" rows="10"
 								name="message" placeholder="内容"></textarea>
 						</div>
-						<button
-							class=" button-line button-white large zoom" id="sendmessage">
-							发送<span class="icon"> <i
-								class="fa fa-paper-plane-o"></i>
+						<button class=" button-line button-white large zoom"
+							id="sendmessage">
+							发送<span class="icon"> <i class="fa fa-paper-plane-o"></i>
 							</span>
 						</button>
 					</form>
@@ -682,10 +696,10 @@ request.setAttribute("path",path);
 			$("#closemusic").on("click", function() {
 				$("#music").remove();
 			})
-			
+
 			//查询事件
 			$("#sendmessage").on("click", function() {
-				
+
 				sendmessage();
 			})
 			//love
@@ -694,8 +708,8 @@ request.setAttribute("path",path);
 			})
 
 		})
-		
-		function appendLove(sum){
+
+		function appendLove(sum) {
 			$("#loveyou").empty();
 			var html = "";
 			var head = "<div class=\"col-md-4 col-sm-4 col-xs-6\">";
@@ -704,12 +718,13 @@ request.setAttribute("path",path);
 			var end = "</div></div></div>";
 			for ( var i = 1; i < sum; i++) {
 				var temp = "";
-				temp = head + "<img src=\"http://bcs.duapp.com/ggjlovezjy/images/520/"+i+".jpg\"  />"
+				temp = head
+						+ "<img src=\"http://ggjlovezjy.oss-cn-shenzhen.aliyuncs.com/"+i+".jpg\"  />"
 				html += temp + end;
 				temp = "";
 			}
 			$("#loveyou").append(html);
-			
+
 		}
 
 		function appendMusic() {
@@ -717,49 +732,52 @@ request.setAttribute("path",path);
 			if (ua.match(/msie ([\d.]+)/)) {
 				$('body')
 						.append(
-								'<object id="music" classid="clsid:22D6F312-B0F6-11D0-94AB-0080C74C7E95"><param name="AutoStart" value="1" /><param name="Src" value="http://bcs.duapp.com/ggjlovezjy/love.mp3" /></object>');
+								'<object id="music" classid="clsid:22D6F312-B0F6-11D0-94AB-0080C74C7E95"><param name="AutoStart" value="1" /><param name="Src" value="http://ggjlovezjy.oss-cn-shenzhen.aliyuncs.com/love.mp3" /></object>');
 			} else if (ua.match(/firefox\/([\d.]+)/)) {
 				$('body')
 						.append(
-								'<embed id="music" src="http://bcs.duapp.com/ggjlovezjy/love.mp3" type="audio/mp3" hidden="true" loop="false" mastersound></embed>');
+								'<embed id="music" src="http://ggjlovezjy.oss-cn-shenzhen.aliyuncs.com/love.mp3" type="audio/mp3" hidden="true" loop="false" mastersound></embed>');
 			} else if (ua.match(/chrome\/([\d.]+)/)) {
 				$('body')
 						.append(
-								'<audio  id="music" src="http://bcs.duapp.com/ggjlovezjy/love.mp3" type="audio/mp3" autoplay=”autoplay” hidden="true"></audio>');
+								'<audio  id="music" src="http://ggjlovezjy.oss-cn-shenzhen.aliyuncs.com/love.mp3" type="audio/mp3" autoplay=”autoplay” hidden="true"></audio>');
 			} else if (ua.match(/opera.([\d.]+)/)) {
 				$('body')
 						.append(
-								'<embed id="music" src="http://bcs.duapp.com/ggjlovezjy/love.mp3" hidden="true" loop="false"><noembed><bgsounds src="/sounds/alert/1.mp3"></noembed>');
+								'<embed id="music" src="http://ggjlovezjy.oss-cn-shenzhen.aliyuncs.com/love.mp3" hidden="true" loop="false"><noembed><bgsounds src="/sounds/alert/1.mp3"></noembed>');
 			} else if (ua.match(/version\/([\d.]+).*safari/)) {
 				$('body')
 						.append(
-								'<audio id="music" src="http://bcs.duapp.com/ggjlovezjy/love.mp3" type="audio/mp3" autoplay="autoplay" hidden="true"></audio>');
+								'<audio id="music" src="http://ggjlovezjy.oss-cn-shenzhen.aliyuncs.com/love.mp3" type="audio/mp3" autoplay="autoplay" hidden="true"></audio>');
 			} else {
 				$('body')
 						.append(
-								'<embed music src="http://bcs.duapp.com/ggjlovezjy/love.mp3" type="audio/mp3" hidden="true" loop="false" mastersound></embed>');
+								'<embed music src="http://ggjlovezjy.oss-cn-shenzhen.aliyuncs.com/love.mp3" type="audio/mp3" hidden="true" loop="false" mastersound></embed>');
 			}
 		}
-		
-		
-		function sendmessage(){
-			var dataParams="name="+$("#name").val()+"&"+"email="+$("#email").val()+"&"+"subject="+$("#subject").val()+"&"+"message="+$("#message").val();
+
+		function sendmessage() {
+			var dataParams = "name=" + $("#name").val() + "&" + "email="
+					+ $("#email").val() + "&" + "subject="
+					+ $("#subject").val() + "&" + "message="
+					+ $("#message").val();
 			$.ajax({
-				type: "post",//使用get方法访问后台
-				url: "../../sendmessage.do",//要访问的后台地址
-				data: dataParams,//要发送的数据
-				success: function(data){//msg为返回的数据，在这里做数据绑定
+				type : "post",//使用get方法访问后台
+				url : "../../sendmessage.do",//要访问的后台地址
+				data : dataParams,//要发送的数据
+				success : function(data) {//msg为返回的数据，在这里做数据绑定
 					$('.confirmation p').empty();
-					$('.confirmation p').append("留言发送成功！").parent('.confirmation').show();
+					$('.confirmation p').append("留言发送成功！").parent(
+							'.confirmation').show();
 					$('.form-item').val('');
 					setTimeout(function() {
 						$('.confirmation').hide();
 					}, 8000);
 				},
-				complete: function(){//AJAX请求完成时隐藏loading提示
+				complete : function() {//AJAX请求完成时隐藏loading提示
 				}
 			})
-			
+
 		}
 	</script>
 

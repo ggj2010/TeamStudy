@@ -33,6 +33,7 @@
   <!-- 映射xml文件 -->
   <mappers>
   	<mapper resource="jdbcconfig/mybatisconfig/mybatismapper/studentMapper.xml"/>
+  	<mapper resource="jdbcconfig/mybatisconfig/mybatismapper/classRoomMapper.xml"/>
   </mappers>
   
 </configuration>

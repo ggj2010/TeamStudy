@@ -70,8 +70,6 @@
 	</servlet-mapping>
 	
 	
-	
-
 	<filter>
 		<description>微信消息接入接口</description>
 		<filter-name>WeixinUrlFilter</filter-name>
@@ -86,9 +84,6 @@
 	<listener>
 		<listener-class>com.team.gaoguangjin.javabase.servlet.listener.ListenerTest</listener-class>
 	</listener>
-	
-	
-
 	
 
 	<!--模仿有道页面 spring配置文件 -->
