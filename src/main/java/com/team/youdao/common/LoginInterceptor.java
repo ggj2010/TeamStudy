@@ -35,21 +35,18 @@ public class LoginInterceptor implements HandlerInterceptor {
 			if (sessionUtil.getSeesionByName(request, Constant.FILTERED_REQUEST) != null)
 				return true;
 			return changToLogin(request, response);
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 		}
 		return true;
 	}
 	
 	// 处理拦截
-	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
-		ModelAndView modelAndView) throws Exception {
+	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
 		
 	}
 	
 	// 拦截之后
-	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
-			throws Exception {
+	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
 		long endTime = System.currentTimeMillis();// 2、结束时间
 		long beginTime = startTimeThreadLocal.get();// 得到线程绑定的局部变量（开始时间）
 		long consumeTime = endTime - beginTime;// 3、消耗的时间
@@ -71,8 +68,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 			}
 			sessionUtil.setAttribute(request, Constant.LOGIN_TO_URL, toUrl);
 			request.getRequestDispatcher("/WEB-INF/view/youdao/login.jsp").forward(request, response);
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			log.error("" + e.getLocalizedMessage());
 		}
 		return false;

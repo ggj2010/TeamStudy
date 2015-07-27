@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- 国产浏览器告诉模式 -->
 <meta name="renderer" content="webkit">
-<link rel="stylesheet" type="text/css"href="${path}/youdao/themes/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="${path}/youdao/themes/bootstrap.css">
 <script type="text/javascript" src="${path}/youdao/js/require.js"></script>
 <script type="text/javascript" src="${path}/youdao/js/main.js" defer async="true"></script>
 

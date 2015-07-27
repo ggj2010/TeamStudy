@@ -47,7 +47,7 @@ public class TestStatic {
 	private static void load() {
 		try {
 			// 装入类Person,并做类的【静态】初始化,会调用类的静态代码块
-			// Class<?> class1 = Class.forName("com.team.gaoguangjin.javabase.classforname.Person");
+			Class<?> class1 = Class.forName("com.team.gaoguangjin.javabase.classforname.Person");
 			
 			// 获取classloader 再装载类，不会做类的初始化
 			Class<?> class2 = TestStatic.class.getClassLoader().loadClass("com.team.gaoguangjin.javabase.classforname.Person");

@@ -1,5 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>TeamStudy</groupId>
 	<artifactId>TeamStudy</artifactId>
@@ -7,22 +6,23 @@
 	<packaging>war</packaging>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<!-- spring 3.1才支持hibernate4 ,hibernate4比较新，所以的话要多学习，你懂的-->
-		 <!--
-		<spring.version>3.0.5.RELEASE</spring.version> -->
+		<!-- spring 3.1才支持hibernate4 ,hibernate4比较新，所以的话要多学习，你懂的 -->
+		<!-- <spring.version>3.0.5.RELEASE</spring.version> -->
 		<spring.version>4.0.5.RELEASE</spring.version>
-		
-		 
-		 <!--dubbo 2.4.10依赖sping2.5架包 会导致冲突 -->
-		 <dubbo.version>2.4.10</dubbo.version>
-		  <zkclient.version>0.5</zkclient.version>
-		 
-		  <!-- freemaker -->
-		  <freemarker.version>2.3.20</freemarker.version>
-		  
-		  <lucene.version>4.0.0</lucene.version>
-		  <!-- oauth2.0 -->
-		  <oltu.version>1.0.0</oltu.version>
+
+
+		<!--dubbo 2.4.10依赖sping2.5架包 会导致冲突 -->
+		<dubbo.version>2.4.10</dubbo.version>
+		<zkclient.version>0.5</zkclient.version>
+
+		<!-- freemaker -->
+		<freemarker.version>2.3.20</freemarker.version>
+
+		<lucene.version>4.0.0</lucene.version>
+		<!-- oauth2.0 -->
+		<oltu.version>1.0.0</oltu.version>
+		<!-- shiro -->
+		<shiro.version>1.2.2</shiro.version>
 	</properties>
 
 	<dependencies>
@@ -32,12 +32,12 @@
 			<artifactId>spring-context</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-	<dependency>
-		<groupId>org.springframework</groupId>
-		<artifactId>spring-webmvc-portlet</artifactId>
-		<version>${spring.version}</version>
-	</dependency>
-		
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc-portlet</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aop</artifactId>
@@ -116,14 +116,14 @@
 		</dependency>
 
 		<!--spring结束 -->
-			<!-- jstl spring view视图用到 -->
+		<!-- jstl spring view视图用到 -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
-		
-		
+
+
 		<!--hibernate开始 -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -131,8 +131,8 @@
 			<version>4.3.8.Final</version>
 		</dependency>
 
-		<!--hibernate依赖包-->
-		
+		<!--hibernate依赖包 -->
+
 		<dependency>
 			<groupId>dom4j</groupId>
 			<artifactId>dom4j</artifactId>
@@ -152,7 +152,7 @@
 			<groupId>org.javassist</groupId>
 			<artifactId>javassist</artifactId>
 			<version>3.18.1-GA</version>
-			</dependency>
+		</dependency>
 		<dependency>
 			<groupId>org.jboss</groupId>
 			<artifactId>jandex</artifactId>
@@ -178,28 +178,16 @@
 			<artifactId>c3p0</artifactId>
 			<version>0.9.1.2</version>
 		</dependency>
-		<!--hibernate结束-->
-		
+		<!--hibernate结束 -->
+
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>fastjson</artifactId>
 			<version>1.1.31</version>
 		</dependency>
-		<!--  javaee api6.0 可以用jdk自带的
-		<dependency>
-			<groupId>org.apache.openejb</groupId>
-			<artifactId>javaee-api</artifactId>
-			<version>6.0-1</version>
-			<scope>provided</scope>
-		</dependency>
-		-->
-		<!--javaee api6.0	
-		<dependency>
-			<groupId>javax</groupId>
-			<artifactId>javaee-api</artifactId>
-			<version>6.0</version>
-		</dependency>
-		-->
+		<!-- javaee api6.0 可以用jdk自带的 <dependency> <groupId>org.apache.openejb</groupId> <artifactId>javaee-api</artifactId> <version>6.0-1</version> <scope>provided</scope> 
+			</dependency> -->
+		<!--javaee api6.0 <dependency> <groupId>javax</groupId> <artifactId>javaee-api</artifactId> <version>6.0</version> </dependency> -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -211,32 +199,16 @@
 			<version>4.3.1</version>
 		</dependency>
 
-		<!-- 如果用了logback，那么下面slf4j要注释掉
-		 <dependency> 
-			 <groupId>ch.qos.logback</groupId> 
-			<artifactId>logback-classic</artifactId> 
-			<version>1.0.13</version> 
-			<scope>runtime</scope> 
-		</dependency> -->
-		<!-- slf4j注释，因为logback里面包含
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-jdk14</artifactId>
-			<version>1.5.11</version>
-		</dependency> -->
+		<!-- 如果用了logback，那么下面slf4j要注释掉 <dependency> <groupId>ch.qos.logback</groupId> <artifactId>logback-classic</artifactId> <version>1.0.13</version> <scope>runtime</scope> 
+			</dependency> -->
+		<!-- slf4j注释，因为logback里面包含 <dependency> <groupId>org.slf4j</groupId> <artifactId>slf4j-jdk14</artifactId> <version>1.5.11</version> </dependency> -->
 		<!-- SLF4J结合Log4j -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>1.7.2</version>
-		</dependency> 
-		<!--单独的log4j架包
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>1.2.17</version>
 		</dependency>
-		-->
+		<!--单独的log4j架包 <dependency> <groupId>log4j</groupId> <artifactId>log4j</artifactId> <version>1.2.17</version> </dependency> -->
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
@@ -282,12 +254,7 @@
 			<artifactId>easymock</artifactId>
 			<version>3.1</version>
 		</dependency>
-		<!-- 数据库连接池 
-		<dependency> 
-			<groupId>commons-pool</groupId> 
-			<artifactId>commons-pool</artifactId> 
-			<version>1.6</version>
-		 </dependency> -->
+		<!-- 数据库连接池 <dependency> <groupId>commons-pool</groupId> <artifactId>commons-pool</artifactId> <version>1.6</version> </dependency> -->
 		<!-- commons-dbcp自带 commons-pool-1.5.4高大上不 -->
 		<dependency>
 			<groupId>commons-dbcp</groupId>
@@ -300,7 +267,7 @@
 			<artifactId>cglib</artifactId>
 			<version>2.2.2</version>
 		</dependency>
-			<!-- aop联盟 -->
+		<!-- aop联盟 -->
 		<dependency>
 			<groupId>aopalliance</groupId>
 			<artifactId>aopalliance</artifactId>
@@ -311,13 +278,13 @@
 			<artifactId>aspectjweaver</artifactId>
 			<version>1.8.4</version>
 		</dependency>
-		
+
 		<!-- 阿里巴巴的数据连接池druid -->
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>druid</artifactId>
 			<version>1.0.5</version>
-			</dependency>
+		</dependency>
 		<!-- mybatis相关架包和spring集成的架包 -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
@@ -336,25 +303,25 @@
 		</dependency>
 		<!-- dubbo阿里巴巴的SOA服务 -->
 		<dependency>
-				<groupId>com.alibaba</groupId>
-				<artifactId>dubbo</artifactId>
-				<version>${dubbo.version}</version>
-				<!-- 这样写法是去除dubbo依赖的spring2.5架包，因为多余的会导致冲突 -->
-				<exclusions>  
-                <exclusion>  
-                    <artifactId>spring</artifactId>  
-                    <groupId>org.springframework</groupId>  
-                </exclusion>  
-            </exclusions>  
-	   </dependency>
-	   <!-- zookeeper -->
+			<groupId>com.alibaba</groupId>
+			<artifactId>dubbo</artifactId>
+			<version>${dubbo.version}</version>
+			<!-- 这样写法是去除dubbo依赖的spring2.5架包，因为多余的会导致冲突 -->
+			<exclusions>
+				<exclusion>
+					<artifactId>spring</artifactId>
+					<groupId>org.springframework</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!-- zookeeper -->
 		<!-- zclient -->
 		<dependency>
 			<groupId>com.101tec</groupId>
 			<artifactId>zkclient</artifactId>
 			<version>${zkclient.version}</version>
 		</dependency>
-		
+
 		<!-- quartz定时任务 -->
 		<dependency>
 			<groupId>org.quartz-scheduler</groupId>
@@ -367,13 +334,13 @@
 			<artifactId>commons-lang</artifactId>
 			<version>2.6</version>
 		</dependency>
-		
-		<!--  hadoop1.0.3架包	-->
+
+		<!-- hadoop1.0.3架包 -->
 		<dependency>
 			<groupId>org.apache.hadoop</groupId>
 			<artifactId>hadoop-core</artifactId>
 			<version>1.0.3</version>
-			<!-- 去掉这两个架包${path}el表达式就可以用了  -->
+			<!-- 去掉这两个架包${path}el表达式就可以用了 -->
 			<exclusions>
 				<exclusion>
 					<artifactId>jasper-runtime</artifactId>
@@ -387,62 +354,57 @@
 					<artifactId>jsp-api-2.1</artifactId>
 					<groupId>org.mortbay.jetty</groupId>
 				</exclusion>
+				<exclusion>
+					<artifactId>jsp-2.1</artifactId>
+					<groupId>org.mortbay.jetty</groupId>
+				</exclusion>
 			</exclusions>
 		</dependency>
-	
+
 		<!-- mina框架 socket -->
 		<dependency>
-            <groupId>org.apache.mina</groupId>
-            <artifactId>mina-core</artifactId>
-            <version>2.0.4</version>
-        </dependency>
+			<groupId>org.apache.mina</groupId>
+			<artifactId>mina-core</artifactId>
+			<version>2.0.4</version>
+		</dependency>
 
-	<!--io上传用到的 -->
-	<dependency>
-		<groupId>commons-fileupload</groupId>
-		<artifactId>commons-fileupload</artifactId>
-		<version>1.3.1</version>
-	</dependency>
-	
-	<!-- 缓存技术ehcache -->
-	<dependency>
-		<groupId>net.sf.ehcache</groupId>
-		<artifactId>ehcache</artifactId>
-		<version>2.9.0</version>
-	</dependency>
-	<!-- 缓存ehcache页面 -->	
-	<dependency>
-		<groupId>net.sf.ehcache</groupId>
-		<artifactId>ehcache-web</artifactId>
-		<version>2.0.4</version>
-	</dependency>
-	<!-- spring缓存ehcache注解 -->	
-	<dependency>
-	    <groupId>com.googlecode.ehcache-spring-annotations</groupId>
-	    <artifactId>ehcache-spring-annotations</artifactId>
-	    <version>1.1.2</version>
-	</dependency>
-	
-	<!-- activeMQ -->
-	<dependency>
-		<groupId>org.apache.activemq</groupId>
-		<artifactId>activemq-core</artifactId>
-		<version>5.7.0</version>
-	</dependency>
-	
-		<!--spring Boot 
-	<dependency>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-web</artifactId>
-		<version>1.0.1.RELEASE</version>
-	</dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-            <version>1.0.1.RELEASE</version>
-        </dependency>
-	 -->
-	
+		<!--io上传用到的 -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.3.1</version>
+		</dependency>
+
+		<!-- 缓存技术ehcache -->
+		<dependency>
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache</artifactId>
+			<version>2.9.0</version>
+		</dependency>
+		<!-- 缓存ehcache页面 -->
+		<dependency>
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache-web</artifactId>
+			<version>2.0.4</version>
+		</dependency>
+		<!-- spring缓存ehcache注解 -->
+		<dependency>
+			<groupId>com.googlecode.ehcache-spring-annotations</groupId>
+			<artifactId>ehcache-spring-annotations</artifactId>
+			<version>1.1.2</version>
+		</dependency>
+
+		<!-- activeMQ -->
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-core</artifactId>
+			<version>5.7.0</version>
+		</dependency>
+
+		<!--spring Boot <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-web</artifactId> <version>1.0.1.RELEASE</version> 
+			</dependency> <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-actuator</artifactId> <version>1.0.1.RELEASE</version> 
+			</dependency> -->
+
 		<!-- java操作redis 2.6.0依赖的common-pool2 所以选用2.1.0 -->
 		<dependency>
 			<groupId>redis.clients</groupId>
@@ -460,13 +422,7 @@
 			<scope>provided</scope>
 		</dependency>
 
-		<!-- Qbit微服务 需要jdk 8支持
-		<dependency>
-			<groupId>io.advantageous.qbit</groupId>
-			<artifactId>qbit-core</artifactId>
-			<version>0.8.2</version>
-		</dependency>
- 		-->
+		<!-- Qbit微服务 需要jdk 8支持 <dependency> <groupId>io.advantageous.qbit</groupId> <artifactId>qbit-core</artifactId> <version>0.8.2</version> </dependency> -->
 
 		<!-- camel -->
 		<dependency>
@@ -479,14 +435,14 @@
 			<artifactId>camel-spring</artifactId>
 			<version>2.15.2</version>
 		</dependency>
-		
+
 		<!-- camel与jms activemq集成 -->
 		<dependency>
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-jms</artifactId>
 			<version>2.15.2</version>
 		</dependency>
-	
+
 		<!-- freemarker engine -->
 		<dependency>
 			<groupId>org.freemarker</groupId>
@@ -494,14 +450,14 @@
 			<version>${freemarker.version}</version>
 		</dependency>
 
-		<!--memcached java客户端  -->
+		<!--memcached java客户端 -->
 		<dependency>
 			<groupId>com.whalin</groupId>
 			<artifactId>Memcached-Java-Client</artifactId>
 			<version>3.0.2</version>
 		</dependency>
-		
-		<!--hbase-client调用 因为服务器上面版本是hbase-0.94.26，而maven仓库没有，所以从服务器上面把jar包拷贝过来-->
+
+		<!--hbase-client调用 因为服务器上面版本是hbase-0.94.26，而maven仓库没有，所以从服务器上面把jar包拷贝过来 -->
 		<dependency>
 			<groupId>org.apache.hbase</groupId>
 			<artifactId>hbase-client</artifactId>
@@ -529,7 +485,7 @@
 			<artifactId>lucene-queryparser</artifactId>
 			<version>${lucene.version}</version>
 		</dependency>
-		<!--高亮  -->
+		<!--高亮 -->
 		<dependency>
 			<groupId> org.apache.lucene</groupId>
 			<artifactId>lucene-highlighter</artifactId>
@@ -553,5 +509,27 @@
 			<artifactId>org.apache.oltu.oauth2.resourceserver</artifactId>
 			<version>${oltu.version}</version>
 		</dependency>
+		<!-- shiro-web包含 shiro-core <dependency> <groupId>org.apache.shiro</groupId> <artifactId>shiro-core</artifactId> <version>${shiro.version}</version> 
+			</dependency> -->
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-web</artifactId>
+			<version>${shiro.version}</version>
+		</dependency>
 	</dependencies>
+
+	<build>
+		<finalName>TeamStudy</finalName>
+		<plugins>
+				<!-- mvn tomcat7:run直接运行webapp -->
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<path>/${project.build.finalName}</path>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>

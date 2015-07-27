@@ -35,15 +35,10 @@ public class ExceptionType {
 	 * @return:void
 	 */
 	private void unCheckedException() {
-		
 		// List list = null;list.get(0);//NullPointerException
-		
 		// new ArrayList().get(1);//IndexOutOfBoundsException
-		
 		// Integer.parseInt("dd");//NumberFormatException
-		
 		// List aa=(List)new ExceptionType();//ClassCastException
-		
 		/**
 		 * Object[] in = { 1, 2 }; in = new Integer[5]; in[1] = "123";//ArrayStoreException
 		 **/

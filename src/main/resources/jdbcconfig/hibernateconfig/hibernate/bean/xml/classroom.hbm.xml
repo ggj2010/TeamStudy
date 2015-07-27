@@ -3,7 +3,7 @@
 	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="com.team.gaoguangjin.jdbc.hibernate.bean">
-	<class name="ClassRoom" table="gao.tc_classroom">
+	<class name="ClassRoom" table="gao.tc_classroom" dynamic-update="true">
 		<id name="id">
 		<generator class="uuid"></generator>
 		<!-- <generator class="sequence">  oracle用sequence创建主键规范
@@ -11,6 +11,6 @@
 </generator> -->
 		</id>
 			<property  name="roomName" not-null="true" column="room_name"></property>
-			<property  name="roomSize" not-null="true" column="room_size"></property>
+			<property  name="roomSize" not-null="false" column="room_size"></property>
 	</class>
 </hibernate-mapping>
