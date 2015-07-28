@@ -15,7 +15,7 @@ public class TestShiroPermissionDemo extends BaseTest {
 	/**
 	 * @Description:  
 	 * [users]
-		zhang=123,role1,role2
+		gao=123,role1,role2
 		wang=123,role1
 	#对资源user拥有create、update权限
 		role1=user:create,user:update
@@ -24,7 +24,7 @@ public class TestShiroPermissionDemo extends BaseTest {
 	 */
 	@Test
 	public void test1() {
-		login("classpath:shiro/shiro-permission.ini", "zhang", "123");
+		login("classpath:shiro/shiro-permission.ini", "gao", "123");
 		// 角色=权限1，权限2
 		Assert.assertTrue(subject().isPermitted("user:create"));
 		Assert.assertTrue(subject().isPermittedAll("user:create", "user:delete"));
@@ -34,7 +34,7 @@ public class TestShiroPermissionDemo extends BaseTest {
 	
 	@Test(expected = UnauthorizedException.class)
 	public void testCheckPermission() {
-		login("classpath:shiro/shiro-permission.ini", "zhang", "123");
+		login("classpath:shiro/shiro-permission.ini", "gao", "123");
 		// 断言拥有权限：user:create
 		subject().checkPermission("user:create");
 		// 断言拥有权限：user:delete and user:update

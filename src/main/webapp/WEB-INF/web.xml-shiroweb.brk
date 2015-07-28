@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0" metadata-complete="false">
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
 
 	<context-param>
 		<param-name>webAppRootKey</param-name>
@@ -15,17 +15,15 @@
 	<listener>
 		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
 	</listener>
-
+	<!--shiro 1.1 <filter> <filter-name>iniShiroFilter</filter-name> <filter-class>org.apache.shiro.web.servlet.IniShiroFilter</filter-class> <init-param> 
+		<param-name>shiroConfigLocations</param-name> <param-value>classpath:shiro/web/shiro.ini</param-value> </init-param> </filter> <filter-mapping> <filter-name>iniShiroFilter</filter-name> 
+		<url-pattern>/*</url-pattern> </filter-mapping> -->
 	<listener>
 		<listener-class>org.apache.shiro.web.env.EnvironmentLoaderListener</listener-class>
 	</listener>
 	<context-param>
-		<param-name>shiroEnvironmentClass</param-name>
-		<param-value>org.apache.shiro.web.env.IniWebEnvironment</param-value>
-	</context-param>
-	<context-param>
 		<param-name>shiroConfigLocations</param-name>
-		<param-value>classpath:shiro/session/shiro-session.ini</param-value>
+		<param-value>classpath:shiro/web/shiro.ini</param-value>
 	</context-param>
 
 	<!--- shiro 1.2 -->
@@ -38,10 +36,5 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 
-	<!-- 如果是在获取会话时验证了会话已过期，将抛出InvalidSessionException；因此需要捕获这个异常并跳转到相应的页面告诉用户会话已过期，让其重新登录， -->
-	<error-page>
-		<exception-type>org.apache.shiro.session.InvalidSessionException</exception-type>
-		<location>/invalidSession.jsp</location>
-	</error-page>
 </web-app>
 

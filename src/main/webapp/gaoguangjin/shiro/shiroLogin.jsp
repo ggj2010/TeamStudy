@@ -10,7 +10,7 @@
 </head>
 <body>
 	<div class="container basetype-container">
-		<form action="${path}/login.do" method="post" class="form-horizontal">
+		<form action="${path}/login" method="post" class="form-horizontal">
 			<div class="row">
 				<div class="form-group">
 					<label class="col-sm-2 control-label">用户名</label>
@@ -23,7 +23,7 @@
 					<label class="col-sm-2 control-label">用户名</label>
 					<div class="col-sm-8">
 						<input type="password" name="password" class="form-control"
-							maxlength="64" placeholder="密码">
+							maxlength="64" placeholder="默认密码:zjy">
 					</div>
 				</div>
 				<div class="form-group">
@@ -31,6 +31,17 @@
 						<button class="btn btn-info" type="submit">保存</button>
 					</div>
 				</div>
+
+
+				<div class="alert alert-warning alert-dismissible" role="alert" style="display:${empty message ?'none':'block'}">
+					<button type="button" class="close" data-dismiss="alert"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<strong>登陆失败!</strong>${message}
+				</div>
+
+
 			</div>
 		</form>
 	</div>
