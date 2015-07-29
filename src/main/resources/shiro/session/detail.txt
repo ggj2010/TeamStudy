@@ -1,0 +1,62 @@
+SecurityManager直接继承了SessionManager，SessionsSecurityManager实现直接把会话管理委托给相应的SessionManager，
+DefaultSecurityManager及DefaultWebSecurityManager默认SecurityManager都继承了SessionsSecurityManager。
+DefaultWebSessionManager 继承了DefaultSessionManager  
+
+默认是调用 DefaultSessionManager类的retrieveSession(SessionKey sessionKey)方法，检查cookie里面是否存有sessionID
+
+没有的话那就创建session。调用SessionFactory的实现类的createSession()方法
+
+AbstractNativeSessionManager的
+
+ public Session start(SessionContext context) {
+ 	//创建session
+        Session session = createSession(context);
+        applyGlobalSessionTimeout(session);
+        //将session存放到cookie里面
+        onStart(session, context);
+        //调用所有listener的onStart方法
+        notifyStart(session);
+        //Don't expose the EIS-tier Session object to the client-tier:
+        return createExposedSession(session, context);
+    }
+
+
+
+
+DefaultSessionManager的doCreateSession方法
+   protected Session doCreateSession(SessionContext context) {
+        Session s = newSessionInstance(context);
+        if (log.isTraceEnabled()) {
+            log.trace("Creating session for host {}", s.getHost());
+        }
+        create(s);//调用sessionDao的create
+        return s;
+    }
+
+
+
+
+然后 CachingSessionDAO 调用
+
+  public Serializable create(Session session) {
+ 		//创建session
+        Serializable sessionId = super.create(session);
+        //缓存到encache
+        cache(session, sessionId);
+        return sessionId;
+    }
+    
+    //调用CachingSessionDAO父类的AbstractSessionDAO的create方法
+     public Serializable create(Session session) {
+     	//调用子类的
+        Serializable sessionId = doCreate(session);
+        verifySessionId(sessionId);
+        return sessionId;
+    }
+    
+    AbstractSessionDAO doCreate是一个抽象方法，CachingSessionDAO是抽象类没有实现，所以继承CachingSessionDAO的MySessionDao进行实现
+    
+
+
+
+没有的话就创建一个 调用sessionDao create(Session session)创建一个session.sessionDao是我们在配置文件里面定义的
