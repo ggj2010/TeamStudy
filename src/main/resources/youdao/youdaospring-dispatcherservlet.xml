@@ -60,7 +60,6 @@
 	<task:annotation-driven/>
 	
 	<!-- 解决@ResponseBody ajax 乱码问题 -->
-	 <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
 	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">  
         <property name="cacheSeconds" value="0" />  
         <property name="messageConverters">  

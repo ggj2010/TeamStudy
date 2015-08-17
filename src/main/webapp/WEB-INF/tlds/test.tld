@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- 这一段是引入dtd的，不引入eclipse会没有提示 -->
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN"
+  "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd">
+
+<taglib>
+	<tlib-version>1.1.2</tlib-version>
+	<jsp-version>1.2</jsp-version>
+	<short-name>test</short-name>
+	<uri>/WEB-INF/tlds/test.tld</uri>
+	<description>描述了噢</description>
+	
+	<tag>
+		<name>isDisplay</name>
+		<tag-class>com.team.gaoguangjin.javabase.tag.MyTag</tag-class>
+		<body-content>JSP</body-content>
+		<description>描述</description>
+		<attribute>
+			<name>name</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+
+</taglib>

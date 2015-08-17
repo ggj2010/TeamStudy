@@ -19,8 +19,8 @@ import redis.clients.jedis.Protocol;
 @Slf4j
 public class MySelfJedis {
 	public static void main(String[] args) {
-		// test();
-		testJedis();
+		test();
+		// testJedis();
 	}
 	
 	private static void testJedis() {

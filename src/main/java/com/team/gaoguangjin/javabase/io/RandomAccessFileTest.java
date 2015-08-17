@@ -41,7 +41,7 @@ public class RandomAccessFileTest {
 			int sum = (int) (length / _20M);
 			for (int i = 0; i <= sum; i++) {
 				// 读20m
-				readByLength(i, raf);
+				// readByLength(i, raf);
 			}
 			
 			readyByThread(sum);

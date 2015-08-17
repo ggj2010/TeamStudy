@@ -10,6 +10,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.team.gaoguangjin.javabase.servlet.ioc.enty.InjectBean;
 import com.team.gaoguangjin.javabase.servlet.ioc.enty.ParamType;
 import com.team.gaoguangjin.javabase.servlet.ioc.enty.Student;
+import com.team.gaoguangjin.javabase.servlet.ioc.enty.Teacher;
 
 public class TestParamType {
 	
@@ -19,11 +20,22 @@ public class TestParamType {
 		try {
 			// ApplicationContext appliactionContext =BeanContextHelper.getApplicationContext();
 			ApplicationContext cpac = new ClassPathXmlApplicationContext("reflact/reflact.xml");
-			doDemo1(cpac);
+			// doDemo1(cpac);
+			
+			demo2(cpac);
 		} catch (Exception e) {
 			logger.error("解析xml配置文件失败：" + e.getLocalizedMessage());
 		}
 		
+	}
+	
+	private static void demo2(ApplicationContext cpac) {
+		Teacher teacher = (Teacher) cpac.getBean("teacher");
+		System.out.println(teacher.getPerson().getAge());
+		
+		ParamType paramType = (ParamType) cpac.getBean("paramType");
+		
+		System.out.println(paramType);
 	}
 	
 	private static void doDemo1(ApplicationContext cpac) {

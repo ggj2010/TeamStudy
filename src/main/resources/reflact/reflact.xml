@@ -48,6 +48,9 @@
     <bean id="paramType" class="com.team.gaoguangjin.javabase.servlet.ioc.enty.ParamType">
     	<constructor-arg index="0" value="高广金"/>
     	<constructor-arg index="1" value="12"/>
+    	<property name="userName" value="属性名称"/>
+    	<property name="age" value="18" />
+    	
     	<!-- 传null值 -->
     	<property name="nullTest"><null/></property>
     	<!-- list赋值 -->
@@ -94,8 +97,7 @@
     <bean  id="student1" factory-bean="createStudent" factory-method="createStudent"/>
     <bean  id="studentInjectBean" class="com.team.gaoguangjin.javabase.servlet.ioc.enty.InjectBean"/>
     
-    
-    
-    
-    
+    <bean  id="teacher" class="com.team.gaoguangjin.javabase.servlet.ioc.enty.Teacher" >
+    	<property name="person" ref="person"></property>
+    </bean>
 </beans>

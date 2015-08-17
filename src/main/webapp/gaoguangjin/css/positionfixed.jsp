@@ -23,11 +23,13 @@ body,pre {
 	height: 100px;
 }
 
-.div2 {
+.divabsolute {
 	background-color: #33FF66;
 	width: 100px;
 	height: 100px;
 	position: absolute;
+	left: 50px;
+	top: 50px;
 }
 
 .div11 {
@@ -36,10 +38,17 @@ body,pre {
 	height: 2000px;
 }
 
-.div22 {
-	background-color: pink;
+
+.divrelative{
+	background-color: yellow;
 	width: 100px;
 	height: 100px;
+		position: relative;
+}
+.divfixed {
+	background-color: pink;
+	width: 200px;
+	height: 50px;
 	position: fixed;
 	left: 50px;
 	top: 50px;
@@ -47,10 +56,13 @@ body,pre {
 </style>
 <body>
 	<div class="div1">层1</div>
-<div class="div2">absolute是相对于浏览器的位置</div>
 
+	<div class="divrelative">relative</div>
+	
+	<div class="divabsolute">absolute是相对于浏览器的位置</div>
+	
 	<div class="div11"></div>
-<div class="div22">fixed是始终子浏览器某个位置的</div>
+<div class="divfixed">fixed是始终子浏览器某个位置的</div>
 
 
 

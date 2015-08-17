@@ -24,10 +24,10 @@ public class TestProject {
 	public void test() {
 		login("classpath:shiro/realproject/shiro.ini", "ggj", "zjy");
 		subject().checkRole("student");
-		subject().checkPermission("student:find");
-		subject().checkPermission("teacher:insert");
-		boolean flag = subject().isPermittedAll("student:find");
-		log.info("是否存在此权限：" + flag);
+		// subject().checkPermission("student:find");
+		// subject().checkPermission("teacher:insert");
+		// boolean flag = subject().isPermittedAll("student:find");
+		// log.info("是否存在此权限：" + flag);
 	}
 	
 	protected void login(String configFile, String username, String password) {

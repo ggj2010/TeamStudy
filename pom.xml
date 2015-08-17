@@ -22,7 +22,7 @@
 		<!-- oauth2.0 -->
 		<oltu.version>1.0.0</oltu.version>
 		<!-- shiro -->
-		<shiro.version>1.2.2</shiro.version>
+		<shiro.version>1.2.3</shiro.version>
 	</properties>
 
 	<dependencies>
@@ -341,6 +341,14 @@
 			<artifactId>commons-lang</artifactId>
 			<version>2.6</version>
 		</dependency>
+		
+		<!-- jsp -->
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.2</version>
+			<scope>provided</scope>
+		</dependency> 
 
 		<!-- hadoop1.0.3架包 -->
 		<dependency>

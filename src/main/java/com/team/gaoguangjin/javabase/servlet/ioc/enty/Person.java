@@ -13,11 +13,14 @@ import org.springframework.beans.factory.InitializingBean;
 public class Person implements InitializingBean, DisposableBean {
 	private String name;
 	private int age;
+	{
+		System.out.println("【0】静态方法");
+	}
 	
 	public Person() {
 		System.out.println("【1】构造方法在调用...");
 		this.name = "默认用户名";
-		this.age = 250;
+		// this.age = 250;
 		System.out.println(this);
 	}
 	
@@ -44,13 +47,13 @@ public class Person implements InitializingBean, DisposableBean {
 	public void init() {
 		System.out.println("【3】　init()正在调用...");
 		this.name = "init";
-		this.age = 998;
+		// this.age = 998;
 		
 	}
 	
 	public void afterPropertiesSet() throws Exception {
 		System.out.println("【2】　afterPropertiesSet()正在调用...");
-		this.age = 999;
+		// this.age = 999;
 		
 	}
 	

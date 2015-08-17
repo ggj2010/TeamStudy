@@ -1,8 +1,9 @@
 package com.team.gaoguangjin.shiro.realproject;
 
+import java.io.IOException;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import net.sf.ehcache.Cache;
+import net.sf.ehcache.CacheException;
 import net.sf.ehcache.CacheManager;
 import net.sf.ehcache.Ehcache;
 import net.sf.ehcache.Element;
@@ -11,6 +12,7 @@ import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.ExcessiveAttemptsException;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
+import org.springframework.core.io.ClassPathResource;
 
 /**
  * @ClassName:RetryLimitHashedCredentialsMatcher.java
@@ -21,9 +23,11 @@ import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 public class RetryLimitHashedCredentialsMatcher extends HashedCredentialsMatcher {
 	Ehcache passwordRetryCache;
 	
-	public RetryLimitHashedCredentialsMatcher() {
-		CacheManager cacheManager = CacheManager.newInstance(CacheManager.class.getClassLoader().getResource("shiro/ehcache.xml"));
-		Cache passwordRetryCache = cacheManager.getCache("passwordRetryCache");
+	public RetryLimitHashedCredentialsMatcher() throws CacheException, IOException {
+		CacheManager cacheManager = CacheManager.newInstance(new ClassPathResource("shiro/ehcache.xml").getInputStream());
+		System.out.println(new ClassPathResource("shiro/ehcache.xml").getFile().exists());
+		passwordRetryCache = cacheManager.getCache("passwordRetryCache");
+		System.out.println(passwordRetryCache);
 	}
 	
 	@Override

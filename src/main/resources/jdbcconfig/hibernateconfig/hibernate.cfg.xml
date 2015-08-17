@@ -8,7 +8,6 @@
 -->
 <!--<property name="current_session_context_class">thread</property>-->
 
-
 	<mapping resource="jdbcconfig/hibernateconfig/hibernate/bean/xml/classroom.hbm.xml" />
 	<mapping resource="jdbcconfig/hibernateconfig/hibernate/bean/xml/student.hbm.xml" />
 </session-factory>

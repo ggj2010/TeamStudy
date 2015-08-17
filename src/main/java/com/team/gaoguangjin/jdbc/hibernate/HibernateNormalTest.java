@@ -23,8 +23,7 @@ public class HibernateNormalTest {
 	}
 	
 	private static void initCrateTable() {
-		ClassPathResource classPathResource = new ClassPathResource(
-				"jdbcconfig/hibernateconfig/normal/hibernate.cfg.xml");
+		ClassPathResource classPathResource = new ClassPathResource("jdbcconfig/hibernateconfig/normal/hibernate.cfg.xml");
 		String fileName = classPathResource.getFilename();
 		log.info("文件名称:" + fileName);
 		
@@ -40,11 +39,9 @@ public class HibernateNormalTest {
 			
 			session.close();
 			sessionFatcory.close();
-		}
-		catch (HibernateException e) {
+		} catch (HibernateException e) {
 			log.error("初始化失败! " + e.getLocalizedMessage());
-		}
-		catch (IOException e) {
+		} catch (IOException e) {
 			log.error("初始化文件加载失败! " + e.getLocalizedMessage());
 		}
 		

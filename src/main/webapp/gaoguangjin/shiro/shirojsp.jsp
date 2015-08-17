@@ -17,8 +17,14 @@
 		</shiro:authenticated>
 
 		<shiro:hasPermission name="user:create">
-			<pre> 拥有passion user*</pre>
+			<pre> 拥有passion user:user:create</pre>
 		</shiro:hasPermission>
+		
+		<shiro:hasAnyPermissions name="user:create,user:update">
+		<pre> 拥有passionuser:create,user:update  hasAnyPermissions需要自己去定义 </pre>
+		</shiro:hasAnyPermissions>
+		
+		
 
 		<shiro:user>  
 				<pre>欢迎[<shiro:principal />]登录! &lt;shiro:user&gt;游客标签&lt;/shiro:user&gt;</pre>
