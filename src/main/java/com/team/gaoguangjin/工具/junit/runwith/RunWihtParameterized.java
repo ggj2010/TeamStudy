@@ -31,11 +31,16 @@ public class RunWihtParameterized {
 	}
 	
 	/**
-	 *按顺序提供的一组参数
+	 *按顺序提供的一组参数,方法必须是static
 	 * @return
 	 */
 	@Parameters
 	public static List<String[]> getParams() {
 		return Arrays.asList(new String[][] { { "hello", "高广金" }, { "hi", "高广金" }, { "good morning", "高广金" }, { "how are you", "高广金" } });
+	}
+	
+	public static void main(String[] args) {
+		String[][] a = new String[][] { { "hello", "高广金" }, { "hi", "高广金" }, { "good morning", "高广金" }, { "how are you", "高广金" } };
+		System.out.println(a);
 	}
 }

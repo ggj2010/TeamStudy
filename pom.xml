@@ -23,6 +23,8 @@
 		<oltu.version>1.0.0</oltu.version>
 		<!-- shiro -->
 		<shiro.version>1.2.3</shiro.version>
+		<!-- html装饰器 -->
+		<sitemesh.version>2.4.2</sitemesh.version>
 	</properties>
 
 	<dependencies>
@@ -561,6 +563,12 @@
             <version>3.0.1</version>
             <scope>provided</scope>
         </dependency>
+        
+        <dependency>
+			<groupId>opensymphony</groupId>
+			<artifactId>sitemesh</artifactId>
+			<version>${sitemesh.version}</version>
+		</dependency>
 		
 	</dependencies>
 

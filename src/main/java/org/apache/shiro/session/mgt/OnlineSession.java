@@ -5,7 +5,6 @@
  */
 package org.apache.shiro.session.mgt;
 
-import org.apache.shiro.session.mgt.SimpleSession;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;

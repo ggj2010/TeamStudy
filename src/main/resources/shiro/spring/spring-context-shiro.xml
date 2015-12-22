@@ -105,8 +105,10 @@
 	<!-- 会话Cookie模板 -->
 	<bean id="sessionIdCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
 		<constructor-arg value="sid" />
+			<!-- 设置cookie生效时间，默认是退出浏览器cookie就消失
 		<property name="httpOnly" value="true" />
 		<property name="maxAge" value="180000" />
+		 -->
 	</bean>
 
 

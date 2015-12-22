@@ -11,14 +11,10 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class InnerClassTest {
 	public static void main(String[] args) {
-		demo();
-	}
-	
-	private static void demo() {
-		
-		demo1("测试", new InnerClass() {
-			public void getName() {
-				demo3("测试");
+		InnerClassTest ict = new InnerClassTest();
+		ict.demo1("高广金", new InnerClass() {
+			public String getName(String name) {
+				return name + "gaoguangjin";
 			}
 		});
 	}
@@ -27,13 +23,14 @@ public class InnerClassTest {
 		log.info("执行demo1的方法：" + value);
 	}
 	
-	private static void demo1(String string, InnerClass innerClass) {
+	private static void demo1(String name, InnerClass innerClass) {
 		log.info("执行demo1的方法");
-		innerClass.getName();
+		String names = innerClass.getName(name);
+		log.info("匿名类得到的名称：" + names);
 	}
 	
 	public interface InnerClass {
-		public void getName();// 不要带参数
+		public String getName(String name);// 不要带参数
 		
 	}
 }

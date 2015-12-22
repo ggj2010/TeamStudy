@@ -25,6 +25,11 @@ AbstractNativeSessionManager的
 
 DefaultSessionManager的doCreateSession方法
    protected Session doCreateSession(SessionContext context) {
+   //sessionFactory是创建会话的工厂，根据相应的Subject上下文信息来创建会话；默认提供了SimpleSessionFactory用来创建SimpleSession会话。
+   //SessionFactory 可以自定义根据会话上下文创建相应的OnlineSession。//http://jinnianshilongnian.iteye.com/blog/2028675
+  //OnlineSession extends SimpleSession
+       
+ 	//默认是调用SimpleSessionFactory的createSession方法 返回的是SimpleSession
         Session s = newSessionInstance(context);
         if (log.isTraceEnabled()) {
             log.trace("Creating session for host {}", s.getHost());
