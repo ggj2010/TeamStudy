@@ -21,7 +21,7 @@ public class InterruptTest {
 			public void run() {
 				log.info("【1】运行线程=======" + Thread.currentThread().getName() + "开始执行,让线程一直睡眠");
 				try {
-					Thread.sleep(1000);
+					Thread.sleep(10000000);
 					log.info("线程=======" + Thread.currentThread().getName() + "睡眠结束了");
 				} catch (InterruptedException e) {
 					log.info("【2】线程被interrupt()中断了！！！");// 调用interrupt（）方法后会进入catch部分

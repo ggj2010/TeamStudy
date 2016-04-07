@@ -20,7 +20,7 @@ public class ProductAndComsume {
 		
 		new Thread("生产者") {
 			public void run() {
-				for (int i = 1; i < 21; i++) {
+				for (int i = 0; i < 10; i++) {
 					try {
 						blocking.put(i);
 						System.out.println("【生产者】==》开始生产:" + i);
@@ -33,10 +33,11 @@ public class ProductAndComsume {
 		
 		new Thread("消费者") {
 			public void run() {
-				for (int i = 1; i < 11; i++) {
+				for (int i = 0; i <5; i++) {
 					try {
 						int m = (Integer) blocking.take();
 						System.out.println("【消费者】开始消费:" + m);
+						Thread.sleep(1000);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
@@ -45,7 +46,7 @@ public class ProductAndComsume {
 		}.start();
 		new Thread("消费者") {
 			public void run() {
-				for (int i = 11; i < 21; i++) {
+				for (int i = 0; i < 5; i++) {
 					try {
 						int m = (Integer) blocking.take();
 						System.out.println("【消费者】开始消费:" + m);

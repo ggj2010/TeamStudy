@@ -17,16 +17,16 @@ public class ZookeperServer {
 	static ZooKeeper zk;
 	private static Stat stat = new Stat();
 	
-	public static void main(String[] args) throws InterruptedException, KeeperException {
+	public static void main(String[] args) throws Exception {
 		
-		// 第一次调用，第二次注释
 		test();
 		zk.create("/serverroot", "serverroot".getBytes(), Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
-		
+
+		System.in.read();
 		Thread.sleep(4000);
 		System.out.println("第一次");
 		addServerByName("server1");
-		
+
 		Thread.sleep(4000);
 		System.out.println("第二次");
 		addServerByName("server2");

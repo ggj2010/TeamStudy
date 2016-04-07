@@ -27,7 +27,7 @@ public class LockTest {
 	Condition condition2 = lock.newCondition();// 条件
 	
 	public static void main(String[] args) {
-		// demo1();//lock
+//		 demo1();//lock
 		// demo2();// tryLock()
 		// demo3();// lockInterruptibly()
 		// demo4();// ReentrantReadWriteLock 读写锁
@@ -42,7 +42,7 @@ public class LockTest {
 	private static void demo5() {
 		final LockTest lt = new LockTest();
 		// 注意这里不要用Integer, Integer 是不可变对象
-		
+
 		// 初始化A线程
 		new Thread("主线程") {
 			public void run() {
@@ -54,7 +54,7 @@ public class LockTest {
 				lt.test5();
 			}
 		}.start();
-		
+
 	}
 	
 	protected void test5() {
@@ -211,7 +211,7 @@ public class LockTest {
 	}
 	
 	protected void test1() {
-		// Lock lock = new ReentrantLock();// 不能放在这里，不然是没有效果的，因为是局部变量获取的锁
+		 Lock lock = new ReentrantLock();// 不能放在这里，不然是没有效果的，因为是局部变量获取的锁
 		try {
 			lock.lock();
 			for (int i = 0; i < 10; i++)

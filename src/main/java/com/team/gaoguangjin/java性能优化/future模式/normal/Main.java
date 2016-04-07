@@ -7,7 +7,7 @@ public class Main {
 		Data data = client.request("aaaa");
 		
 		// 这直接可以调用别的数据
-		
+
 		for (int i = 0; i < 10; i++) {
 			System.out.println("做别的事情//////////");
 		}

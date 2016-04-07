@@ -124,7 +124,6 @@ public class HbaseTest {
 	 * @Description: 删除指定的行列族下面的列
 	 * @param tableName
 	 * @param key1
-	 * @param deleteColumn
 	 * @return:void
 	 */
 	private static void deleteColumnByKey(String tableName, String key1, String falilyName, String columnName) {
@@ -146,7 +145,6 @@ public class HbaseTest {
 	 * @Description: 删除指定的行列族
 	 * @param tableName
 	 * @param key1
-	 * @param deleteColumn
 	 * @return:void
 	 */
 	private static void deleteFamilyByKey(String tableName, String key1, String falilyName) {
@@ -167,7 +165,6 @@ public class HbaseTest {
 	/**
 	 * @Description: 删除指定的列族
 	 * @param tableName
-	 * @param deleteColumn
 	 * @param key1
 	 * @return:void
 	 */

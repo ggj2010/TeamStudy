@@ -486,12 +486,12 @@
 			<groupId>org.apache.hbase</groupId>
 			<artifactId>hbase-client</artifactId>
 			<version>0.95.1-hadoop1</version>
-			<exclusions>
+		<!--	<exclusions>
 				<exclusion>
 					<artifactId>hbase-common</artifactId>
 					<groupId>org.apache.hbase</groupId>
 				</exclusion>
-			</exclusions>
+			</exclusions>-->
 		</dependency>
 		<!-- 搜索引擎 lucene -->
 		<dependency>
@@ -585,6 +585,14 @@
 				<version>2.2</version>
 				<configuration>
 					<path>/${project.build.finalName}</path>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
 				</configuration>
 			</plugin>
 		</plugins>
