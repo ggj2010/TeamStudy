@@ -11,17 +11,17 @@ package com.team.gaoguangjin.深入java虚拟机.垃圾回收;
  */
 public class TestMinorGC {
 	public static final int _1MB = 1024 * 1024;
-	
+
 	public static void main(String[] args) {
 		byte[] a, b, c, d;
 		a = new byte[2 * _1MB];
 		b = new byte[2 * _1MB];
-		c = new byte[2 * _1MB];// 新生代为6m
+		c = new byte[2 * _1MB];// 新生代为6m  enden=8m survivor=1+1
 		d = new byte[4 * _1MB];// 一次垃圾回收 minorGC
 	}
 	/**
 	 * 日志：
-	 * 
+	 *
 	 * [GC [DefNew: 6635K->245K(9216K), 0.0046942 secs] 6635K->6389K(19456K), 0.0047232 secs] [Times: user=0.00 sys=0.00, real=0.00 secs] 
 Heap
  def new generation   total 9216K, used 4669K [0x327b0000, 0x331b0000, 0x331b0000)
@@ -36,12 +36,12 @@ Heap
     rw space 12288K,  55% used [0x385b0000, 0x38c56128, 0x38c56200, 0x391b0000)
 
 	 */
-	
+
 	/**
 	 * eden space 8192K from space 1024K to space 1024K 新生代=一个eden+两个survivor区 新生代可用总大小为 eden+1个survivor=9216 当执行到d的时候
 	 * 新生代发生了垃圾回收 6635K->245K(9216K) 将6m直接回收掉成245。【 GC 前该区域已使用容量 -> GC 后该区域已使用容量 (该区域内存总容量) 】”
 	 * 因为新生代的6M  无法放到 survivor（1m）里面,所以放到老年代里面去
 	 * 6635K->6389K(19456K)  【GC 前Java堆已使用容量 -> GC后Java堆已使用容量 （Java堆总容量）】
 	 */
-	
+
 }

@@ -188,14 +188,14 @@ public class RedisTest {
 	// redis 排行榜测试
 	
 	public static void main(String[] args) throws InterruptedException {
-		// sortScore();
+		 sortScore();
 		// autoincrease();
 		// 获取所有key
 		// getAllKey();
 		// 查询某个key的类型，大小，使用实际
 		// checkKey();
 		// publish和subsrcibe 订阅者和发布者
-		jms();
+	//	jms();
 		// 测试不同数据库select()
 		// selectDataBase();
 		

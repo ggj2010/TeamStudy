@@ -18,8 +18,12 @@ public class MainTest {
 		Product pd = new Product(object, list);
 		
 		new Thread(pd, "生产者").start();
-		new Thread(cs, "消费者1").start();
-		new Thread(cs, "消费者2").start();
+
+		for (int i = 0; i <20 ; i++) {
+			new Thread(cs, "消费者"+i).start();
+		}
+//		new Thread(cs, "消费者1").start();
+//		new Thread(cs, "消费者2").start();
 		
 	}
 }

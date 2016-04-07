@@ -23,8 +23,8 @@ public class SynchronizedTest {
 		}.start();
 		new Thread() {
 			public void run() {
-				// method2();// 不可以访问的
-				method3();// 不是synchronized方法，当method1是synchronized方法被线程访问时候，可以访问此方法
+				 method2();// 不可以访问的
+			//	method3();// 不是synchronized方法，当method1是synchronized方法被线程访问时候，可以访问此方法
 			}
 		}.start();
 	}

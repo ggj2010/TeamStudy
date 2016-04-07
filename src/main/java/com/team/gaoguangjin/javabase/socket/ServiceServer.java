@@ -21,10 +21,11 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class ServiceServer {
 	public static void main(String[] args) throws UnknownHostException, IOException {
-		// init();//异步实现
+//		 init();//异步实现
 		// demo();
-		
-		brownsower();// 浏览器上面输入 http://localhost:34/
+		 demo1();
+
+//		brownsower();// 浏览器上面输入 http://localhost:34/
 	}
 	
 	private static void brownsower() throws IOException {

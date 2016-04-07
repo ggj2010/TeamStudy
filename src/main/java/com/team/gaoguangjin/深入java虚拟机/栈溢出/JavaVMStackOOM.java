@@ -14,7 +14,7 @@ public class JavaVMStackOOM {
 	}
 	
 	private void dontStop() {
-		System.out.println("==");
+	//	System.out.println("==");
 	}
 	
 	public static void main(String[] args) {

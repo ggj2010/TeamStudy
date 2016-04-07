@@ -22,12 +22,13 @@ public class Consume implements Runnable {
 					list.remove(0);
 					log.info("消费者开始消费1个,剩余" + list.size());
 					try {
-						Thread.sleep(1000);
+						Thread.sleep(100);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
 				} else {
 					try {
+						log.info("剩余0个等待生产者生成！" );
 						object.notifyAll();
 						object.wait();
 					} catch (InterruptedException e) {

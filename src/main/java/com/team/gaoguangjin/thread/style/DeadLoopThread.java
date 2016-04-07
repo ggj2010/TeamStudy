@@ -12,8 +12,8 @@ import lombok.extern.slf4j.Slf4j;
 public class DeadLoopThread extends Thread {
 	public static void main(String[] args) {
 		
-		// normal();
-		thread();// test方法会被执行到
+		 normal();
+		//thread();// test方法会被执行到
 	}
 	
 	/**

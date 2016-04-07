@@ -32,7 +32,7 @@ public class Product implements Runnable {
 					log.info("生产者又生产了5个 剩余个数" + list.size());
 					object.notifyAll();
 					try {
-						Thread.sleep(1000);
+						Thread.sleep(100);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
