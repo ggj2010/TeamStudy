@@ -14,7 +14,8 @@ public class InstanceOfTest {
         //a 是不是实现PInterface
         System.out.println("a 是不是实现PInterface："+PInterface.class.isInstance(a));
         //b 是不是继承a 第一个为flalse  第二个为对的
-        System.out.println("b 是不是继承a:"+A.class.isInstance(B.class));
+        System.out.println("b 是不是继承a:"+a.getClass().isInstance(B.class));
+        System.out.println("b 是不是继承a:"+a.getClass().isInstance(b));
         System.out.println("b 是不是继承a:"+A.class.isInstance(b));
 
 

@@ -12,6 +12,9 @@ import java.nio.channels.WritableByteChannel;
 
 import org.springframework.core.io.ClassPathResource;
 
+/**
+ * 自定义类加载器
+ */
 public class MyClassLoader extends ClassLoader {
 	
 	protected Class<?> findClass(String className) throws ClassNotFoundException {

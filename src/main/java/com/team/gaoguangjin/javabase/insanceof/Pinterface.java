@@ -7,4 +7,5 @@ package com.team.gaoguangjin.javabase.insanceof;
  * Date 2016/2/19 11:08
  */
 public interface PInterface {
+    void test();
 }

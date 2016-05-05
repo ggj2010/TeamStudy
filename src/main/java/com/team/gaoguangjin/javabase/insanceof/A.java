@@ -7,4 +7,8 @@ package com.team.gaoguangjin.javabase.insanceof;
  * Date 2016/2/19 11:09
  */
 public class A implements PInterface {
+    @Override
+    public void test() {
+
+    }
 }

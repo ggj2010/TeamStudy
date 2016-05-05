@@ -24,7 +24,7 @@ public class ReFlact {
 	public static void main(String[] args) throws ClassNotFoundException {
 		Class<?> reFlactClass = Class.forName("com.team.gaoguangjin.javabase.reflect.FanShe");
 		// getClassNameWithParam(reFlactClass);
-		// getClassWithoutParam(reFlactClass);
+		 getClassWithoutParam(reFlactClass);
 		
 		// getDefaultConst();
 		
