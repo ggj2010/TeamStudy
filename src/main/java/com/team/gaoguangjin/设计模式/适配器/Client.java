@@ -1,5 +1,8 @@
 package com.team.gaoguangjin.设计模式.适配器;
 
+/**
+ * 类适配器
+ */
 public class Client {
 	
 	public static void main(String[] args) {

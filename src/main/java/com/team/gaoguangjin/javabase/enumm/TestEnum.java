@@ -2,7 +2,7 @@ package com.team.gaoguangjin.javabase.enumm;
 
 /**
  * @ClassName:TestEnum.java
- * @Description: 测试enum
+ * @Description: 测试enum  switch()参数可以使用enum了
  * @author gaoguangjin
  * @Date 2015-3-24 下午9:52:01
  */
@@ -16,7 +16,8 @@ public class TestEnum {
 		
 		// 3.向枚举中添加新方法
 		System.out.println(Apple.yellow.getName());
-		
+		System.out.println(Apple.yellow);
+
 		// 4、枚举类型定义常量方法
 		System.out.println(Light.yellow);
 	}
@@ -49,6 +50,12 @@ public class TestEnum {
 		
 		private String getName() {
 			return name;
+		}
+		private String getColo() {
+			return color;
+		}
+		public String toString() {
+			return name+":"+color;
 		}
 	}
 	

@@ -14,7 +14,7 @@ public class PlayGameProxy implements InvocationHandler {
 	}
 	
 	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-		logger.info("打开电脑噢");
+		logger.info("打开电脑噢"+method.getDeclaringClass());
 		Object object = method.invoke(traget, args);
 		logger.info("关闭电脑");
 		return object;

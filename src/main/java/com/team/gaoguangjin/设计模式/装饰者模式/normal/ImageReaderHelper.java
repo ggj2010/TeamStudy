@@ -1,6 +1,6 @@
 package com.team.gaoguangjin.设计模式.装饰者模式.normal;
 
-public class ImageReaderHelper extends SimpleImage implements ReadRender {
+public class ImageReaderHelper extends SimpleImage  {
 	
 	@Override
 	void render() {

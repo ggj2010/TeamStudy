@@ -16,6 +16,6 @@ public class MainWheatherTest {
 		// 当被观察者发生变化时候
 		weather.setMeasurements(1, 2, 3);
 		
-		// ccd.update(12, 12, 100);
+		 ccd.update(12, 12, 100);
 	}
 }

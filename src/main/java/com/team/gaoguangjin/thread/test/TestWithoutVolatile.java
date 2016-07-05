@@ -1,8 +1,8 @@
 package com.team.gaoguangjin.thread.test;
 
 public class TestWithoutVolatile {
-	// private static boolean bChanged;
-	private volatile static boolean bChanged;
+	 private static boolean bChanged;
+//	private volatile static boolean bChanged;
 	
 	public static void main(String[] args) throws InterruptedException {
 		
