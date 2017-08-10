@@ -12,10 +12,11 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 public class SortUtil {
+	
 	public static int[] getRandomArray(int length) {
 		int[] arry = new int[length];
 		Random random = new Random();
-		for (int i = 0; i < length - 1; i++) {
+		for(int i = 0; i < length - 1; i++) {
 			arry[i] = random.nextInt(length * 10);
 		}
 		display("之前", arry);
@@ -24,22 +25,9 @@ public class SortUtil {
 	
 	public static void display(String key, int[] array) {
 		String str = "";
-		for (int i = 0; i < array.length; i++) {
+		for(int i = 0; i < array.length; i++) {
 			str += array[i] + " ";
 		}
 		log.info("排序" + key + "数组顺序是：" + str);
 	}
-	
-	public static void main(String[] args) {
-		int[] arry = getRandomArray(10);
-		
-		for (int i = 0; i <= arry.length - 1; i++) {
-			
-			for (int j = 0; j <= arry.length - 1 - i; j++) {
-				System.out.println(arry[j + 1]);
-			}
-			
-		}
-	}
-	
 }

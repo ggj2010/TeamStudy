@@ -2,14 +2,13 @@ package com.team.gaoguangjin.test.mock.mockito;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.mockito.Mockito;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.when;
 
 /**
@@ -20,7 +19,7 @@ public class MockitoTest {
     @Test
     public  void test(){
 // 使用 mock 静态方法创建 Mock 对象.
-        List mockedList = mock(List.class);
+        List mockedList = Mockito.mock(List.class);
         Assert.assertTrue(mockedList instanceof List);
 
         // mock 方法不仅可以 Mock 接口类, 还可以 Mock 具体的类型.

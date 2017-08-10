@@ -6,6 +6,6 @@ package com.team.gaoguangjin.javabase.insanceof;
  * Email:335424093@qq.com
  * Date 2016/2/19 11:08
  */
-public interface PInterface {
+interface PInterface {
     void test();
 }

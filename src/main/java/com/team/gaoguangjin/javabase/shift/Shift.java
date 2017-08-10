@@ -3,6 +3,7 @@ package com.team.gaoguangjin.javabase.shift;
 import lombok.extern.slf4j.Slf4j;
 
 /**
+ * kuohao chaonab
  * >>是带符号右移，负数高位补1，正数补0
  * <<左移不管负数还是正数，在低位永远补0
  * >>>是不带符号右移，不论负数还是正数，高位补0
@@ -37,7 +38,14 @@ public class Shift {
 		endTime = System.currentTimeMillis();
 		log.info("i<<2耗时：{}", endTime - beginTime);
 	}
-	
+
+	/**
+	 * 3
+	 12
+	 24
+	 48
+	 1
+	 */
 	private static void test() {
 		// 2进制 1010
 		int a = 6;

@@ -1,18 +1,11 @@
 package com.team.gaoguangjin.javabase.collection.map;
 
-import java.util.ConcurrentModificationException;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.SortedMap;
-import java.util.TreeMap;
+import java.util.*;
 
 import lombok.extern.slf4j.Slf4j;
 
 import org.apache.commons.collections.map.LinkedMap;
 
-import com.sun.org.apache.xalan.internal.xsltc.runtime.Hashtable;
 
 /**
  * @ClassName:MapTypeTest.java
@@ -41,8 +34,6 @@ public class MapTypeTest {
 		Map<String, String> treeMap = new TreeMap<String, String>();
 		
 		SortedMap<String, String> sortMap = new TreeMap<String, String>();
-		
-		Hashtable hashTable = new Hashtable();
 		
 		hashMap();
 		

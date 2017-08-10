@@ -189,9 +189,6 @@ public class MyHashMap<K, V> extends AbstractMap<K, V> implements Map<K, V>, Clo
 		// int h = hashSeed;
 		// 这个数是随机的
 		int h = 1000;
-		if (key instanceof String) {
-			return sun.misc.Hashing.stringHash32((String)key);
-		}
 		// 异或 两个操作数的位中，相同则结果为0，不同则结果为1
 		h ^= key.hashCode();
 		// This function ensures that hashCodes that differ only by
