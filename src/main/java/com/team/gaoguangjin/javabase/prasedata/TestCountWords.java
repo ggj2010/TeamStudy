@@ -42,7 +42,7 @@ public class TestCountWords {
                         //对不同线程处理的结果进行整合
                         tMap.putAll(hMap1);
                         tMap.putAll(hMap2);
-                        //打印输出，查看结果
+                        //打印输出，查看结果F
                         for(Map.Entry entry : tMap.entrySet()) {
                             String key = (String) entry.getKey();
                             int value = (int) entry.getValue();

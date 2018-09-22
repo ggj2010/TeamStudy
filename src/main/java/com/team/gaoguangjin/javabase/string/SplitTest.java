@@ -24,5 +24,12 @@ public class SplitTest {
             log.info("\\|转译分割，{}", s);
         }
 
+
+        String a="gao\",dddd";
+        System.out.println(a.replaceAll("\"","'"));
+
+
+
+
     }
 }

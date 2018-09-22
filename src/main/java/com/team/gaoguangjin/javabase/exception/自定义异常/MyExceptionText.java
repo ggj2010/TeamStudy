@@ -38,7 +38,6 @@ public class MyExceptionText {
 	}
 	
 	private static void demo5() throws MyException {
-		
 	}
 	
 	private static void demo4() throws Exception {

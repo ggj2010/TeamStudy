@@ -35,11 +35,12 @@ public class Singleton {
      * douleCheck
      */
 
-    private static Singleton singleton3;
+    private static volatile Singleton singleton3;
     public static Singleton getSingleton3(){
         if(singleton3==null){
            synchronized (Singleton.class){
                if(singleton3==null){
+                   //非原子操作,可能导致指令重新排序
                    singleton3=new Singleton();
                }
            }

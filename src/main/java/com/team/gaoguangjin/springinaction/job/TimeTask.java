@@ -1,5 +1,7 @@
 package com.team.gaoguangjin.springinaction.job;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -15,21 +17,12 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class TimeTask extends TimerTask {
 	public void run() {
-		System.out.println("这是测试");
-		new Thread() {
-			public void run() {
-				for (long i = 0; i < 10; i++) {
-					for (long a = 0; a < 100000000; a++) {
-					}
-				}
-				System.out.print("=====");
-			}
-		}.start();
+		System.out.println("这是测试"+new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
 	}
 	
 	public static void main(String[] args) throws InterruptedException {
 		final Timer timer = new Timer();
 		TimerTask task = new TimeTask();
-		timer.schedule(task, 1000L, 500L);// 在一秒后执行此任务，每0.5秒执行一次
+		timer.schedule(task, 0L, 1000L);// 在一秒后执行此任务，每0.5秒执行一次
 	}
 }

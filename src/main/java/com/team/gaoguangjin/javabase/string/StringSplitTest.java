@@ -16,6 +16,7 @@ public class StringSplitTest {
 //        Scanner scanner=new Scanner(System.in);
 //        String world=scanner.next();
 //        String result=getSplitResult(world,scanner.nextInt(),"gbk");
+        log.info(getSplitResult("我ABC汉DE",1,"GBK"));
         log.info(getSplitResult("我ABC汉DE",4,"GBK"));
         ////截取1个中文等于substring(0,5-1)
         log.info(getSplitResult("我ABC汉DE",5,"GBK"));

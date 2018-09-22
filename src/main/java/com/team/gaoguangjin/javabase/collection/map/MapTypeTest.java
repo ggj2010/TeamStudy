@@ -16,17 +16,24 @@ import org.apache.commons.collections.map.LinkedMap;
 @Slf4j
 public class MapTypeTest {
 	public static void main(String[] args) {
-		// test();
+		 test();
 		// hashMap();
 		// hashTable();
-		LinkedHashMap();
-		// treeMap();
-		
+//		LinkedHashMap();
+//		 treeMap();
+
 	}
 	
 	public static void test() {
 		// 1
 		Map<String, String> hashMap = new HashMap<String, String>();
+		log.info(hashMap.put("1","2"));
+		log.info(hashMap.put("1","3"));
+		log.info(hashMap.putIfAbsent("2","2dddd"));
+		log.info(hashMap.putIfAbsent("2","333"));
+		log.info(hashMap.get("2"));
+
+
 		
 		// Map<String, String> linkedMap = new LinkedMap<String, String>();这样写报错，因为方法不支持
 		Map<String, String> linkedMap = new LinkedMap();
@@ -44,7 +51,7 @@ public class MapTypeTest {
 	 */
 	private static void hashMap() {
 		Map<String, String> hashMap = new HashMap<String, String>();
-		
+		Collections.synchronizedMap(new HashMap<>());
 		String null1 = hashMap.put(null, "空值");
 		String null2 = hashMap.put(null, "空值d");
 		

@@ -8,10 +8,10 @@ import java.io.IOException;
  */
 public class Test {
     public static void main(String[] args) throws IOException {
-        Subjet subjet=new Subjet();
-        Observer boy=new BoyObserver("ggj");
-        Observer girl=new GirlObserver("zjy");
-        Observer girlTwo=new GirlObserver("zhh");
+        Subjet subjet = new Subjet();
+        Observer boy = new BoyObserver("ggj");
+        Observer girl = new GirlObserver("zjy");
+        Observer girlTwo = new GirlObserver("zhh");
         subjet.addListener(boy);
         subjet.addListener(girl);
         //添加观察者
