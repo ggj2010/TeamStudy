@@ -3,7 +3,6 @@ package com.team.gaoguangjin.javabase.regex;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static oracle.net.aso.C00.s;
 
 /**
  * 正则表达式

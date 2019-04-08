@@ -1,7 +1,5 @@
 package com.team.gaoguangjin.javabase.classforname;
 
-import static oracle.net.aso.C00.s;
-import static org.hsqldb.Library.sString;
 
 /**
  * 携程面试题
